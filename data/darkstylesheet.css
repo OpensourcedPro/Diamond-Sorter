@@ -1,0 +1,20 @@
+
+            QMainWindow {
+                background-color: #ffffff;
+                color: #000000;
+            }
+            QToolBar {
+                background-color: #ffffff;
+                color: #000000;
+            }
+            QLineEdit {
+                background-color: #ffffff;
+                color: #000000;
+            }
+            QTabBar::tab {
+                background-color: whitesmoke; 
+                color: black;
+                padding: 8px;
+                margin-left: 1px;
+            }
+        

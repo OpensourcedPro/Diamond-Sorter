@@ -1,0 +1,34 @@
+let ogVolume = 1;
+let pbRate = 1;
+
+setInterval(() => {
+    try {
+        let videoElement = document.getElementsByClassName("video-stream html5-main-video")[0];
+        let adElement = document.getElementsByClassName("video-ads ytp-ad-module")[0];
+
+        if (videoElement !== undefined) {
+            if (adElement === undefined) {
+                pbRate = videoElement.playbackRate;
+            }
+
+            // Closeable ads
+            let closeableAds = document.getElementsByClassName("ytp-ad-overlay-close-button");
+            for (let i = 0; i < closeableAds.length; i++) {
+                closeableAds[i].click();
+            }
+
+            // Other operations based on your conditions
+
+            // Example: Skip ad
+            let skipBtn = document.getElementsByClassName("ytp-ad-text ytp-ad-skip-button-text")[0];
+            if (skipBtn !== undefined) {
+                skipBtn.click();
+            }
+
+            // Example: Set playback rate
+            videoElement.playbackRate = pbRate;
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}, 100);

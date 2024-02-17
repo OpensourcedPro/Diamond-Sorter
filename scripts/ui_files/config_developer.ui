@@ -1,0 +1,2878 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConfigDeveloperController</class>
+ <widget class="QWidget" name="ConfigDeveloperController">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1250</width>
+    <height>789</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1250</width>
+    <height>789</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1250</width>
+    <height>789</height>
+   </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ActionsContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Diamond Sorter - Config Development Feature</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>diamond.ico</normaloff>diamond.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox,
+QTreeView,
+QListView,
+QLineEdit,
+QComboBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+  </property>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>10</y>
+     <width>421</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::ActionsContextMenu</enum>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="whatsThis">
+    <string/>
+   </property>
+   <property name="autoScroll">
+    <bool>false</bool>
+   </property>
+   <property name="itemAlignment">
+    <set>Qt::AlignHCenter</set>
+   </property>
+   <property name="sortingEnabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>410</y>
+     <width>1221</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTabWidget::pane {
+    background-color: black;
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+}
+
+QTabBar::tab {
+    background-color: black;
+    color: white;
+    border: 2px solid teal;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 8px;
+}
+
+QTabBar::tab:selected {
+    background-color: teal;
+    border-color: teal;
+}</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="ConfigTabBLTools">
+    <attribute name="title">
+     <string>BL Tools</string>
+    </attribute>
+    <widget class="QTextBrowser" name="project_setpath_text_browser">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>10</y>
+       <width>341</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="whatsThis">
+      <string>Set the path to your Projects folder to save the config in</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="project_setpath_button">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Set Path</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_2">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>20</y>
+       <width>661</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QTabWidget" name="CapturesTabWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>411</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox,
+QTreeView,
+QListView,
+QLineEdit,
+QComboBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="CapturesElementIDTab">
+       <attribute name="title">
+        <string>Captures</string>
+       </attribute>
+       <widget class="QCheckBox" name="fifth_parsing_checkbox">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>160</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>5th Parsing</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="third_parsing_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>3rd Parsing</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="one_parsing_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>1st Parsing</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="fifth_parsing_left_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>160</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="fourth_parsing_left_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>130</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="two_parsing_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>2nd Parsing </string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="one_parsing_left_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>40</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="third_parsing_left_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>100</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="two_parsing_left_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>70</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fourth_parsing_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QCheckBox::indicator:unchecked {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+        </property>
+        <property name="text">
+         <string>4th Parsing</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="fifth_parsing_right_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>160</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="fourth_parsing_right_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>130</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="one_parsing_right_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>40</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="three_parsing_right_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>100</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="two_parsing_right_element_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>70</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="left_element_id_label">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>20</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Left Element ID</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="right_element_id_label">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>20</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Right Element ID</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="enable_parser_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Enabled the Parser?</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="all_values_radiobutton">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>190</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>All Values</string>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="firstvalue_radiobutton">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>190</y>
+          <width>71</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>1 Value</string>
+        </property>
+       </widget>
+       <widget class="QCommandLinkButton" name="sending_parsing_commandButton">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>220</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Send Parsing Request</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="CaptureCleanupTab">
+       <attribute name="title">
+        <string>Capture Cleanup</string>
+       </attribute>
+       <widget class="QPushButton" name="run_test_button">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>100</y>
+          <width>101</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Run Test</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBox_21">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>1st Parsing</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="third_parsing_checkbox_2">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>100</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>3rd Parsing</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fourth_parsing_checkbox_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>4th Parsing</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="second_parsing_checkbox">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>100</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>2nd Parsing</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="fifth_parsing_checkbox_2">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>130</y>
+          <width>91</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>5th Parsing</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="save_format_cleanup_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>220</y>
+          <width>301</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="SaveFormat_Label">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save Format</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="CaptureCleanupTabList">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>381</width>
+          <height>81</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QListWidget" name="Captures_Windows_list">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>10</y>
+        <width>221</width>
+        <height>271</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>60</y>
+       <width>481</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QTabWidget" name="HeaderValueTabWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>471</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox,
+QTreeView,
+QListView,
+QLineEdit,
+QComboBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="DefaultHeaderValues">
+       <attribute name="title">
+        <string>Default Header Values from Inspect Element</string>
+       </attribute>
+       <widget class="QCheckBox" name="useragent_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>User Agent</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="headers_ua_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>10</y>
+          <width>281</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="headers_accept_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>40</y>
+          <width>61</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Accept</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="headers_content_type_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Content Type</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="headers_referrer_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Referrer</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="headers_x_req_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>130</y>
+          <width>121</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>X-Requested With</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="headers_accept_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>40</y>
+          <width>281</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="headers_contenttype_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>70</y>
+          <width>281</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="headers_referrer_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>100</y>
+          <width>281</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="headers_x_req_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>130</y>
+          <width>281</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QCommandLinkButton" name="http_request_inject_headersButton">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>170</y>
+          <width>181</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Send Header Requests</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="CustomHeaderValues">
+       <attribute name="title">
+        <string>Custom Header Values from Inspect Element</string>
+       </attribute>
+       <widget class="QTextEdit" name="customheader_name1_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>10</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="customheader_name1_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME1=VALUE1</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="customheader_name3_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>70</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME3=VALUE3</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="customheader_name4_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME4=VALUE4</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="customheader_name4_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>100</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="customheader_name3_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>70</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="customheader_name5_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>130</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME5=VALUE5</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="customheader_name2_label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>40</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>NAME2=VALUE2</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="customheader_name2_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>40</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="customheader_name5_textedit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>130</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="ConfigTabSilverbullet">
+    <attribute name="title">
+     <string>Silverbullet</string>
+    </attribute>
+    <widget class="QTextBrowser" name="textBrowser_3">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>140</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>120</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_5">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>80</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>60</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_6">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>30</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>10</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_7">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>200</y>
+       <width>181</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>170</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Email:Pass</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>User:Pass</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Number:Pass</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cookie File</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>548</x>
+       <y>10</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Resource Value</string>
+     </property>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>391</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>59</x>
+         <y>30</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Requests</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>30</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Conditions</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>30</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">stylesheet = &quot;&quot;&quot;
+:root {
+  --size-default: 22px;
+  --size-sm: 16px;
+  --color-green: #58DD93;
+  --color-black: #000;
+}
+
+[angle=&quot;0&quot;] {
+  angle: 0deg;
+  glowColor: #58DD93;
+}
+
+[angle=&quot;100&quot;] {
+  angle: 360deg;
+  glowColor: #58DD93;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  background: 
+      qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 rgba(0,0,0,0),
+        stop: 1 var(--color-black)
+      ),
+      qradialgradient(
+        cx: 0.5, cy: -0.5,
+        fx: 0.5, fy: -0.5,
+        radius: 1.0,
+        stop: 0 #335F4B,
+        stop: 1 var(--color-black)
+      );
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  border: none;
+  background: none;
+  position: relative;
+  padding: 1px;
+  text-decoration: none;
+  transition: all .18s ease-in-out;
+  transform: translate3d(0,0,0);
+}
+
+.btn:after, .btn:before {
+  content: &quot;&quot;;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(100px + 1.5px);
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: qconicalgradient(
+    cx: 0.5, cy: 0.5,
+    angle: var(--angle),
+    stop: 0 rgba(0,0,0,0),
+    stop: 0.33 rgba(0,0,0,0),
+    stop: 0.5 var(--glowColor),
+    stop: 0.66 rgba(0,0,0,0),
+    stop: 1 rgba(0,0,0,0)
+  );
+  animation: rotate 2s infinite linear;
+}
+
+.btn:before {
+  animation: rotate 2s infinite linear;
+  filter: blur(20px);
+}
+
+.btnInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--size-sm) var(--size-default);
+  border-radius: 100px;
+  color: var(--color-green);
+  font-weight: 500;
+  font-size: 22px;
+  z-index: 1;
+  transition: all .18s ease;
+  background: rgba(0,0,0,.3);
+  backdrop-filter: blur(40px);
+  backface-visibility: hidden;
+}
+
+.btn:hover .btnInner {
+  background: rgba(88, 221, 147, .1);
+  color: lighten(#58DD93,20%);  
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes rotate {
+  from { --angle: 0deg; --glowColor: var(--color-green);}
+  to { --angle: 360deg; --glowColor: var(--color-green);}
+}</string>
+       </property>
+       <property name="text">
+        <string>Utilities</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>180</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Solvers</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>180</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Puppiteer</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>180</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Selenium</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>100</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Functions</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>100</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Interop</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>100</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Parsing</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Tab 2</string>
+      </attribute>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="ConfigTabOpenbullet">
+    <attribute name="title">
+     <string>Openbullet</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="ConfigTabCookieBullet">
+    <attribute name="title">
+     <string>Cookie Bullet</string>
+    </attribute>
+    <widget class="QTabWidget" name="tabWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>501</width>
+       <height>311</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+      <widget class="QPushButton" name="pushButton_10">
+       <property name="geometry">
+        <rect>
+         <x>59</x>
+         <y>30</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Requests</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_11">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>30</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Conditions</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_12">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>30</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">stylesheet = &quot;&quot;&quot;
+:root {
+  --size-default: 22px;
+  --size-sm: 16px;
+  --color-green: #58DD93;
+  --color-black: #000;
+}
+
+[angle=&quot;0&quot;] {
+  angle: 0deg;
+  glowColor: #58DD93;
+}
+
+[angle=&quot;100&quot;] {
+  angle: 360deg;
+  glowColor: #58DD93;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  background: 
+      qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 rgba(0,0,0,0),
+        stop: 1 var(--color-black)
+      ),
+      qradialgradient(
+        cx: 0.5, cy: -0.5,
+        fx: 0.5, fy: -0.5,
+        radius: 1.0,
+        stop: 0 #335F4B,
+        stop: 1 var(--color-black)
+      );
+  font-family: monospace;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  border: none;
+  background: none;
+  position: relative;
+  padding: 1px;
+  text-decoration: none;
+  transition: all .18s ease-in-out;
+  transform: translate3d(0,0,0);
+}
+
+.btn:after, .btn:before {
+  content: &quot;&quot;;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(100px + 1.5px);
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  background-image: qconicalgradient(
+    cx: 0.5, cy: 0.5,
+    angle: var(--angle),
+    stop: 0 rgba(0,0,0,0),
+    stop: 0.33 rgba(0,0,0,0),
+    stop: 0.5 var(--glowColor),
+    stop: 0.66 rgba(0,0,0,0),
+    stop: 1 rgba(0,0,0,0)
+  );
+  animation: rotate 2s infinite linear;
+}
+
+.btn:before {
+  animation: rotate 2s infinite linear;
+  filter: blur(20px);
+}
+
+.btnInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--size-sm) var(--size-default);
+  border-radius: 100px;
+  color: var(--color-green);
+  font-weight: 500;
+  font-size: 22px;
+  z-index: 1;
+  transition: all .18s ease;
+  background: rgba(0,0,0,.3);
+  backdrop-filter: blur(40px);
+  backface-visibility: hidden;
+}
+
+.btn:hover .btnInner {
+  background: rgba(88, 221, 147, .1);
+  color: lighten(#58DD93,20%);  
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes rotate {
+  from { --angle: 0deg; --glowColor: var(--color-green);}
+  to { --angle: 360deg; --glowColor: var(--color-green);}
+}</string>
+       </property>
+       <property name="text">
+        <string>Utilities</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_13">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>180</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Solvers</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_14">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>180</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Puppiteer</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_15">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>180</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Selenium</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_16">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>100</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Functions</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_17">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>100</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Interop</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_18">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>100</y>
+         <width>81</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Parsing</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>Tab 2</string>
+      </attribute>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="ConfigTabConverter">
+    <attribute name="title">
+     <string>Converter</string>
+    </attribute>
+    <widget class="QPushButton" name="select_config">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>111</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Config Converter</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Developer Tools</string>
+    </attribute>
+    <widget class="QPushButton" name="http_request_parse_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>190</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PARSE</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button_7">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PATCH</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_post_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>150</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>POST</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_referrer_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>190</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Referrer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>190</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>HEADERS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button_5">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>10</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>OPTIONS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_get_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>150</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>GET</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>150</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>DELETE</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_html_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>190</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>HTML</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>150</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PUT</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button_6">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>10</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TRACE</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_headers_button_4">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>10</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CONNECT</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="http_request_css_button">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>150</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>CSS</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QTextEdit" name="url_text_edit">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>321</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>15</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Website Target Login URL</string>
+   </property>
+   <property name="buddy">
+    <cstring>label</cstring>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="website_target_scrape_text">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>50</y>
+     <width>321</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>55</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Website Target Scarping</string>
+   </property>
+   <property name="buddy">
+    <cstring>website_target_scrape_text</cstring>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="HTTP_POST_Button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>90</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>POST</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SaveConfigButton">
+   <property name="geometry">
+    <rect>
+     <x>1070</x>
+     <y>300</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save Config</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="HTTP_COPY_Button">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>90</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="StartConfigButton">
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>300</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="HTTP_GET_Button">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>90</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GET</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="HTTP_CONSOLE_QTABWIDGET">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>781</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::ActionsContextMenu</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTabWidget::pane {
+    background-color: black;
+}
+
+QTabWidget::tab-bar {
+    alignment: left;
+}
+
+QTabBar::tab {
+    background-color: black;
+    color: white;
+    border: 2px solid teal;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 8px;
+}
+
+QTabBar::tab:selected {
+    background-color: teal;
+    border-color: teal;
+}</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="LightWebInspectTab">
+    <attribute name="title">
+     <string>Light Web Inspect</string>
+    </attribute>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>781</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>777</width>
+        <height>247</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="NetworkTab">
+    <attribute name="title">
+     <string>Network</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Log Network</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="ViewSourcesTab">
+    <attribute name="title">
+     <string>View-Source</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="ElementsTab">
+    <attribute name="title">
+     <string>Elements</string>
+    </attribute>
+    <widget class="QListView" name="Elements_ListView">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>781</width>
+       <height>251</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="HeadersTab">
+    <attribute name="title">
+     <string>Headers</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="PayloadTab">
+    <attribute name="title">
+     <string>Payload</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="ResponseTab">
+    <attribute name="title">
+     <string>Response</string>
+    </attribute>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="test_url_connectionButton">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>10</y>
+     <width>131</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Test URL Connection</string>
+   </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="HTTP_START_Button">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>90</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>START</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>one_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>one_parsing_left_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>714</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>one_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>one_parsing_right_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>476</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>874</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>two_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>two_parsing_left_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>506</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>714</x>
+     <y>506</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>two_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>two_parsing_right_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>506</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>874</x>
+     <y>506</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>third_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>third_parsing_left_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>584</x>
+     <y>536</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>714</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>third_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>three_parsing_right_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>584</x>
+     <y>536</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>874</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fifth_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>fifth_parsing_left_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>596</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>714</x>
+     <y>596</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fourth_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>fourth_parsing_left_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>584</x>
+     <y>566</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>714</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fourth_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>fourth_parsing_right_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>584</x>
+     <y>566</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>874</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fifth_parsing_checkbox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>fifth_parsing_right_element_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>596</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>874</x>
+     <y>596</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>headers_accept_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>headers_accept_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>516</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>516</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>useragent_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>headers_ua_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>486</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>486</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>headers_content_type_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>headers_contenttype_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>546</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>headers_x_req_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>headers_x_req_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>114</x>
+     <y>606</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>606</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>headers_referrer_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>headers_referrer_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>576</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>576</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customheader_name1_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>customheader_name1_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>546</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customheader_name2_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>customheader_name2_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>576</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>576</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customheader_name3_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>customheader_name3_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>606</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>606</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customheader_name4_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>customheader_name4_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>636</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>636</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>customheader_name5_label</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>customheader_name5_textedit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>666</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>666</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>test_url_connectionButton</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>url_text_edit</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>555</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>25</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>url_text_edit</sender>
+   <signal>textChanged()</signal>
+   <receiver>HTTP_CONSOLE_QTABWIDGET</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>400</x>
+     <y>260</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

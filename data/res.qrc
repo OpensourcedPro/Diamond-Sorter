@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="images">
+    <file>untitled.svg</file>
+    <file>background.jpg</file>
+  </qresource>
+</RCC>

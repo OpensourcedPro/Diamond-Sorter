@@ -1,0 +1,1877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>801</width>
+    <height>820</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>801</width>
+    <height>677</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>801</width>
+    <height>999</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>801</width>
+    <height>677</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>801</width>
+    <height>677</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="lineEdit_dir">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>421</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Furore</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+    </property>
+    <property name="text">
+     <string>The path to the logs</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_proxy">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>320</y>
+      <width>331</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Furore</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+    </property>
+    <property name="text">
+     <string>The path to the proxy</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_ua">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>360</y>
+      <width>331</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Furore</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+    </property>
+    <property name="text">
+     <string>The path to user agents</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_ua">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>360</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>9</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #c8c8c8</string>
+    </property>
+    <property name="text">
+     <string>Enable</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>740</y>
+      <width>601</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>740</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Furore</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>750</y>
+      <width>421</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #181818;
+border: 3px solid #363636;
+color: #c8c8c8</string>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_dir_logs">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>280</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Choose a path</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_proxies_files">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>320</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Choose a path</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_useragents_file">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>360</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Choose a path</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_console">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>781</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #181818;
+border: 3px solid #363636;
+color: #c8c8c8</string>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="placeholderText">
+     <string>Diamond Checker - A Cookie Checker Brought To You By DiamondSorter - An Opensourced.Pro Project</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="social_network_label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>740</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Furore</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Threads</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox_thr">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>750</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Impact</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit,
+QComboBox,
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox {
+  color: #1de9b6;
+  background-color: #31363b;
+  border: 2px solid #1de9b6;
+  border-radius: 4px;
+  height: 32px;
+}
+
+QWidget {
+  background-color: #232629;
+  color: #ffffff;
+}
+
+QGroupBox,
+QFrame {
+  background-color: #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1de9b6;
+  border-radius: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+QRadioButton::indicator:checked,
+QCheckBox::indicator:checked {
+  background-color: #1de9b6;
+  border-color: #1de9b6;
+}
+
+QRadioButton::indicator:hover,
+QCheckBox::indicator:hover {
+  border-color: rgba(29, 233, 182, 0.8);
+}
+
+QRadioButton::indicator:checked:hover,
+QCheckBox::indicator:checked:hover {
+  border-color: #1de9b6;
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_lgbt">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>5</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_proxy">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>320</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Sans Serif</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <item>
+     <property name="text">
+      <string>off</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>socks4</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>socks5</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>http</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="stats_box">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>280</y>
+      <width>261</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Impact</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="inbox_tab_widget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>430</y>
+      <width>781</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Furore</family>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget::pane { /* The tab widget frame */
+    border-top: 2px solid #000000;
+    position: absolute;
+    top: -0.5em;
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #000000, stop: 0.4 #000000,
+                                stop: 0.5 #000000, stop: 1.0 #000000);
+    border: 2px solid ;
+	selection-color: rgb(15, 255, 167);
+    border-bottom-color: #000000; /* same as the pane color */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    min-width: 8ex;
+    padding: 8px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #000000, stop: 0.4 #000000,
+                                stop: 0.5 #000000, stop: 1.0 #000000);
+}
+
+QTabBar::tab:selected {
+    border-color: #00def2;
+    border-bottom-color: #00def2; /* same as pane color */
+}</string>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::ElideNone</enum>
+    </property>
+    <property name="movable">
+     <bool>false</bool>
+    </property>
+    <property name="tabBarAutoHide">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="inbox_tab">
+     <attribute name="title">
+      <string>Inbox</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>10</y>
+        <width>761</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="inbox_checkbox_gridlayout">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="gmail_inbox_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Gmail</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="yandex_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Yandex</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="yahoo_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Yahoo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="outlook_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Outlook</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="webmail_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Webmail</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="mailru_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Mail.Ru</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="cpanel_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Cpanel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="office_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Office</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ads_tab">
+     <attribute name="title">
+      <string>Ads</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="bing_ads_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Bing Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="reddit_ads__checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Reddit Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QCheckBox" name="ahref_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>AHref SEO</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="snapchat_ads_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Snapchat Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="tinder_ads_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Tinder Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="twitter_ads_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Twitter Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="sem_rush_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>SEM Rush</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="craigslist_ads_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Craigslist Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="facebookads__checkbox">
+         <property name="text">
+          <string>Facebook Ads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QCheckBox" name="microsoft_ads_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Microsoft Ads</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="game_tab">
+     <attribute name="title">
+      <string>Games</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="game_checkbox_gridlayout">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox_steam">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Steam</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="checkBox_pathofexile">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>PathofExile</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="checkBox_roblox">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Roblox</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_battlenet">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>BattleNet</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="social_network_tab">
+     <attribute name="title">
+      <string>Social network</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox_instagram">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Instagram</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QCheckBox" name="myspace_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Myspace</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="reddit_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Reddit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="checkBox_discord">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Discord</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="kick_checkbox">
+         <property name="text">
+          <string>Kick</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QCheckBox" name="checkBox_facebook_ads">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Facebook</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_tiktok">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>TikTok</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="pintrest_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Pintrest</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="checkBox_youtube">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>YouTube</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QCheckBox" name="vimeo_checkbox">
+         <property name="text">
+          <string>Vimeo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QCheckBox" name="rumble_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Rumble</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QCheckBox" name="localsapp_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Locals</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QCheckBox" name="snapchat_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Snapchat</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QCheckBox" name="patreon_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Patreon</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="checkBox_netflix">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Netflix</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QCheckBox" name="checkBox_vk">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>VK</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QCheckBox" name="twitch_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Twitch</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QCheckBox" name="linkedin_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>LinkedIn</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="crypto_wallets_tab">
+     <attribute name="title">
+      <string>Crypto wallet</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>761</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox_coinbase">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>CoinBase</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="checkBox_kryptex">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Kryptex</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="checkBox_hitbtc">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>HitBTC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_freebitcoin">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>FreeBitcoin</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="shopping_tab">
+     <attribute name="title">
+      <string>Shop</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>731</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox_amazon">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Amazon</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="ebay_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Ebay</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QCheckBox" name="airbnb_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>AirBNB</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QCheckBox" name="envato_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Envato Elements</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QCheckBox" name="flipkart_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Flipkart</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="checkBox_funpay">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>FunPay</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="kleinanzeigen_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Kleinanzeigen</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="booking_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Booking.com</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QCheckBox" name="uber_eats_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Uber Eats</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QCheckBox" name="dh_gate_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>DH Gate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_humble">
+         <property name="font">
+          <font>
+           <family>Furore</family>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Humble</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="temu_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Temu</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QCheckBox" name="fiverr_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Fiverr</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QCheckBox" name="zillow_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Zillow</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QCheckBox" name="instacart_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Instacart</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="google_play_checkbox">
+         <property name="text">
+          <string>Google Play</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="vinted_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Vinted</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QCheckBox" name="walmart_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Walmart</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="daiting_tab">
+     <attribute name="title">
+      <string>Daiting</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>751</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="ashley_madison_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>AshleyMaddison</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="zoosk_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Zoosk</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QCheckBox" name="meetme_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>MeetMe</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="eharmony_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>EHarmony</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="tinder_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Tinder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="christan_mingle_checkbox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>ChristanMingle</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="number_of_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>280</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Number of:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="files_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>310</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Files:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="folders_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>340</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Folders:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cookies_label">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>380</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cookies:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cookie_stats_label">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>290</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cookie Stats:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="live_label">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>320</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Live:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dead_label">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>350</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Dead:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="errors_label">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>380</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Errors:</string>
+    </property>
+   </widget>
+   <zorder>stats_box</zorder>
+   <zorder>lineEdit_dir</zorder>
+   <zorder>lineEdit_proxy</zorder>
+   <zorder>lineEdit_ua</zorder>
+   <zorder>checkBox_ua</zorder>
+   <zorder>label_2</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>progressBar</zorder>
+   <zorder>pushButton_dir_logs</zorder>
+   <zorder>pushButton_proxies_files</zorder>
+   <zorder>pushButton_useragents_file</zorder>
+   <zorder>textEdit_console</zorder>
+   <zorder>social_network_label</zorder>
+   <zorder>spinBox_thr</zorder>
+   <zorder>label_lgbt</zorder>
+   <zorder>comboBox_proxy</zorder>
+   <zorder>inbox_tab_widget</zorder>
+   <zorder>number_of_label</zorder>
+   <zorder>files_label</zorder>
+   <zorder>folders_label</zorder>
+   <zorder>cookies_label</zorder>
+   <zorder>cookie_stats_label</zorder>
+   <zorder>live_label</zorder>
+   <zorder>dead_label</zorder>
+   <zorder>errors_label</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_proxies_files</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>proxies_file()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>500</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_dir_logs</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>dir_logs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>500</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_useragents_file</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>useragents_file()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>500</x>
+     <y>395</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>dir_logs()</slot>
+  <slot>proxies_file()</slot>
+  <slot>useragents_file()</slot>
+ </slots>
+</ui>

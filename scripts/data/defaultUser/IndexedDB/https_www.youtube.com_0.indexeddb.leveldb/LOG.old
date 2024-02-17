@@ -1,0 +1,15 @@
+2024/01/19-16:56:45.808 460c Reusing MANIFEST C:\Users\Dooms\Desktop\WebBrowser-Python-main\PYON-main\data\defaultUser\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/01/19-16:56:45.809 460c Recovering log #11
+2024/01/19-16:56:45.809 460c Reusing old log C:\Users\Dooms\Desktop\WebBrowser-Python-main\PYON-main\data\defaultUser\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/000011.log 
+2024/01/19-16:56:53.066 3884 Level-0 table #16: started
+2024/01/19-16:56:53.069 3884 Level-0 table #16: 12152 bytes OK
+2024/01/19-16:56:53.071 3884 Delete type=0 #11
+2024/01/19-16:56:53.072 3884 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/01/19-16:56:53.072 3884 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x02\x01\x1f\x04\x03\x01\x06\x00Q\x00U\x00E\x00U\x00E\x00D\x03\x00\x00\x00\x00\x00\x00L@\x03\x00 \x85\x9e;\xd2xB\x00\x03\x00\x00\x00\x00\x00\x00(@' @ 466 : 1
+2024/01/19-16:56:53.072 3884 Compacting 1@1 + 1@2 files
+2024/01/19-16:56:53.074 3884 Generated table #17@1: 39 keys, 1076 bytes
+2024/01/19-16:56:53.075 3884 Compacted 1@1 + 1@2 files => 1076 bytes
+2024/01/19-16:56:53.075 3884 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/01/19-16:56:53.076 3884 Delete type=2 #13
+2024/01/19-16:56:53.076 3884 Delete type=2 #16
+2024/01/19-16:56:53.076 3884 Manual compaction at level-1 from '\x00\x02\x01\x1f\x04\x03\x01\x06\x00Q\x00U\x00E\x00U\x00E\x00D\x03\x00\x00\x00\x00\x00\x00L@\x03\x00 \x85\x9e;\xd2xB\x00\x03\x00\x00\x00\x00\x00\x00(@' @ 466 : 1 .. (end); will stop at (end)

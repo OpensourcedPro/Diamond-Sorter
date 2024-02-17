@@ -1,0 +1,10 @@
+PyQtWebEngine
+configparser
+PyQt5-tools
+DateTime
+requests
+adblock
+random
+regex
+PyQt5
+stem

@@ -1,0 +1,7 @@
+2024/01/19-17:50:05.185 d14 Reusing MANIFEST C:\Users\Dooms\Desktop\WebBrowser-Python-main\DiamondBrowser\data\defaultUser\IndexedDB\http_f.vision_0.indexeddb.leveldb/MANIFEST-000001
+2024/01/19-17:50:05.186 d14 Recovering log #10
+2024/01/19-17:50:05.186 d14 Reusing old log C:\Users\Dooms\Desktop\WebBrowser-Python-main\DiamondBrowser\data\defaultUser\IndexedDB\http_f.vision_0.indexeddb.leveldb/000010.log 
+2024/01/19-17:50:12.200 3ad4 Level-0 table #15: started
+2024/01/19-17:50:12.203 3ad4 Level-0 table #15: 503 bytes OK
+2024/01/19-17:50:12.205 3ad4 Delete type=0 #10
+2024/01/19-17:50:12.205 3ad4 Manual compaction at level-0 from '\x00\x03\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x04\x00\x00\x00' @ 0 : 0; will stop at (end)

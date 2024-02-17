@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="/">
+    <file>images/giphy.gif</file>
+    <file>images/pinkSky.gif</file>
+    <file>images/logo.png</file>
+    <file>images/qr-code.png</file>
+    <file>images/ContactsPanelBackground.jpg</file>
+    <file>images/DefaultGroupAvatar.png</file>
+    <file>images/DefaultContactAvatar.png</file>
+  </qresource>
+</RCC>

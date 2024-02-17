@@ -1,0 +1,12 @@
+{
+    "Back": "fa.chevron-left",
+    "Forward": "fa.chevron-right",
+    "Reload": "fa.refresh",
+    "Home": "fa.home",
+    "New Tab": "fa.plus",
+    "Search": "fa.search",
+    "Dark Mode": "fa5.moon",
+    "Light Mode": "mdi6.lightbulb-on-10",
+    "Secure Indicator": "fa.lock",
+    "Unsecure Indicator": "fa.unlock"
+}
