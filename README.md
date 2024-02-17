@@ -1,26 +1,42 @@
-# Other-Examples
-KeyAuth Python Examples
+**<h1> What is Diamond Sorter and how does it operate?</h1>** 
+Diamond Sorter is a utility to sort out Stealer Logs and help create, manage and edit HQ Targetted Combolists, Leads, Account Data and Emails.
 
-**merged_example.py**
+**<h1> What are Stealer Logs and how does it operate?</h1>** 
+Stealer Logs which is captured from various types of malware that is designed to steal sensitive information from infected systems. When executed, it typically searches for and collects data such as browser-saved login credentials, credit card information, browser history and cookies, cryptocurrency wallet access, desktop files, gaming credentials among other technical instance’s information and it even takes desktop screenshots.
 
-Yes title says everything. This file contains the `keyauth.py` and `main.py` from https://github.com/KeyAuth/KeyAuth-Python-Example
+This information is then sent back to the attacker’s command and control server, where it can be used for malicious purposes such as identity theft, financial fraud, or espionage. 
 
-A few people did not know how to merge the files, so I made an example.
+Stealer malware can be distributed through various means, including phishing emails, malicious websites, and infected software downloads. Once installed on a system, it can operate in the background without the user’s knowledge, collecting data and sending it back to the attacker.
 
-**method1.py**
+**Most antivirus software can’t detect stealer malware.**
 
-This file shows you how to add your program to keyauth example.
-
-All you have to do is copy and paste your code below the example, you can check it in the `method1.py` file.
-
-**method2.py**
-
-This file shows you how to use your code if it's above the example code.
-
-- This method will only work if you call your functions after login.
-- **Example:**
-Create 1 function that will call all the other needed functions. You can also create 1 function and put everything in it. This is all your choice, method 1 would be a better idea.
-- This can be exploited with Python code injection, for example injecting a code that will call the function before login.
+As a cyber security researcher I work with stealer malware logs on a daily basis, that's why I decided to facilitate my life and automate some of the processes.
 
 
->Created by: `Marci#1337`
+# Diamond Sorter - A Universal Data Managment Utility
+
+**This tool is designed to retrieve, orginize and sort all data retrived from malware logs and any data inserted into it.
+Made for cyber security educational purposes only.**
+
+Currently supports:
+- Racoon,
+- RedLine,
+- Aurora,
+- Titan,
+- Prynt/Worldwind stealer/botnet/clipper/miner,
+- other modified RedLine or Racoon family stealer malware. 
+
+<img width="262" alt="Screenshot 2023-05-15 at 20 11 36" src="https://github.com/milxss/racoon_log_parser/assets/42537931/0552234b-ca21-42d4-bb24-c137e1b69d10"> 
+<img width="338" alt="Screenshot 2023-05-18 at 00 01 21" src="https://github.com/milxss/racoon_log_parser/assets/42537931/be40d4ec-eba6-42ed-8b59-afe1f578bbd5">
+
+
+
+
+**<h1> Disclaimer </h1>**
+This log parser solution has been tested on UNIX systems only, Windows OS tests have not been
+conducted. 
+
+
+**<h1> How to use it?</h1>**
+
+For more detailed Instructions, Use of the software, & How to purchase the software can be found @ https://diamond-sorter.gitbook.io/diamond-sorter/
