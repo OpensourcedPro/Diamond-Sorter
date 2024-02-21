@@ -18,7 +18,7 @@ As a cyber security researcher I work with stealer malware logs on a daily basis
 **This tool is designed to retrieve, orginize and sort all data retrived from malware logs and any data inserted into it.
 Made for cyber security educational purposes only.**
 
-Currently supports:
+File Tree Structure that is Currently supported:
 - Racoon,
 - RedLine,
 - Aurora,
