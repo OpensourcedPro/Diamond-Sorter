@@ -33,10 +33,11 @@ File Tree Structure that is Currently supported:
 
 
 **<h1> Disclaimer </h1>**
-This log parser solution has been tested on UNIX systems only, Windows OS tests have not been
+This log parser solution has been tested on Windows systems only, Linux based OS tests have not been
 conducted. 
 
 
 **<h1> How to use it?</h1>**
-
+Install the requirements that is listed in Requirements.txt
+Download and run python diamondsorter.pyw
 For more detailed Instructions, Use of the software, & How to purchase the software can be found @ https://diamond-sorter.gitbook.io/diamond-sorter/
