@@ -6,6 +6,10 @@ I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART 
 **<h1> What are Stealer Logs and how does it operate?</h1>** 
 Stealer Logs which is captured from various types of malware that is designed to steal sensitive information from infected systems. When executed, it typically searches for and collects data such as browser-saved login credentials, credit card information, browser history and cookies, cryptocurrency wallet access, desktop files, gaming credentials among other technical instance’s information and it even takes desktop screenshots.
 
+
+<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="OpenSourcedPro/427" data-width="100%"></script>
+
+
 This information is then sent back to the attacker’s command and control server, where it can be used for malicious purposes such as identity theft, financial fraud, or espionage. 
 
 Stealer malware can be distributed through various means, including phishing emails, malicious websites, and infected software downloads. Once installed on a system, it can operate in the background without the user’s knowledge, collecting data and sending it back to the attacker.
