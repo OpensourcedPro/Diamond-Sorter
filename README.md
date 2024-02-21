@@ -5,7 +5,11 @@ Diamond Sorter is a utility to sort out Stealer Logs and help create, manage and
 **<h1>NEED HELP? QUESTIONS? SUPPORT? </h1>** 
 I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART OF THE COMMUNITY - https://Opensourced.Pro
 
-[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/OpenSourcedPros)
+
+**<h1>Join The Telegram Chat Here</h1>** 
+[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/OpenSourcedPro)
+
+
 
 
 
@@ -52,3 +56,10 @@ Install the requirements that is listed in Requirements.txt
 
 Download and run python diamondsorter.pyw
 For more detailed Instructions, Use of the software, & How to purchase the software can be found @ https://diamond-sorter.gitbook.io/diamond-sorter/
+
+
+
+
+**<h1>Join The Telegram Channel Here</h1>** 
+[![Telegram](https://betclever.com/img/telegram-join.png)](https://t.me/OpenSourcedPros)
+
