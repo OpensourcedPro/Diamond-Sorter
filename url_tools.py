@@ -11,16 +11,13 @@ import os
 from PyQt5 import QtCore, QtGui, QtWidgets
 from qmaterialwidgets import IndeterminateProgressRing
 from PyQt5.QtWidgets import QSpinBox
-import colorama
-from colorama import Fore, Style
-from pprint import pprint
-import io
-import json
-from PyQt5 import QtWebEngineWidgets
-from PyQt5 import QtCore, QtWidgets, QtWebEngineWidgets
-import subprocess
-from urllib.parse import urljoin
-from googlesearch import search
+
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_UrlToolsWindow(object):
@@ -153,8 +150,7 @@ class Ui_UrlToolsWindow(object):
 "  border-color: #1de9b6;\n"
 "}")
         self.url_target_textedit = QtWidgets.QTextEdit(UrlToolsWindow)
-        self.url_target_textedit.setEnabled(True)
-        self.url_target_textedit.setGeometry(QtCore.QRect(560, 10, 351, 31))
+        self.url_target_textedit.setGeometry(QtCore.QRect(520, 10, 351, 31))
         self.url_target_textedit.setToolTip("")
         self.url_target_textedit.setStatusTip("")
         self.url_target_textedit.setAccessibleName("")
@@ -235,11 +231,11 @@ class Ui_UrlToolsWindow(object):
         self.traffic_button.setGeometry(QtCore.QRect(120, 40, 61, 24))
         self.traffic_button.setObjectName("traffic_button")
         self.xpath_scraper_button = QtWidgets.QPushButton(self.Analytics_Tab)
-        self.xpath_scraper_button.setEnabled(True)
+        self.xpath_scraper_button.setEnabled(False)
         self.xpath_scraper_button.setGeometry(QtCore.QRect(530, 360, 81, 24))
         self.xpath_scraper_button.setObjectName("xpath_scraper_button")
         self.analyze_csp = QtWidgets.QPushButton(self.Analytics_Tab)
-        self.analyze_csp.setEnabled(True)
+        self.analyze_csp.setEnabled(False)
         self.analyze_csp.setGeometry(QtCore.QRect(330, 360, 191, 24))
         self.analyze_csp.setObjectName("analyze_csp")
         self.check_url_login_directories = QtWidgets.QPushButton(self.Analytics_Tab)
@@ -259,7 +255,6 @@ class Ui_UrlToolsWindow(object):
         self.javascript_links_button.setGeometry(QtCore.QRect(190, 100, 111, 24))
         self.javascript_links_button.setObjectName("javascript_links_button")
         self.add_to_log_hunter_button = QtWidgets.QPushButton(self.Analytics_Tab)
-        self.add_to_log_hunter_button.setEnabled(True)
         self.add_to_log_hunter_button.setGeometry(QtCore.QRect(549, 170, 121, 41))
         self.add_to_log_hunter_button.setObjectName("add_to_log_hunter_button")
         icon1 = QtGui.QIcon()
@@ -351,7 +346,7 @@ class Ui_UrlToolsWindow(object):
         self.website_source_js_links_button = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_js_links_button.setEnabled(True)
         self.website_source_js_links_button.setGeometry(QtCore.QRect(10, 110, 111, 24))
-        self.website_source_js_links_button.setObjectName("Javascript Links")
+        self.website_source_js_links_button.setObjectName("website_source_js_links_button")
         self.website_source_whois = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_whois.setEnabled(True)
         self.website_source_whois.setGeometry(QtCore.QRect(260, 110, 111, 24))
@@ -486,7 +481,6 @@ class Ui_UrlToolsWindow(object):
         icon5.addPixmap(QtGui.QPixmap("../../../Downloads/icons8-bot-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.analytics_and_config_tab_widget.addTab(self.Bot_Tools_Tab, icon5, "")
         self.results_textwindow_label = QtWidgets.QLabel(UrlToolsWindow)
-        self.results_textwindow_label.setEnabled(True)
         self.results_textwindow_label.setGeometry(QtCore.QRect(260, 10, 91, 41))
         font = QtGui.QFont()
         font.setFamily("HACKED")
@@ -494,7 +488,6 @@ class Ui_UrlToolsWindow(object):
         self.results_textwindow_label.setFont(font)
         self.results_textwindow_label.setObjectName("results_textwindow_label")
         self.connection_label = QtWidgets.QLabel(UrlToolsWindow)
-        self.connection_label.setEnabled(True)
         self.connection_label.setGeometry(QtCore.QRect(1030, 290, 131, 20))
         font = QtGui.QFont()
         font.setFamily("HACKED")
@@ -502,7 +495,6 @@ class Ui_UrlToolsWindow(object):
         self.connection_label.setFont(font)
         self.connection_label.setObjectName("connection_label")
         self.console_keyboard_textedit = QtWidgets.QTextEdit(UrlToolsWindow)
-        self.console_keyboard_textedit.setEnabled(True)
         self.console_keyboard_textedit.setGeometry(QtCore.QRect(50, 360, 331, 31))
         self.console_keyboard_textedit.setInputMethodHints(QtCore.Qt.ImhNone)
         self.console_keyboard_textedit.setFrameShape(QtWidgets.QFrame.WinPanel)
@@ -513,8 +505,7 @@ class Ui_UrlToolsWindow(object):
         self.console_keyboard_textedit.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self.console_keyboard_textedit.setObjectName("console_keyboard_textedit")
         self.Website_Source_Code = QtWidgets.QTabWidget(UrlToolsWindow)
-        self.Website_Source_Code.setEnabled(True)
-        self.Website_Source_Code.setGeometry(QtCore.QRect(550, 50, 431, 311))
+        self.Website_Source_Code.setGeometry(QtCore.QRect(530, 50, 431, 311))
         self.Website_Source_Code.setStyleSheet("QTabWidget::pane {\n"
 "    background-color: black;\n"
 "}\n"
@@ -540,7 +531,6 @@ class Ui_UrlToolsWindow(object):
         self.Webpage_Veiw_TabWidget = QtWidgets.QWidget()
         self.Webpage_Veiw_TabWidget.setObjectName("Webpage_Veiw_TabWidget")
         self.wepage_veiw_scroll_area = QtWidgets.QScrollArea(self.Webpage_Veiw_TabWidget)
-        self.wepage_veiw_scroll_area.setEnabled(True)
         self.wepage_veiw_scroll_area.setGeometry(QtCore.QRect(0, 0, 431, 271))
         self.wepage_veiw_scroll_area.setWidgetResizable(True)
         self.wepage_veiw_scroll_area.setObjectName("wepage_veiw_scroll_area")
@@ -551,6 +541,14 @@ class Ui_UrlToolsWindow(object):
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap("../../../Downloads/icons8-web-view-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Website_Source_Code.addTab(self.Webpage_Veiw_TabWidget, icon6, "")
+        self.WebsiteSourceCodeTab = QtWidgets.QWidget()
+        self.WebsiteSourceCodeTab.setObjectName("WebsiteSourceCodeTab")
+        self.console_data = QtWidgets.QPlainTextEdit(self.WebsiteSourceCodeTab)
+        self.console_data.setGeometry(QtCore.QRect(0, 0, 431, 281))
+        self.console_data.setObjectName("console_data")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap("../../../Downloads/icons8-source-code-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Website_Source_Code.addTab(self.WebsiteSourceCodeTab, icon7, "")
         self.console_data_treeTab = QtWidgets.QWidget()
         self.console_data_treeTab.setObjectName("console_data_treeTab")
         self.console_data_treeView = QtWidgets.QTreeView(self.console_data_treeTab)
@@ -560,36 +558,24 @@ class Ui_UrlToolsWindow(object):
         self.console_data_treeView.setAnimated(True)
         self.console_data_treeView.setAllColumnsShowFocus(True)
         self.console_data_treeView.setObjectName("console_data_treeView")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("../../../Downloads/icons8-rest-api-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.Website_Source_Code.addTab(self.console_data_treeTab, icon7, "")
-        self.WebsiteSourceCodeTab = QtWidgets.QWidget()
-        self.WebsiteSourceCodeTab.setObjectName("WebsiteSourceCodeTab")
-        self.console_data = QtWidgets.QPlainTextEdit(self.WebsiteSourceCodeTab)
-        self.console_data.setGeometry(QtCore.QRect(0, 0, 431, 281))
-        self.console_data.setObjectName("console_data")
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("../../../Downloads/icons8-source-code-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.Website_Source_Code.addTab(self.WebsiteSourceCodeTab, icon8, "")
+        icon8.addPixmap(QtGui.QPixmap("../../../Downloads/icons8-rest-api-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Website_Source_Code.addTab(self.console_data_treeTab, icon8, "")
         self.save_results_path_checkbox = QtWidgets.QCheckBox(UrlToolsWindow)
-        self.save_results_path_checkbox.setEnabled(True)
         self.save_results_path_checkbox.setGeometry(QtCore.QRect(20, 620, 111, 22))
         self.save_results_path_checkbox.setObjectName("save_results_path_checkbox")
         self.save_results_path_textedit = QtWidgets.QTextEdit(UrlToolsWindow)
-        self.save_results_path_textedit.setEnabled(True)
         self.save_results_path_textedit.setGeometry(QtCore.QRect(130, 619, 351, 31))
         self.save_results_path_textedit.setTabChangesFocus(True)
         self.save_results_path_textedit.setObjectName("save_results_path_textedit")
         self.send_response_console_button = QtWidgets.QPushButton(UrlToolsWindow)
-        self.send_response_console_button.setEnabled(True)
         self.send_response_console_button.setGeometry(QtCore.QRect(380, 360, 80, 31))
         self.send_response_console_button.setObjectName("send_response_console_button")
         self.submit_web_button = QtWidgets.QPushButton(UrlToolsWindow)
         self.submit_web_button.setEnabled(True)
-        self.submit_web_button.setGeometry(QtCore.QRect(920, 10, 71, 31))
+        self.submit_web_button.setGeometry(QtCore.QRect(880, 10, 80, 31))
         self.submit_web_button.setObjectName("submit_web_button")
         self.MainResults_Widget = QtWidgets.QTabWidget(UrlToolsWindow)
-        self.MainResults_Widget.setEnabled(True)
         self.MainResults_Widget.setGeometry(QtCore.QRect(30, 20, 401, 341))
         self.MainResults_Widget.setStyleSheet("QTabWidget::pane {\n"
 "    background-color: black;\n"
@@ -616,10 +602,9 @@ class Ui_UrlToolsWindow(object):
         self.main_results_tab = QtWidgets.QWidget()
         self.main_results_tab.setObjectName("main_results_tab")
         self.results_window_textedit_3 = QtWidgets.QTextEdit(self.main_results_tab)
-        self.results_window_textedit_3.setEnabled(True)
         self.results_window_textedit_3.setGeometry(QtCore.QRect(0, 0, 401, 311))
-        self.results_window_textedit_3.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
-        self.results_window_textedit_3.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.results_window_textedit_3.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.results_window_textedit_3.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.results_window_textedit_3.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self.results_window_textedit_3.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.results_window_textedit_3.setObjectName("results_window_textedit_3")
@@ -630,8 +615,8 @@ class Ui_UrlToolsWindow(object):
         self.links_tab.setObjectName("links_tab")
         self.results_window_links_text = QtWidgets.QTextEdit(self.links_tab)
         self.results_window_links_text.setGeometry(QtCore.QRect(0, 0, 401, 321))
-        self.results_window_links_text.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
-        self.results_window_links_text.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.results_window_links_text.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.results_window_links_text.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.results_window_links_text.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self.results_window_links_text.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.results_window_links_text.setObjectName("results_window_links_text")
@@ -639,7 +624,6 @@ class Ui_UrlToolsWindow(object):
         icon10.addPixmap(QtGui.QPixmap("../../../Downloads/link.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.MainResults_Widget.addTab(self.links_tab, icon10, "")
         self.results_window_textedit_2 = QtWidgets.QTextEdit(UrlToolsWindow)
-        self.results_window_textedit_2.setEnabled(True)
         self.results_window_textedit_2.setGeometry(QtCore.QRect(1000, 20, 191, 261))
         self.results_window_textedit_2.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.results_window_textedit_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -648,7 +632,7 @@ class Ui_UrlToolsWindow(object):
         self.results_window_textedit_2.setObjectName("results_window_textedit_2")
         self.tabWidget = QtWidgets.QTabWidget(UrlToolsWindow)
         self.tabWidget.setEnabled(True)
-        self.tabWidget.setGeometry(QtCore.QRect(10, 400, 471, 211))
+        self.tabWidget.setGeometry(QtCore.QRect(10, 390, 471, 221))
         self.tabWidget.setStyleSheet("QTabWidget::pane {\n"
 "    background-color: black;\n"
 "}\n"
@@ -674,43 +658,43 @@ class Ui_UrlToolsWindow(object):
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
         self.cookie_sql_inject_button = QtWidgets.QPushButton(self.tab)
-        self.cookie_sql_inject_button.setEnabled(True)
+        self.cookie_sql_inject_button.setEnabled(False)
         self.cookie_sql_inject_button.setGeometry(QtCore.QRect(350, 50, 111, 31))
         self.cookie_sql_inject_button.setObjectName("cookie_sql_inject_button")
         self.PLCs_button = QtWidgets.QPushButton(self.tab)
-        self.PLCs_button.setEnabled(True)
+        self.PLCs_button.setEnabled(False)
         self.PLCs_button.setGeometry(QtCore.QRect(10, 10, 91, 31))
         self.PLCs_button.setObjectName("PLCs_button")
         self.google_dork_button = QtWidgets.QPushButton(self.tab)
-        self.google_dork_button.setEnabled(True)
+        self.google_dork_button.setEnabled(False)
         self.google_dork_button.setGeometry(QtCore.QRect(10, 50, 91, 31))
         self.google_dork_button.setObjectName("google_dork_button")
         self.scadamode2_button = QtWidgets.QPushButton(self.tab)
-        self.scadamode2_button.setEnabled(True)
+        self.scadamode2_button.setEnabled(False)
         self.scadamode2_button.setGeometry(QtCore.QRect(110, 10, 91, 31))
         self.scadamode2_button.setObjectName("scadamode2_button")
         self.scadamode3_button = QtWidgets.QPushButton(self.tab)
-        self.scadamode3_button.setEnabled(True)
+        self.scadamode3_button.setEnabled(False)
         self.scadamode3_button.setGeometry(QtCore.QRect(250, 10, 91, 31))
         self.scadamode3_button.setObjectName("scadamode3_button")
         self.url_scan_api_button = QtWidgets.QPushButton(self.tab)
-        self.url_scan_api_button.setEnabled(True)
+        self.url_scan_api_button.setEnabled(False)
         self.url_scan_api_button.setGeometry(QtCore.QRect(110, 90, 91, 31))
         self.url_scan_api_button.setObjectName("url_scan_api_button")
         self.link_diver_client_button = QtWidgets.QPushButton(self.tab)
-        self.link_diver_client_button.setEnabled(True)
+        self.link_diver_client_button.setEnabled(False)
         self.link_diver_client_button.setGeometry(QtCore.QRect(250, 50, 91, 31))
         self.link_diver_client_button.setObjectName("link_diver_client_button")
         self.tor_mode_button = QtWidgets.QPushButton(self.tab)
-        self.tor_mode_button.setEnabled(True)
+        self.tor_mode_button.setEnabled(False)
         self.tor_mode_button.setGeometry(QtCore.QRect(350, 10, 91, 31))
         self.tor_mode_button.setObjectName("tor_mode_button")
         self.fake_headers_button = QtWidgets.QPushButton(self.tab)
-        self.fake_headers_button.setEnabled(True)
+        self.fake_headers_button.setEnabled(False)
         self.fake_headers_button.setGeometry(QtCore.QRect(10, 90, 91, 31))
         self.fake_headers_button.setObjectName("fake_headers_button")
         self.url_blaster_client_button_2 = QtWidgets.QPushButton(self.tab)
-        self.url_blaster_client_button_2.setEnabled(True)
+        self.url_blaster_client_button_2.setEnabled(False)
         self.url_blaster_client_button_2.setGeometry(QtCore.QRect(110, 50, 91, 31))
         self.url_blaster_client_button_2.setObjectName("url_blaster_client_button_2")
         self.tabWidget.addTab(self.tab, "")
@@ -891,23 +875,12 @@ class Ui_UrlToolsWindow(object):
         self.gather_button_75.setGeometry(QtCore.QRect(280, 10, 80, 31))
         self.gather_button_75.setObjectName("gather_button_75")
         self.tabWidget.addTab(self.leaking_tab_widget, "")
-        self.checkBox = QtWidgets.QCheckBox(UrlToolsWindow)
-        self.checkBox.setGeometry(QtCore.QRect(440, 120, 101, 22))
-        self.checkBox.setObjectName("checkBox")
-        self.checkBox_2 = QtWidgets.QCheckBox(UrlToolsWindow)
-        self.checkBox_2.setGeometry(QtCore.QRect(440, 160, 101, 22))
-        self.checkBox_2.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.checkBox_2.setObjectName("checkBox_2")
-        self.pushButton = QtWidgets.QPushButton(UrlToolsWindow)
-        self.pushButton.setGeometry(QtCore.QRect(450, 60, 80, 24))
-        self.pushButton.setStyleSheet("")
-        self.pushButton.setObjectName("pushButton")
 
         self.retranslateUi(UrlToolsWindow)
         self.analytics_and_config_tab_widget.setCurrentIndex(0)
-        self.Website_Source_Code.setCurrentIndex(1)
+        self.Website_Source_Code.setCurrentIndex(0)
         self.MainResults_Widget.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         self.simalar_web_button.clicked['bool'].connect(self.results_textwindow_label.update) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(UrlToolsWindow)
 
@@ -1005,12 +978,12 @@ class Ui_UrlToolsWindow(object):
         self.connection_label.setText(_translate("UrlToolsWindow", "Connection Details"))
         self.console_keyboard_textedit.setPlaceholderText(_translate("UrlToolsWindow", "Your console Response Entry Field"))
         self.Website_Source_Code.setTabText(self.Website_Source_Code.indexOf(self.Webpage_Veiw_TabWidget), _translate("UrlToolsWindow", "Webpage Veiw"))
-        self.Website_Source_Code.setTabText(self.Website_Source_Code.indexOf(self.console_data_treeTab), _translate("UrlToolsWindow", "Website API"))
         self.Website_Source_Code.setTabText(self.Website_Source_Code.indexOf(self.WebsiteSourceCodeTab), _translate("UrlToolsWindow", "Website Source Code"))
+        self.Website_Source_Code.setTabText(self.Website_Source_Code.indexOf(self.console_data_treeTab), _translate("UrlToolsWindow", "Website API"))
         self.save_results_path_checkbox.setText(_translate("UrlToolsWindow", "Save Results?"))
         self.save_results_path_textedit.setPlaceholderText(_translate("UrlToolsWindow", "Saved File Directory Path"))
         self.send_response_console_button.setText(_translate("UrlToolsWindow", "Response"))
-        self.submit_web_button.setText(_translate("UrlToolsWindow", "Submit"))
+        self.submit_web_button.setText(_translate("UrlToolsWindow", "Submit Web"))
         self.MainResults_Widget.setTabText(self.MainResults_Widget.indexOf(self.main_results_tab), _translate("UrlToolsWindow", "Main Results"))
         self.MainResults_Widget.setTabText(self.MainResults_Widget.indexOf(self.links_tab), _translate("UrlToolsWindow", "Links"))
         self.MainResults_Widget.setTabToolTip(self.MainResults_Widget.indexOf(self.links_tab), _translate("UrlToolsWindow", "Any of your functions with \"Link\" results will show in this tab"))
@@ -1081,9 +1054,6 @@ class Ui_UrlToolsWindow(object):
         self.gather_button_73.setText(_translate("UrlToolsWindow", "PushButton"))
         self.gather_button_75.setText(_translate("UrlToolsWindow", "PushButton"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.leaking_tab_widget), _translate("UrlToolsWindow", "Leaking"))
-        self.checkBox.setText(_translate("UrlToolsWindow", "Wordwrap (L)"))
-        self.checkBox_2.setText(_translate("UrlToolsWindow", "(R) Wordwrap"))
-        self.pushButton.setText(_translate("UrlToolsWindow", "Clear All"))
 
 
         self.config_function_post_button.clicked.connect(self.perform_config_function_post)
@@ -1121,94 +1091,6 @@ class Ui_UrlToolsWindow(object):
         self.webpage_view_tabwidget = QtWidgets.QTabWidget(UrlToolsWindow)
         self.webpage_view_tabwidget.setObjectName("webpage_view_tabwidget")
         self.add_to_log_hunter_button.clicked.connect(self.add_to_log_hunter_button_clicked)
-        self.website_source_js_links_button.clicked.connect(self.get_javascript_links)
-        self.alternatives_button.clicked.connect(self.get_related_sites)
-
-
-    def get_related_sites(self):
-        url = self.url_target_textedit.toPlainText()
-        
-        # Perform a Google search to get related sites
-        query = f"related:{url}"
-        related_sites = []
-        for result in search(query, num_results=10):
-            related_sites.append(result)
-            time.sleep(2)  # Delay for 2 seconds between each request
-        
-        # Display the related sites in the results_window_textedit_3
-        results_text = "\n".join(related_sites)
-        self.results_window_textedit_3.setText(results_text)
-
-
-    
-    def update_line_count(self):
-        source_code = self.console_data.toPlainText()
-        source_code_lines = source_code.count('\n')
-        source_code_title = f"console_data ({source_code_lines} lines)"
-        self.console_data.setTitle(source_code_title)
-        api = self.website_api.toPlainText()
-        api_lines = api.count('\n')
-        api_title = f"Website_Api ({api_lines} lines)"
-        self.website_api.setTitle(api_title)
-    
-    def get_javascript_links(self):
-        url = self.url_target_textedit.toPlainText()
-        # Send a GET request to the URL
-        response = requests.get(url)
-        
-        # Retrieve the full HTML content
-        html_content = response.text
-        
-        # Parse the HTML content using BeautifulSoup
-        soup = BeautifulSoup(html_content, 'html.parser')
-        
-        # Find all JavaScript links in the HTML
-        js_links = []
-        for script in soup.find_all('script'):
-            src = script.get('src')
-            if src and src.endswith('.js'):
-                js_links.append(src)
-        
-        # Display the JavaScript links in the results_window_links_text
-        results_text = self.results_window_links_text.toPlainText()
-        results_text += "\n" + "\n".join(js_links)
-        self.results_window_links_text.setText(results_text)
-    
-    def enable_word_wrapping(self):
-        if self.left_checkbox.isChecked():
-            self.results_window_textedit_3.setWordWrap(True)
-            self.results_window_links_text.setWordWrap(True)
-        else:
-            self.results_window_textedit_3.setWordWrap(False)
-            self.results_window_links_text.setWordWrap(False)
-    
-    def enable_word_wrapping_website_source_code(self):
-        if self.checkBox2.isChecked():
-            self.website_source_code.setWordWrap(True)
-            # Enable word wrapping for children of Website_Source_Code
-            for child_widget in self.website_source_code.findChildren(QTextEdit):
-                child_widget.setWordWrap(True)
-        else:
-            self.website_source_code.setWordWrap(False)
-            # Disable word wrapping for children of Website_Source_Code
-            for child_widget in self.website_source_code.findChildren(QTextEdit):
-                child_widget.setWordWrap(False)
-    
-    
-    def update_line_count(self):
-        # Get the current number of lines in the Website_Source_Code
-        source_code_lines = self.website_source_code.toPlainText().count('\n')
-        # Update the object name with the line count
-        new_object_name = f"Website_Source_Code ({source_code_lines})" 
-        self.website_source_code.setObjectName(new_object_name)
-    
-        # Get the current number of lines in the Website_Api
-        api_lines = self.website_api.toPlainText().count('\n')
-        # Update the object name with the line count
-        new_object_name = f"Website_Api ({api_lines})"
-        self.website_api.setObjectName(new_object_name)
-        
-    
     
     def add_to_log_hunter_button_clicked(self):
         url = self.url_target_textedit.toPlainText().strip()
@@ -1305,6 +1187,17 @@ class Ui_UrlToolsWindow(object):
             error_dialog.setText("An error occurred while fetching data from the API.")
             error_dialog.setDetailedText(str(e))
             error_dialog.exec_()
+        
+    
+
+
+
+
+
+
+
+
+
 
 
         self.webpage_view_tabwidget = QtWidgets.QTabWidget(UrlToolsWindow)
@@ -1466,34 +1359,23 @@ class Ui_UrlToolsWindow(object):
         for url in similar_domains:
             self.results_window_links_text.append(url)
 
-        
+
+
     def http_request_button_function(self):
         url = self.url_target_textedit.toPlainText().strip()
-    
+        
         try:
             response = requests.get(url)
-    
+            
             # Process the response as needed
-            status_code = response.status_code
-            headers = response.headers
-            content = response.text
-    
-            # Display the response details with color syntax formatting in the console_data
-            console_text = f"HTTP Request Response:\n"
-            console_text += f"{Fore.YELLOW}Status Code: {status_code}\n"
-            console_text += f"{Fore.CYAN}Headers:\n"
-            console_text += f"{Fore.GREEN}"
-            headers_str = json.dumps(dict(headers), indent=4, sort_keys=True)
-            console_text += headers_str
-            console_text += f"\n{Fore.GREEN}Content:\n{content}"
-    
-            # Set the console_data text with color syntax formatting
-            self.console_data.setPlainText(console_text)
-    
-        except requests.exceptions.RequestException as e:
-            error_message = f"An error occurred while accessing the URL: {e}"
-            QMessageBox.critical(self, "Error", error_message)
+            print("HTTP Request Response:")
+            print(f"Status Code: {response.status_code}")
+            print(f"Headers: {response.headers}")
+            print(f"Content: {response.text}")
         
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+
 
 
     def captcha_button_function(self):
@@ -1569,13 +1451,8 @@ class Ui_UrlToolsWindow(object):
         target_url = self.url_target_textedit.toPlainText().strip()
     
         # API endpoint to fetch subdomains
-        api_endpoint = f"https://threatcrowd.org/searchApi/v2/domain/report/?domain={target_url}"
-        if not url or not url.startswith(('http://', 'https://')):
-            error_message = "Invalid URL: No scheme supplied. Perhaps you meant https://?"
-            QMessageBox.critical(self, "Error", error_message)
-            return
-
-
+        api_endpoint = f"https://www.threatcrowd.org/searchApi/v2/domain/report/?domain={target_url}"
+    
         try:
             # Create a session with SSL verification disabled
             session = requests.Session()
@@ -1932,7 +1809,7 @@ class Ui_UrlToolsWindow(object):
 
     
     def handle_patch_request(self):
-        url = self.url_target_textedit.toPlainText()  # Get the URL from the QTextEdit widget
+        url = self.url_textedit.toPlainText()  # Get the URL from the QTextEdit widget
         data = {"key": "value"}  # Define the data to be sent in the request
     
         try:
@@ -1957,7 +1834,7 @@ class Ui_UrlToolsWindow(object):
         
         
     def handle_head_request(self):
-        url = self.url_target_textedit.toPlainText()  # Get the URL from the QTextEdit widget
+        url = self.url_textedit.toPlainText()  # Get the URL from the QTextEdit widget
     
         try:
             response = requests.head(url)  # Send the HEAD request
@@ -1976,26 +1853,30 @@ class Ui_UrlToolsWindow(object):
 
 
 
+
     def handle_put_request(self):
-        url = self.url_target_textedit.toPlainText()  # Get the URL from the text edit
+        url = self.url_textedit.toPlainText()  # Get the URL from the QTextEdit widget
         data = {"key": "value"}  # Define the data to be sent in the request
-    
+
         try:
             response = requests.put(url, data=data)  # Send the PUT request
-    
-            if response.status_code == 200:  # Check if the request was successful
-                result_data = response.text  # Get the response data
-                self.results_window_textedit_3.setPlainText(result_data)
-                
+            response.raise_for_status()  # Check if the request was successful
+
+            result_data = response.text  # Get the response data
+            self.show_result_dialog(result_data)  # Display the data in a dialog
+        except requests.exceptions.MissingSchema:
+            error_message = "Invalid URL: Please enter a valid URL."
+            self.show_error_dialog(error_message)
         except requests.exceptions.RequestException as e:
-            error_message = f"An error occurred while accessing the URL: {e}"
-            QMessageBox.critical(self, "Error", error_message)
-    
-    
+            error_message = f"An error occurred while sending the PUT request: {e}"
+            self.show_error_dialog(error_message)
+
+
+
 
 
     def handle_trace_request(self):
-        url = self.url_target_textedit.toPlainText()  # Get the URL from the QTextEdit widget
+        url = self.url_textedit.toPlainText()  # Get the URL from the QTextEdit widget
 
         try:
             response = requests.request("TRACE", url)  # Send the TRACE request
@@ -2018,31 +1899,45 @@ class Ui_UrlToolsWindow(object):
 
 
 
-    
+
     def css_links(self):
-        url = self.url_target_textedit.toPlainText()
-        # Send a GET request to the URL
-        response = requests.get(url)
-
-        # Retrieve the full HTML content
-        html_content = response.text
-
-        # Parse the HTML content using BeautifulSoup
-        soup = BeautifulSoup(html_content, 'html.parser')
-
-        # Find all CSS links in the HTML
-        css_links = []
-        for link in soup.find_all('link', rel='stylesheet'):
-            href = link.get('href')
-            if href.endswith('.css'):
-                css_links.append(href)
+        url = self.url_textedit.text()  # Get the URL from the QLineEdit widget
         
-        # Display the full HTML URL as a clickable link
-        results_text = f"</a>\n\nCSS Links:\n"
-        results_text += "\n".join(css_links)
-        self.results_window_links_text.setText(results_text)
+        try:
+            # Send a GET request to the URL
+            response = requests.get(url)
+            
+            # Check if the response was successful (status code 200)
+            response.raise_for_status()
+            
+            # Parse the HTML content using BeautifulSoup
+            soup = BeautifulSoup(response.content, 'html.parser')
+            
+            # Find all CSS links in the HTML
+            css_links = []
+            for link in soup.find_all('link', rel='stylesheet'):
+                href = link.get('href')
+                if href.endswith('.css'):
+                    css_links.append(href)
+            
+            if css_links:
+                # Display the CSS links
+                css_links_str = '\n'.join(css_links)
+                QMessageBox.information(self, "CSS Links", css_links_str)
+            else:
+                QMessageBox.information(self, "CSS Links", "No CSS links found")
         
-        return css_links
+        except requests.exceptions.RequestException as e:
+            error_message = f"An error occurred while accessing the URL: {e}"
+            QMessageBox.critical(self, "Error", error_message)
+
+
+
+
+
+
+
+
 
     def show_result_dialog(self, result_data):
         result_dialog = QMessageBox(self)
@@ -2061,6 +1956,12 @@ class Ui_UrlToolsWindow(object):
         url = self.url_target_textedit.toPlainText()
         css_links = css_links(url)
         self.results_window_textedit_3.setPlainText('\n'.join(css_links))
+
+
+
+
+
+
 
 
 
