@@ -1,5 +1,7 @@
 **<h1> What is Diamond Sorter and how does it operate?</h1>** 
 Diamond Sorter is a utility to sort out Stealer Logs and help create, manage and edit HQ Targetted Combolists, Leads, Account Data and Emails.
+**<h1> DISCLAIMER </h1>** 
+I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART OF THE COMMUNITY - https://Opensourced.Pro
 
 **<h1> What are Stealer Logs and how does it operate?</h1>** 
 Stealer Logs which is captured from various types of malware that is designed to steal sensitive information from infected systems. When executed, it typically searches for and collects data such as browser-saved login credentials, credit card information, browser history and cookies, cryptocurrency wallet access, desktop files, gaming credentials among other technical instance’s information and it even takes desktop screenshots.
