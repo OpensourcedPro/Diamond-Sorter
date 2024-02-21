@@ -1,8 +1,11 @@
-from cx_Freeze import setup, Executable
+import nakutia
 
-setup(
-    name="DiamondSorter",
-    version="1.8.7",
-    description="Opensourced.Pro Project for Malware Logs",
-    executables=[Executable("merged_example.py")],
-)
+# Specify the entry point script and any additional files or directories to include
+entry_point = 'diamondsorter.py'  # Replace with the actual name of your script
+additional_files = ['requirements.txt']  # Add any other files or directories you want to include
+
+# Create the installer
+installer = nakutia.Installer(entry_point, additional_files=additional_files)
+
+# Build the installer
+installer.build()
