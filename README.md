@@ -36,8 +36,6 @@ File Tree Structure that is Currently supported:
 <img width="338" alt="Screenshot 2023-05-18 at 00 01 21" src="https://github.com/milxss/racoon_log_parser/assets/42537931/be40d4ec-eba6-42ed-8b59-afe1f578bbd5">
 
 
-
-
 **<h1> Disclaimer </h1>**
 This log parser solution has been tested on Windows systems only, Linux based OS tests have not been
 conducted. 
@@ -47,5 +45,7 @@ conducted.
 Install the requirements that is listed in Requirements.txt
 
 Download and run python diamondsorter.pyw
-
 For more detailed Instructions, Use of the software, & How to purchase the software can be found @ https://diamond-sorter.gitbook.io/diamond-sorter/
+
+
+[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/OpenSourcedPros)
