@@ -9,7 +9,8 @@ If that doesn't work for you, you can paste the contents of KeyAuth.py ABOVE thi
 
 READ HERE TO LEARN ABOUT KEYAUTH FUNCTIONS https://github.com/KeyAuth/KeyAuth-Python-Example#keyauthapp-instance-definition
 '''
-import keyauth
+from keyauth import api
+
 import sys
 import time
 import platform
@@ -44,15 +45,14 @@ def getchecksum():
     return digest
 
 
-keyauthapp = keyauth(
-    name="DiamondSorter",
-    ownerid="VwOq0EhmEw",
-    secret="795e63c4dd27cbb04b9af01befb8eae95625e51115356cbbd767196900409066",
-    version="1.8.7",
-    hash_to_check=getchecksum()
+keyauthapp = api(
+    name = "DiamondSorter",
+    ownerid = "VwOq0EhmEw",
+    secret = "795e63c4dd27cbb04b9af01befb8eae95625e51115356cbbd767196900409066",
+    version = "1.0",
+    hash_to_check = getchecksum()
 )
 
-print(keyauthapp)
 def answer():
     try:
         print("""1.Login
@@ -64,12 +64,7 @@ def answer():
         if ans == "1":
             user = input('Provide username: ')
             password = input('Provide password: ')
-            if keyauthapp.login(user, password):
-                print("Login successful!")
-                subprocess.Popen(["pythonw", "diamondsorter.pyw"])
-                # Or you can use: os.system("start pythonw diamondsorter.pyw")
-            else:
-                print("Login failed!")
+            keyauthapp.login(user, password)
         elif ans == "2":
             user = input('Provide username: ')
             password = input('Provide password: ')
@@ -189,5 +184,37 @@ print("Created at: " + datetime.utcfromtimestamp(int(keyauthapp.user_data.create
 print("Last login at: " + datetime.utcfromtimestamp(int(keyauthapp.user_data.lastlogin)).strftime('%Y-%m-%d %H:%M:%S'))
 print("Expires at: " + datetime.utcfromtimestamp(int(keyauthapp.user_data.expires)).strftime('%Y-%m-%d %H:%M:%S'))
 print("\nExiting in five seconds..")
+
+
+def openmessage(self, data):
+    data = json.loads(data)
+    donat = data.get("Donat")
+    messages = data.get("Messages")
+    if donat == "1":
+        self.application2 = MainWindowChecker()
+        self.application2.show()
+        application.hide()
+        
+        # Start the diamondsorter.py script here
+        os.system("python diamondsorter.py")
+        
+    else:
+        settings = Config().settings_reader()
+        settings["authorization"]["username"] = ""
+        Config().settings_write(settings)
+        window_donat = QMessageBox()
+        window_donat.setWindowTitle("Status")
+        window_donat.setText(messages)
+        window_donat.setIcon(QMessageBox.Information)
+        window_donat.setStandardButtons(QMessageBox.Ok)
+        window_donat.exec_()
+
+
+
+
+
+
+
+
 sleep(5)
 os._exit(1)
