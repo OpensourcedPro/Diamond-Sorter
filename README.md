@@ -46,6 +46,21 @@ File Tree Structure that is Currently supported:
 <img width="338" alt="Screenshot 2023-05-18 at 00 01 21" src="https://github.com/milxss/racoon_log_parser/assets/42537931/be40d4ec-eba6-42ed-8b59-afe1f578bbd5">
 
 
+**<h1> What does it do? </h1>**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **<h1> Disclaimer </h1>**
 This log parser solution has been tested on Windows systems only, Linux based OS tests have not been
 conducted. 
