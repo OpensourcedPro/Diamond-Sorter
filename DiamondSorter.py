@@ -355,16 +355,55 @@ class DiamondSorter(*top_classes):
         self.import_requests_button = QPushButton("Import Requests")
         self.sorting_cookies_sort_by_domain.clicked.connect(self.sort_cookies_by_domain)
 
-
     def sort_cookies_by_domain(self):
-         Function to be executed when the button is clicked
-         Add your code for crawling the directory and searching for requests here
-         Save the extracted lines in the appropriate folder and file structure
-
-         Example code for demonstration purposes
-        print("Sorting cookies by domain...")
-
-
+        # Function to be executed when the button is clicked
+        # Add your code for crawling the directory and searching for requests here
+        # Save the extracted lines in the appropriate folder and file structure
+    
+        # Example code for demonstration purposes
+        directory_path_text_element = self.directory_path_text_element  # Use the directory_path_text_element variable
+        user_requests = self.dialog_text_edit.toPlainText().split("\n")  # Get user-submitted requests as a list
+        output_directory = self.savedResultsTextBox.text()  # Get the output directory specified by the user
+    
+        sorted_cookies_folder = "Sorted Cookies on Request"
+    
+        # Create the sorted cookies folder if it doesn't exist
+        if not os.path.exists(sorted_cookies_folder):
+            os.mkdir(sorted_cookies_folder)
+    
+        for request in user_requests:
+            if not request:
+                continue  # Skip empty requests
+    
+            request_folder = os.path.join(sorted_cookies_folder, request)
+            if not os.path.exists(request_folder):
+                os.makedirs(request_folder)
+    
+            for root, dirs, files in os.walk(directory_path_text_element):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    with open(file_path, "r") as f:
+                        lines = f.readlines()
+    
+                    # Find the lines that contain the request
+                    matching_lines = [line for line in lines if request in line]
+    
+                    if matching_lines:
+                        # Create the output file path
+                        output_subdirectory = os.path.join(output_directory, request_folder)
+                        if not os.path.exists(output_subdirectory):
+                            os.makedirs(output_subdirectory)
+    
+                        output_file_path = os.path.join(output_subdirectory, file)
+    
+                        # Write the matching lines to the output file
+                        with open(output_file_path, "w") as f:
+                            f.writelines(matching_lines)
+    
+        # Append to the console widget
+        self.console_widget_textedit.append("Sorting cookies by domain completed!")
+    
+    
 
 
     def show_text_dialog(self):
