@@ -33,11 +33,11 @@ import time
 import curses
 from PIL import Image
 import pyperclip
-from logto import LogtoClient, LogtoConfig, Storage
 from flask import session
 from keyauth.keyauth import api
 import warnings
 from PyQt5.QtGui import QKeySequence
+from PyQt5 import QAxContainer
 
 warnings.filterwarnings("ignore", category=UserWarning, message="QLayout: Cannot add parent widget")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -353,6 +353,54 @@ class DiamondSorter(*top_classes):
         self.search_removed_shortcut.activated.connect(self.show_search_dialog_removed)
         self.import_requests_button.clicked.connect(self.import_requests_dialog)
         self.import_requests_button = QPushButton("Import Requests")
+        self.sorting_cookies_sort_by_domain.clicked.connect(self.sort_cookies_by_domain)
+
+
+    def sort_cookies_by_domain(self):
+         Function to be executed when the button is clicked
+         Add your code for crawling the directory and searching for requests here
+         Save the extracted lines in the appropriate folder and file structure
+
+         Example code for demonstration purposes
+        print("Sorting cookies by domain...")
+
+
+
+
+    def show_text_dialog(self):
+        # Display the multi-line text dialog
+        text, ok = QInputDialog.getMultiLineText(self, "Specify Requests", "Enter your requests (separate each one on a new line):")
+
+        if ok:
+            # Split the requests into a list
+            requests = text.split('\n')
+
+            # Crawl the file directory and search for requests
+            for root, dirs, files in os.walk(set_directory_path_element):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    with open(file_path, 'r') as f:
+                        lines = f.readlines()
+
+                    # Search for requests and save the extracted lines
+                    for request in requests:
+                        if request in lines:
+                            # Create the directory structure for the extracted lines
+                            request_folder = os.path.join('Sorted Cookies on Request', request.replace('/', '_'))
+                            os.makedirs(request_folder, exist_ok=True)
+
+                            # Save the extracted lines in the appropriate file
+                            output_file_path = os.path.join(request_folder, f'{os.path.basename(root)}.txt')
+                            with open(output_file_path, 'w') as f:
+                                f.writelines(lines)
+
+            print("Extraction completed.")
+
+
+
+
+
+
 
     def import_requests_dialog(self):
         file_dialog = QFileDialog()
@@ -1221,8 +1269,57 @@ class DiamondSorter(*top_classes):
         self.eth_private_button
         self.wallet_import_format_button
         self.recovery_phrase_button
+        self.parse_button.clicked.connect(self.parse_and_arrange)
 
 
+    def parse_and_arrange(self):
+        # Get the format request from the format_request_textedit
+        format_request = self.format_request_textedit.toPlainText()
+    
+        # Find the line format and separator from the format request
+        line_format, separator = self.parse_format_request(format_request)
+    
+        if line_format is not None and separator is not None:
+            # Get the lines from the input_text
+            input_text = self.input_text.toPlainText()
+            input_lines = input_text.splitlines()
+    
+            # Replace options with corresponding values and join the parsed lines
+            parsed_lines = [
+                line_format.replace("{URL}", "Replace with URL value")
+                .replace("{EMAIL}", "Replace with EMAIL value")
+                .replace("{USER}", "Replace with USER value")
+                .replace("{PASS}", "Replace with PASS value")
+                .replace("{IP}", "Replace with IP value")
+                .replace("{CC}", "Replace with CC value")
+                .replace("{MM}", "Replace with MM value")
+                .replace("{YYYY}", "Replace with YYYY value")
+                for line in input_lines
+            ]
+    
+            # Arrange the parsed lines based on the separator
+            arranged_text = separator.join(parsed_lines)
+    
+            # Set the arranged text in the output_text
+            self.output_text.setPlainText(arranged_text)
+        else:
+            QtWidgets.QMessageBox.warning(
+                self.format_request_textedit, "Invalid Format", "Invalid format request."
+            )
+
+    def run(self):
+        # Create the main window and layout
+        main_window = QtWidgets.QWidget()
+        layout = QtWidgets.QVBoxLayout(main_window)
+
+        # Add the input_text, format_request_textedit, parse_button, and output_text widgets to the layout
+        layout.addWidget(self.input_text)
+        layout.addWidget(self.format_request_textedit)
+        layout.addWidget(self.parse_button)
+        layout.addWidget(self.output_text)
+
+        main_window.show()
+        self.app.exec_()
 
 
 
@@ -1311,27 +1408,8 @@ class DiamondSorter(*top_classes):
     
         for result in result_texts:
             console_widget_textedit.append(result)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     def handle_password_working_function_change(self, index):
         selected_option = self.password_working_function_combo.itemText(index)
         console_widget = self.findChild(QPlainTextEdit, "console_widget_textedit")
