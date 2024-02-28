@@ -58,7 +58,11 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.lineEdit.setText(_translate("MainWindow", "Telegram login (without \"@\")"))
         self.pushButton.setText(_translate("MainWindow", "Authorization"))
-
+        
+    def setupUi(self):
+        # Create the authorization_button and add it to the parent widget
+        authorization_button = QtWidgets.QPushButton("Authorization", self)
+        authorization_button.clicked.connect(self.skip_login)
 
 if __name__ == "__main__":
     import sys

@@ -44,7 +44,7 @@
      <string>Telegram login (without &quot;@&quot;)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="authorization_button">
     <property name="geometry">
      <rect>
       <x>10</x>

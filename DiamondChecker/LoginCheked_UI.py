@@ -9,18 +9,19 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QAxContainer
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1067, 801)
+        MainWindow.resize(476, 801)
         MainWindow.setStyleSheet("  background-color: #232629;\n"
 "  color: #ffffff;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.login_tab_widget = QtWidgets.QTabWidget(self.centralwidget)
-        self.login_tab_widget.setGeometry(QtCore.QRect(570, 20, 471, 601))
+        self.login_tab_widget.setGeometry(QtCore.QRect(0, 0, 471, 601))
         self.login_tab_widget.setTabPosition(QtWidgets.QTabWidget.East)
         self.login_tab_widget.setTabShape(QtWidgets.QTabWidget.Triangular)
         self.login_tab_widget.setTabsClosable(True)
@@ -122,7 +123,7 @@ class Ui_MainWindow(object):
         self.o_label_button.setFont(font)
         self.o_label_button.setObjectName("o_label_button")
         self.login_label = QtWidgets.QLabel(self.tab)
-        self.login_label.setGeometry(QtCore.QRect(140, 110, 100, 40))
+        self.login_label.setGeometry(QtCore.QRect(90, 0, 241, 40))
         font = QtGui.QFont()
         font.setPointSize(20)
         font.setBold(True)
@@ -385,32 +386,21 @@ class Ui_MainWindow(object):
         self.program_title_2.setFont(font)
         self.program_title_2.setStyleSheet("color:rgba(255, 255, 255, 200);")
         self.program_title_2.setObjectName("program_title_2")
-        self.lineEdit = QtWidgets.QLineEdit(self.tab)
-        self.lineEdit.setGeometry(QtCore.QRect(60, 200, 301, 41))
+        self.authorization_button = QtWidgets.QPushButton(self.tab)
+        self.authorization_button.setGeometry(QtCore.QRect(40, 270, 341, 41))
         font = QtGui.QFont()
         font.setFamily("Furore")
         font.setPointSize(10)
-        self.lineEdit.setFont(font)
-        self.lineEdit.setStyleSheet("  color: #1de9b6;\n"
-"  background-color: #31363b;\n"
-"  border: 2px solid #1de9b6;\n"
-"  border-radius: 4px;\n"
-"  height: 32px;")
-        self.lineEdit.setObjectName("lineEdit")
-        self.pushButton = QtWidgets.QPushButton(self.tab)
-        self.pushButton.setGeometry(QtCore.QRect(40, 270, 341, 41))
-        font = QtGui.QFont()
-        font.setFamily("Furore")
-        font.setPointSize(10)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("  color: #1de9b6;\n"
+        self.authorization_button.setFont(font)
+        self.authorization_button.setStyleSheet("  color: #1de9b6;\n"
 "  background-color: #31363b;\n"
 "  border: 2px solid #1de9b6;\n"
 "  border-radius: 4px;\n"
 "  height: 32px;\n"
 "")
-        self.pushButton.setDefault(False)
-        self.pushButton.setObjectName("pushButton")
+        self.authorization_button.setCheckable(True)
+        self.authorization_button.setDefault(False)
+        self.authorization_button.setObjectName("authorization_button")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../../../OneDrive/Documents/New Structure/icons/exit-to-app.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.login_tab_widget.addTab(self.tab, icon, "")
@@ -425,57 +415,6 @@ class Ui_MainWindow(object):
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.login_tab_widget.addTab(self.tab_2, "")
-        self.program_description = QtWidgets.QLabel(self.centralwidget)
-        self.program_description.setGeometry(QtCore.QRect(70, 30, 241, 50))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        self.program_description.setFont(font)
-        self.program_description.setStyleSheet("color:rgba(255, 255, 255, 170);")
-        self.program_description.setObjectName("program_description")
-        self.program_title = QtWidgets.QLabel(self.centralwidget)
-        self.program_title.setGeometry(QtCore.QRect(330, 30, 231, 81))
-        font = QtGui.QFont()
-        font.setPointSize(22)
-        font.setBold(True)
-        self.program_title.setFont(font)
-        self.program_title.setStyleSheet("color:rgba(255, 255, 255, 200);")
-        self.program_title.setObjectName("program_title")
-        self.system_updates = QtWidgets.QFrame(self.centralwidget)
-        self.system_updates.setGeometry(QtCore.QRect(60, 150, 511, 381))
-        self.system_updates.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.system_updates.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.system_updates.setObjectName("system_updates")
-        self.updates_label = QtWidgets.QLabel(self.system_updates)
-        self.updates_label.setGeometry(QtCore.QRect(200, 10, 91, 31))
-        font = QtGui.QFont()
-        font.setFamily("HACKED")
-        font.setPointSize(22)
-        self.updates_label.setFont(font)
-        self.updates_label.setObjectName("updates_label")
-        self.update_1_label = QtWidgets.QLabel(self.system_updates)
-        self.update_1_label.setGeometry(QtCore.QRect(10, 60, 241, 91))
-        self.update_1_label.setObjectName("update_1_label")
-        self.update_2_label = QtWidgets.QLabel(self.system_updates)
-        self.update_2_label.setGeometry(QtCore.QRect(10, 140, 241, 91))
-        self.update_2_label.setObjectName("update_2_label")
-        self.update_3_label = QtWidgets.QLabel(self.system_updates)
-        self.update_3_label.setGeometry(QtCore.QRect(10, 230, 241, 91))
-        self.update_3_label.setObjectName("update_3_label")
-        self.update_1_label_2 = QtWidgets.QLabel(self.system_updates)
-        self.update_1_label_2.setGeometry(QtCore.QRect(270, 60, 241, 91))
-        self.update_1_label_2.setObjectName("update_1_label_2")
-        self.update_1_label_3 = QtWidgets.QLabel(self.system_updates)
-        self.update_1_label_3.setGeometry(QtCore.QRect(260, 150, 241, 91))
-        self.update_1_label_3.setObjectName("update_1_label_3")
-        self.update_1_label_4 = QtWidgets.QLabel(self.system_updates)
-        self.update_1_label_4.setGeometry(QtCore.QRect(270, 250, 241, 91))
-        self.update_1_label_4.setObjectName("update_1_label_4")
-        self.program_backdrop = QtWidgets.QLabel(self.centralwidget)
-        self.program_backdrop.setGeometry(QtCore.QRect(60, 20, 511, 130))
-        self.program_backdrop.setStyleSheet("background-color:rgba(0, 0, 0, 75);")
-        self.program_backdrop.setText("")
-        self.program_backdrop.setObjectName("program_backdrop")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -491,7 +430,7 @@ class Ui_MainWindow(object):
         self.c_label_button.setText(_translate("MainWindow", "C"))
         self.u_label_button.setText(_translate("MainWindow", "U"))
         self.o_label_button.setText(_translate("MainWindow", "O"))
-        self.login_label.setText(_translate("MainWindow", "Log In"))
+        self.login_label.setText(_translate("MainWindow", "Diamond Checker"))
         self.S_label_button.setText(_translate("MainWindow", "S"))
         self.r_label_button.setText(_translate("MainWindow", "R"))
         self.Forgot_username_label.setText(_translate("MainWindow", "Forgot your User Name or password?"))
@@ -527,49 +466,3 @@ class Ui_MainWindow(object):
 "-Launched to Pre-Release of DIamond Sorter\n"
 "-Configured Licensing System\n"
 "-Developed Login GUI"))
-        self.program_title_2.setText(_translate("MainWindow", "Diamond💎\n"
-"               Sorter"))
-        self.lineEdit.setText(_translate("MainWindow", "Telegram login (without \"@\")"))
-        self.pushButton.setText(_translate("MainWindow", "Authorization"))
-        self.login_tab_widget.setTabText(self.login_tab_widget.indexOf(self.tab), _translate("MainWindow", "Login"))
-        self.login_tab_widget.setTabText(self.login_tab_widget.indexOf(self.information_tab2), _translate("MainWindow", "Information"))
-        self.login_tab_widget.setTabText(self.login_tab_widget.indexOf(self.tab_2), _translate("MainWindow", "Project Information + Updates"))
-        self.program_description.setText(_translate("MainWindow", "Hi,\n"
-"Welcome to Diamond Sorter channel.\n"
-"Don\'t forget to subscribe."))
-        self.program_title.setText(_translate("MainWindow", "Diamond💎\n"
-"               Sorter"))
-        self.updates_label.setText(_translate("MainWindow", "Updates"))
-        self.update_1_label.setText(_translate("MainWindow", "1/12/24\n"
-"-Launched to Pre-Release of DIamond Sorter\n"
-"-Configured Licensing System\n"
-"-Developed Login GUI"))
-        self.update_2_label.setText(_translate("MainWindow", "1/14/24\n"
-"- Developed Telegram Licensing Bot\n"
-"- Added the 5 Feature Extensions\n"
-"- Updated Anti Detect Browser\n"
-"- Added Telegram Bot Forwarding Snatcher"))
-        self.update_3_label.setText(_translate("MainWindow", "T.B.A"))
-        self.update_1_label_2.setText(_translate("MainWindow", "1/12/24\n"
-"-Launched to Pre-Release of DIamond Sorter\n"
-"-Configured Licensing System\n"
-"-Developed Login GUI"))
-        self.update_1_label_3.setText(_translate("MainWindow", "1/12/24\n"
-"-Launched to Pre-Release of DIamond Sorter\n"
-"-Configured Licensing System\n"
-"-Developed Login GUI"))
-        self.update_1_label_4.setText(_translate("MainWindow", "1/12/24\n"
-"-Launched to Pre-Release of DIamond Sorter\n"
-"-Configured Licensing System\n"
-"-Developed Login GUI"))
-from PyQt5 import QAxContainer
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())

@@ -9,8 +9,7 @@ import shutil
 import socket
 import sys
 import threading
-
-
+from PyQt5 import QAxContainer
 import requests
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QThread, QTimer
@@ -20,10 +19,9 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtWidgets import QMessageBox
 from bs4 import BeautifulSoup as bs
 from wmi import WMI
-
 from LoginCheked_UI import Ui_MainWindow
 from jsoni_control import Config
-
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QTextEdit, QLabel
 import LoginCheked_UI
 import main_ui
 
@@ -1363,6 +1361,17 @@ class MainWindowChecker(QtWidgets.QMainWindow):
         self.checking.console_add_text.connect(self.console)
         self.checking.info_progress.connect(self.info_r)
         self.checking.progres_setup.connect(self.progres_set)
+        
+    def info_r(self, info):
+        # Handle the info received
+        if info.service_name in self.cookie_counts:
+            self.cookie_counts[info.service_name] += info.cookie_count
+        else:
+            self.cookie_counts[info.service_name] = info.cookie_count
+
+        # Perform additional operations based on the received info
+        print("Received info:", info)
+        print("Cookie counts:", self.cookie_counts)
 
     def init_UI(self):
 
@@ -1417,15 +1426,46 @@ class MainWindowChecker(QtWidgets.QMainWindow):
         self.ui.localsapp_checkbox.setCheckState(settings['services']['LOCALS'])
         self.ui.linkedin_checkbox.setCheckState(settings['services']['LINKEDIN'])
         self.ui.progressBar.setValue(0)
-
         self.ui.comboBox_proxy.activated.connect(self.proxy_select)
-
         self.ui.lineEdit_dir.setText(settings['settings']['dir_logs'])
         self.ui.lineEdit_proxy.setText(settings['settings']['proxies_file'])
         self.ui.lineEdit_ua.setText(settings['settings']['useragents_file'])
-
         self.ui.pushButton.clicked.connect(self.check)
 
+    def select_directory(self):
+        directory = QFileDialog.getExistingDirectory(self, 'Select Directory')
+        if directory:
+            self.crawl_directory(directory)
+
+    def crawl_directory(self, directory):
+        cookies_count = 0
+        files_with_cookies = []
+
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                file_path = os.path.join(root, file)
+                if self.contains_cookies(file_path):
+                    cookies_count += 1
+                    files_with_cookies.append(file_path)
+
+        self.textEdit_console.clear()
+        self.textEdit_console.append('Files with Cookies:')
+        for file_path in files_with_cookies:
+            self.textEdit_console.append(file_path)
+
+        self.number_of_label.setText(f'Number of Cookies: {cookies_count}')
+    def contains_cookies(file_path):
+        with open(file_path, 'r') as file:
+            content = file.read()
+    
+        # Define a regular expression pattern to match cookies
+        cookie_pattern = r'(?i)\bcookie\b'
+    
+        # Use the re.search() function to search for the pattern in the file content
+        if re.search(cookie_pattern, content):
+            return True
+        else:
+            return False
 
 
     def proxy_select(self, index):
@@ -1433,6 +1473,35 @@ class MainWindowChecker(QtWidgets.QMainWindow):
         settings['settings']['PROXY'] = self.ui.comboBox_proxy.itemText(index)
         Config().settings_write(settings)
 
+    @staticmethod
+    def contains_cookies(file_path):
+        def search_cookies_in_line(line):
+            # Define a regular expression pattern to match cookies
+            cookie_pattern = r'(?i)\bcookie\b'
+    
+            # Use the re.search() function to search for the pattern in the line
+            if re.search(cookie_pattern, line):
+                return True
+    
+            return False
+    
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+            for line in file:
+                if search_cookies_in_line(line):
+                    return True
+    
+        return False
+
+    def count_cookies_in_directory(self, directory):
+        cookies_count = 0
+
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                file_path = os.path.join(root, file)
+                if self.contains_cookies(file_path):
+                    cookies_count += 1
+
+        return cookies_count
 
 
     def dir_logs(self):
@@ -1443,6 +1512,9 @@ class MainWindowChecker(QtWidgets.QMainWindow):
             settings['settings']['dir_logs'] = folderName
             Config().settings_write(settings)
             self.ui.lineEdit_dir.setText(settings['settings']['dir_logs'])
+
+            cookies_count = self.count_cookies_in_directory(folderName)
+            print(f"Total number of cookies: {cookies_count}")
 
     def proxies_file(self):
         options = QFileDialog.Options()
@@ -1519,19 +1591,6 @@ class MainWindowChecker(QtWidgets.QMainWindow):
     def console(self, text):
         self.ui.textEdit_console.append(text)
 
-    def info_r(self, checked):
-        if len(all_cooks) > checked:
-            self.ui.progressBar.setValue(checked)
-
-        else:
-            window_complete = QMessageBox()
-            window_complete.setWindowTitle("Status")
-            window_complete.setText("All logs have been scanned")
-            window_complete.setIcon(QMessageBox.Information)
-            window_complete.setStandardButtons(QMessageBox.Ok)
-            window_complete.exec_()
-            self.ui.progressBar.setValue(0)
-
     def progres_set(self, all_cooks):
         self.ui.progressBar.setRange(0, all_cooks)
 
@@ -1545,7 +1604,7 @@ class ConnectServerThread(QThread):
     def run(self):
         try:
             client_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            client_sock.connect(('108.61.159.163', 5000))  # Replace with the correct IP address and port number
+            client_sock.connect(('120.0.0.1', 5000))  # Replace with the correct IP address and port number
 
             data = json.dumps({"WHID": self.user_whid, "username": self.username})
 
@@ -1559,21 +1618,21 @@ class ConnectServerThread(QThread):
         except ConnectionResetError:
             # Handle the connection reset error
             error_message = "The connection was forcibly closed by the remote host."
-            self.signal_check_login.emit(json.dumps({"Donat": "0", "Messages": error_message}))
+            self.signal_check_login.emit(json.dumps({"Donate": "0", "Messages": error_message}))
 
         except Exception as e:
             # Handle other exceptions
             error_message = f"An error occurred during the connection: {e}"
-            self.signal_check_login.emit(json.dumps({"Donat": "0", "Messages": error_message}))
+            self.signal_check_login.emit(json.dumps({"Donate": "0", "Messages": error_message}))
 
     def init_args(self, user_whid, username):
         self.user_whid = user_whid
         self.username = username
 
 
-class LoginChekedGUI(QtWidgets.QMainWindow):
+class LoginCheckedGUI(QtWidgets.QMainWindow):
     def __init__(self):
-        super(LoginChekedGUI, self).__init__()
+        super(LoginCheckedGUI, self).__init__()
         self.connect_server = ConnectServerThread()
         self.ui = LoginCheked_UI.Ui_MainWindow()
         self.ui.setupUi(self)
@@ -1599,44 +1658,6 @@ class LoginChekedGUI(QtWidgets.QMainWindow):
         # Check if the checkbox is checked
         checkbox_state = self.ui.snapchat_checkbox.isChecked()
         settings['services']['SNAPCHATADS'] = int(checkbox_state)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1676,18 +1697,10 @@ class LoginChekedGUI(QtWidgets.QMainWindow):
         self.hide()
 
 
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     print("Do not close this window while the program is running\nDo not close this window while the program is running.")
     app = QtWidgets.QApplication(sys.argv)
-    application = LoginChekedGUI()
+    application = LoginCheckedGUI()
     application.show()
 
     settings = Config().settings_reader()
