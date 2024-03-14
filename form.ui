@@ -324,7 +324,7 @@ QCheckBox::indicator:checked:hover {
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>430</y>
       <width>971</width>
       <height>241</height>
@@ -380,7 +380,7 @@ QTabBar::tab:selected {
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -753,7 +753,7 @@ and format them.</string>
        <string>Remove After</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="remove_after_button_2">
+     <widget class="QPushButton" name="remove_before_button_2">
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -780,6 +780,19 @@ and format them.</string>
       </property>
       <property name="text">
        <string>Parse</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="reformat_button">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>170</y>
+        <width>231</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reformat</string>
       </property>
      </widget>
     </widget>
@@ -927,10 +940,10 @@ selected at the top of this interface.</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>180</y>
-        <width>101</width>
-        <height>24</height>
+        <x>830</x>
+        <y>153</y>
+        <width>121</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -1150,183 +1163,6 @@ If you choose File Path, Then be sure to enter
       <property name="text">
        <string>Create Phone Number List</string>
       </property>
-     </widget>
-     <widget class="QFrame" name="variable_frame_2">
-      <property name="geometry">
-       <rect>
-        <x>750</x>
-        <y>80</y>
-        <width>212</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="toolTip">
-       <string>These variables is what you will be using when requesting logs in a specific format.</string>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
-      </property>
-      <widget class="QLabel" name="variables_label_2">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>0</y>
-         <width>71</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string> Variables</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="url_variable_label_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>20</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>URL: {URL}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_username_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>40</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Username: {USER}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_password_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>60</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Password: {PASS}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_email_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>20</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Email: {EMAIL}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_ip_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>40</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Box</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Sunken</enum>
-       </property>
-       <property name="text">
-        <string>IP Address: {IP}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="creditcard_variable_label_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>60</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Credit Card: {CC}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_cvc_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>80</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>CVC: {CVC}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_anrn_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>100</y>
-         <width>101</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>AN/RN: {ANRN}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_fullz_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>80</y>
-         <width>111</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Personal: {FULLZ}</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="variable_text_phone_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>100</y>
-         <width>111</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Phone List: {PHN}</string>
-       </property>
-      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="formatOptionsTab">
@@ -2128,7 +1964,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </attribute>
      <widget class="QPushButton" name="telegram_folder_sorting_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2144,7 +1980,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="authy_desktop_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2160,7 +1996,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="chrome_extensions_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2176,7 +2012,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="desktop_wallet_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2192,7 +2028,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="browser_wallet_sort_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2208,7 +2044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="browser_2fa_extension_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2224,7 +2060,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="newtextdocuments_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2240,7 +2076,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="text_named_sorting_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2256,7 +2092,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="pgp_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2272,7 +2108,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="encryption_keys_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2288,7 +2124,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="auth_files_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2304,7 +2140,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="sort_by_cookies_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2320,7 +2156,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="remote_desktop_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2336,7 +2172,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="discord_sorting_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2352,7 +2188,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="control_panels_sort_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2647,7 +2483,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </attribute>
      <widget class="QPushButton" name="capture_security_quest_answer_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2663,7 +2499,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="capture_all_banking_logs_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2679,7 +2515,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="parse_fulls_button">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2711,7 +2547,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="sort_cc_data_with_cvcButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2727,7 +2563,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="sort_by_remitliesButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -2843,29 +2679,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <string>Requested Options #1</string>
      </attribute>
      <widget class="QColumnView" name="columnView">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>690</x>
+        <x>700</x>
         <y>10</y>
         <width>256</width>
         <height>192</height>
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="eth_private_button">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>220</x>
         <y>10</y>
         <width>80</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>ETH Private</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_2">
@@ -2874,62 +2713,46 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>320</x>
         <y>10</y>
         <width>80</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>ETH Public</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="wallet_import_format_button">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>420</x>
         <y>10</y>
-        <width>80</width>
+        <width>131</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Wallet Import Format</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>10</y>
-        <width>80</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="rcovery_key_button">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
+        <y>10</y>
         <width>80</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Recovery Key</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_6">
@@ -2964,20 +2787,20 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>PushButton</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="recovery_phrase_button">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>50</y>
-        <width>80</width>
+        <x>110</x>
+        <y>10</y>
+        <width>101</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Recovery Phrase</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_9">
@@ -3068,6 +2891,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </widget>
    </widget>
    <widget class="QTextEdit" name="savedResultsTextBox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -3099,6 +2925,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QSpinBox" name="thread_box">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>900</x>
@@ -3118,12 +2947,15 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QFrame" name="variable_frame">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>760</x>
       <y>190</y>
       <width>212</width>
-      <height>201</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -3139,6 +2971,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <enum>QFrame::Sunken</enum>
     </property>
     <widget class="QLabel" name="variables_label">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -3158,6 +2993,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="url_variable_label">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3171,6 +3009,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_username">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3184,6 +3025,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_password">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -3197,6 +3041,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_email">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -3210,6 +3057,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_ip">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -3229,6 +3079,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="creditcard_variable_label">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3242,6 +3095,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_cvc">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -3255,10 +3111,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_anrn">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>180</y>
+       <y>140</y>
        <width>101</width>
        <height>21</height>
       </rect>
@@ -3268,6 +3127,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_fullz">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3281,6 +3143,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_phone">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3294,6 +3159,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="creditcard_variable_label_3">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -3307,6 +3175,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="creditcard_variable_label_4">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3320,10 +3191,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_fullz_3">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>160</y>
+       <y>140</y>
        <width>111</width>
        <height>21</height>
       </rect>
@@ -3333,10 +3207,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_fullz_4">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>160</y>
+       <y>120</y>
        <width>101</width>
        <height>21</height>
       </rect>
@@ -3346,20 +3223,26 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </property>
     </widget>
     <widget class="QLabel" name="variable_text_fullz_5">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>180</y>
-       <width>111</width>
+       <x>110</x>
+       <y>160</y>
+       <width>101</width>
        <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>Banking Details: {$}</string>
+      <string>Bank Details: {$}</string>
      </property>
     </widget>
    </widget>
    <widget class="QLabel" name="directory_path_label_main">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -3379,6 +3262,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QLabel" name="directory_path_label_main_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -3401,6 +3287,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QPushButton" name="set_directory_path_button">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -3414,6 +3303,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QPushButton" name="save_results_action_button">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -3427,6 +3319,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QCheckBox" name="enable_wordwrap_checkbox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -3440,6 +3335,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
    </widget>
    <widget class="QTabWidget" name="resultswidgets">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>250</x>
@@ -3479,6 +3377,9 @@ QTabBar::tab:selected {
       <string>Results Tab</string>
      </attribute>
      <widget class="QTextBrowser" name="output_text">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -3518,6 +3419,9 @@ QTabBar::tab:selected {
     </widget>
    </widget>
    <widget class="QWidget" name="consolewidget" native="true">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -3527,6 +3431,9 @@ QTabBar::tab:selected {
      </rect>
     </property>
     <widget class="QPlainTextEdit" name="console_widget_textedit">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -3550,6 +3457,9 @@ QTabBar::tab:selected {
     </widget>
    </widget>
    <widget class="QCheckBox" name="remove_empty_lines_checkbox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -3569,6 +3479,9 @@ QTabBar::tab:selected {
     </property>
    </widget>
    <widget class="QProgressBar" name="progressBar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -3624,6 +3537,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="StealerLog_File_Structure_label">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -3644,6 +3560,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="file_directory_path_label">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>460</x>
@@ -3665,7 +3584,7 @@ QProgressBar {
    </widget>
    <widget class="QTextEdit" name="stealer_log_file_structure_path">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -3693,7 +3612,7 @@ QProgressBar {
    </widget>
    <widget class="QTextEdit" name="file_directory_path_path">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -3720,6 +3639,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLCDNumber" name="totalLinesNumber">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>690</x>
@@ -3730,6 +3652,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>690</x>
@@ -3740,6 +3665,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber_3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>690</x>
@@ -3750,6 +3678,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="total_lines_label">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -3770,6 +3701,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="lines_left_Label">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -3790,6 +3724,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="total_lines_label_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -3810,6 +3747,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QTextEdit" name="set_directory_path_element">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -3855,6 +3795,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="threads_text_label">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>900</x>
@@ -3868,6 +3811,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QPushButton" name="showDomainStatsButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -3881,6 +3827,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="total_lines_label_3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -3901,6 +3850,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QLabel" name="version_label_text">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>880</x>
@@ -3910,10 +3862,13 @@ QProgressBar {
      </rect>
     </property>
     <property name="text">
-     <string>       V 1.8.3</string>
+     <string>       V 1.9.0</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="input_text">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -3930,6 +3885,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="QPushButton" name="clear_tabs_button">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -3943,6 +3901,9 @@ QProgressBar {
     </property>
    </widget>
    <widget class="FilledSearchLineEdit" name="FilledSearchLineEdit">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>690</x>
@@ -4041,14 +4002,6 @@ QCheckBox::indicator:checked:hover {
     <addaction name="actionHints_Tricks"/>
     <addaction name="actionDataParsing"/>
    </widget>
-   <widget class="QMenu" name="menuAbout">
-    <property name="toolTip">
-     <string extracomment="About"/>
-    </property>
-    <property name="title">
-     <string>About</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menuBrowser">
     <property name="title">
      <string>Browser</string>
@@ -4062,9 +4015,11 @@ QCheckBox::indicator:checked:hover {
    <addaction name="menuConsole_Screen"/>
    <addaction name="menuBrowser"/>
    <addaction name="menuSettings"/>
-   <addaction name="menuAbout"/>
   </widget>
   <widget class="QDockWidget" name="ExtensionsBarQDockWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="minimumSize">
     <size>
      <width>58</width>
@@ -4420,17 +4375,17 @@ Silverbullet, Openbullet, Python and more.</string>
   </action>
   <action name="windows_menu_actionDiamondPad">
    <property name="text">
-    <string>Diamond Pad</string>
+    <string>Diamond Pad (Coming Soon)</string>
    </property>
   </action>
   <action name="window_menu_actionPrefrences">
    <property name="text">
-    <string>Regex Creator</string>
+    <string>Regex Creator (Coming Soon)</string>
    </property>
   </action>
   <action name="window_menu_actionRegex">
    <property name="text">
-    <string>Expression Veiwer</string>
+    <string>Expression Veiwer (Coming Soon)</string>
    </property>
   </action>
   <action name="actionRegex_Cheat_Sheet">
@@ -4450,7 +4405,7 @@ Silverbullet, Openbullet, Python and more.</string>
   </action>
   <action name="actionDisplay_Console">
    <property name="text">
-    <string>Display Console</string>
+    <string>Display Console (Coming Soon)</string>
    </property>
   </action>
   <action name="actionDisplay_HTTP_Client">
@@ -4460,7 +4415,7 @@ Silverbullet, Openbullet, Python and more.</string>
   </action>
   <action name="actionEnable_Everything">
    <property name="text">
-    <string>Enable &quot;Everything&quot;</string>
+    <string>Enable &quot;Everything&quot;(Coming Soon)</string>
    </property>
   </action>
   <action name="actionLaunch_Browser">
@@ -4482,7 +4437,7 @@ Silverbullet, Openbullet, Python and more.</string>
   </action>
   <action name="actionShow_Widget_Functions">
    <property name="text">
-    <string>Show Widget Functions</string>
+    <string>Show Widget Functions (Coming Soon)</string>
    </property>
   </action>
   <action name="actionInsomnia_HTTP_Client">

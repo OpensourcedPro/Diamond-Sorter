@@ -122,6 +122,37 @@ class WordpressFinderThread(QThread):
         # Emit the results as a signal
         self.results_obtained.emit(results)
 
+class OverlayWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setStyleSheet("background-color: rgba(0, 0, 0, 150);")
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        label = QLabel("I Agree to the Terms and Conditions")
+        layout.addWidget(label)
+
+        checkbox = QCheckBox()
+        layout.addWidget(checkbox)
+
+        button = QPushButton("Continue")
+        layout.addWidget(button)
+
+
+
+
+
+
+
+
+
+
+
+
+
 class CrawlerThread(QThread):
     finished = pyqtSignal()
     copied = pyqtSignal(str)
@@ -267,12 +298,13 @@ class GlowTabBar(QTabBar):
 
 class DiamondSorter(*top_classes):
     finished = pyqtSignal(int)
-    def __init__(self):
+    def __init__(self, directory_path=None, input_textedit=None):
         super(DiamondSorter, self).__init__()
         if INSTALLER_MODE:
             self.setupUi(self)
         else:
             uic.loadUi(r'form.ui', self)
+
         self.setWindowTitle(self.windowTitle() + ('' if INSTALLER_MODE else ' ~ WIP'))
         script_dir = os.path.dirname(sys.argv[0])
         icon_path = os.path.join(script_dir, "icons", "diamond.ico")
@@ -310,7 +342,6 @@ class DiamondSorter(*top_classes):
             self.remove_trash_button.clicked.connect(self.remove_trash_button_clicked)
         self.display_function("MyFunction")
         self.button = QtWidgets.QPushButton("Process Directory")
-        self.button.clicked.connect(self.handle_newtextdocuments)
         self.file_tree_view_button.clicked.connect(self.file_tree_structure_print)
 
         #central_widget = QWidget(self)
@@ -354,6 +385,10 @@ class DiamondSorter(*top_classes):
         self.import_requests_button.clicked.connect(self.import_requests_dialog)
         self.import_requests_button = QPushButton("Import Requests")
         self.sorting_cookies_sort_by_domain.clicked.connect(self.sort_cookies_by_domain)
+
+        self.sorting_files_tab = QWidget()
+        self.sorting_files_tab.setObjectName("Sorting Files")
+
 
     def sort_cookies_by_domain(self):
         # Function to be executed when the button is clicked
@@ -734,34 +769,33 @@ class DiamondSorter(*top_classes):
             elif option == "Remove Lines Without :":  # Handle the new option
                 input_text, removed = self.remove_lines_without_separator(input_text)
                 removed_lines.extend(removed)
-    
-    
-            self.output_text.setPlainText(input_text)
-            self.removed_data_text.setPlainText("\n".join(removed_lines))
+
+        self.output_text.setPlainText(input_text)
+        self.removed_data_text.setPlainText("\n".join(removed_lines))
 
     def remove_unknown(self, text):
-        console_widget_textedit.appendPlainText("Removing lines with 'UNKNOWN'")
+        self.console_widget_textedit.appendPlainText("Removing lines with 'UNKNOWN'")
         lines = text.split("\n")
         removed_lines = [line for line in lines if "UNKNOWN" not in line]
         cleaned_text = "\n".join(removed_lines)
         return cleaned_text, [line for line in lines if line not in removed_lines]
 
     def remove_consecutive_asterisks(self, text):
-        console_widget_textedit.appendPlainText("Removing lines with four or more consecutive asterisks")
+        self.console_widget_textedit.appendPlainText("Removing lines with four or more consecutive asterisks")
         lines = text.split("\n")
         removed_lines = [line for line in lines if "****" not in line]
         cleaned_text = "\n".join(removed_lines)
         return cleaned_text, [line for line in lines if line not in removed_lines]
 
     def remove_short_lines(self, text):
-        console_widget_textedit.appendPlainText("Removing lines with 3 or less characters")
+        self.console_widget_textedit.appendPlainText("Removing lines with 3 or less characters")
         lines = text.split("\n")
         removed_lines = [line for line in lines if len(line.strip()) > 3]
         cleaned_text = "\n".join(removed_lines)
         return cleaned_text, [line for line in lines if line not in removed_lines]
 
-    def remove_similar_lines(self, text):
-        console_widget_textedit.appendPlainText("Removing lines that are similar to other lines")
+    def remove_similar_lines(self, text, similarity_threshold):
+        self.console_widget_textedit.appendPlainText("Removing lines that are similar to other lines")
         lines = text.split("\n")
         cleaned_lines = []
         removed_lines = []
@@ -779,16 +813,14 @@ class DiamondSorter(*top_classes):
 
     def are_lines_similar(self, line1, line2):
         similarity_score = difflib.SequenceMatcher(None, line1, line2).ratio()
-        
         similarity_threshold = 0.8
-        
         if similarity_score > similarity_threshold:
             return True
         else:
             return False
-    
+
     def remove_lines_without_separator(self, text):
-        self.console_widget_textedit.appendPlainText("Removing lines without ':' separator")  # Updated line
+        self.console_widget_textedit.appendPlainText("Removing lines without ':' separator")
         lines = text.split("\n")
         removed_lines = [line for line in lines if ":" in line]
         cleaned_text = "\n".join(removed_lines)
@@ -802,14 +834,14 @@ class DiamondSorter(*top_classes):
         return cleaned_text, [line for line in lines if line not in cleaned_lines]
 
     def remove_non_english_lines(self, text):
-        console_widget_textedit.appendPlainText("Removing lines with non-English characters")
+        self.console_widget_textedit.appendPlainText("Removing lines with non-English characters")
         lines = text.split("\n")
         cleaned_lines = [line for line in lines if self.is_english(line)]
         cleaned_text = "\n".join(cleaned_lines)
         return cleaned_text, [line for line in lines if line not in cleaned_lines]
 
     def remove_illegal_usernames(self, text):
-        console_widget_textedit.appendPlainText("Removing lines with illegal usernames")
+        self.console_widget_textedit.appendPlainText("Removing lines with illegal usernames")
         lines = text.split("\n")
         cleaned_lines = [line for line in lines if self.is_valid_username(line)]
         cleaned_text = "\n".join(cleaned_lines)
@@ -820,9 +852,10 @@ class DiamondSorter(*top_classes):
 
     def is_valid_username(self, line):
         # Implement the logic to check if a username is valid
-        # You can use regular expressions or other validation rules
         # Example code for checking if a username is valid:
-        return re.match(r"^[a-zA-Z0-9_-]{3,20}$", line.split(":")[0]) is not None
+        username = line.split(":")[0]
+        pattern = r"^[a-zA-Z0-9_-]{3,20}$"
+        return re.match(pattern, username) is not None
 
     def update_output_text(self):
         output_text = self.password_format_tab.output_text.toPlainText()
@@ -1000,9 +1033,9 @@ class DiamondSorter(*top_classes):
         try:
             input_text = self.findChild(QTextEdit, "input_text")  # Replace "input_text" with the actual object name
             output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
-            removed_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+            removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
             
-            if input_text is not None and output_text is not None and removed_text is not None:
+            if input_text is not None and output_text is not None and removed_data_text is not None:
                 text = input_text.toPlainText()
                 lines = text.split("\n")
                 number_list = []
@@ -1018,10 +1051,10 @@ class DiamondSorter(*top_classes):
                 output_text.clear()
                 output_text.setPlainText("\n".join(number_list))
                 
-                removed_text.clear()
-                removed_text.setLineWrapMode(QTextEdit.WidgetWidth)
-                removed_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-                removed_text.setPlainText("\n".join(removed_list))
+                removed_data_text.clear()
+                removed_data_text.setLineWrapMode(QTextEdit.WidgetWidth)
+                removed_data_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+                removed_data_text.setPlainText("\n".join(removed_list))
         
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -1050,7 +1083,7 @@ class DiamondSorter(*top_classes):
         removed_links = re.findall(r"(https?://\S+)", input_text)
         cleaned_text = re.sub(r"(https?://\S+)", "", input_text)
     
-        # Update output_text and removed_text
+        # Update output_text and removed_data_text
         self.findChild(QTextEdit, "output_text").setPlainText(cleaned_text)  # Replace "output_text" with the actual object name
         self.findChild(QTextBrowser, "removed_data_text").setPlainText("\n".join(removed_links))  # Replace "removed_data_text" with the actual object name
 
@@ -1154,35 +1187,35 @@ class DiamondSorter(*top_classes):
         try:
             input_text = self.findChild(QTextEdit, "input_text")  # Replace "input_text" with the actual object name
             output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
-            removed_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+            removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
     
-            if input_text is not None and output_text is not None and removed_text is not None:
+            if input_text is not None and output_text is not None and removed_data_text is not None:
                 if state == Qt.Checked:
                     input_text.setLineWrapMode(QTextEdit.WidgetWidth)
                     input_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
                     output_text.setLineWrapMode(QTextEdit.WidgetWidth)
                     output_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-                    removed_text.setLineWrapMode(QTextEdit.WidgetWidth)
-                    removed_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+                    removed_data_text.setLineWrapMode(QTextEdit.WidgetWidth)
+                    removed_data_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
                 else:
                     input_text.setLineWrapMode(QTextEdit.NoWrap)
                     input_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
                     output_text.setLineWrapMode(QTextEdit.NoWrap)
                     output_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-                    removed_text.setLineWrapMode(QTextEdit.NoWrap)
-                    removed_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+                    removed_data_text.setLineWrapMode(QTextEdit.NoWrap)
+                    removed_data_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     
                 # Update the scroll bar visibility
                 input_text.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
                 input_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
                 output_text.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
                 output_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-                removed_text.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-                removed_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+                removed_data_text.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+                removed_data_text.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
     
                 input_text.updateGeometry()
                 output_text.updateGeometry()
-                removed_text.updateGeometry()
+                removed_data_text.updateGeometry()
     
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -1278,7 +1311,6 @@ class DiamondSorter(*top_classes):
         self.file_tree_view_button = QPushButton("Display Your Selected File Structure")
         self.remove_empty_lines_button = QPushButton("Remove Empty Lines")
 
-
         self.recent_directories = []
         self.stats_values = []  # Define stats_values as an attribute
         self.stats_values_input = []  # Define stats_values_input as an attribute
@@ -1309,7 +1341,163 @@ class DiamondSorter(*top_classes):
         self.wallet_import_format_button
         self.recovery_phrase_button
         self.parse_button.clicked.connect(self.parse_and_arrange)
+        self.file_tree_structure_button.clicked.connect(self.file_tree_structure_button_function)
+        self.remove_before_button_2.clicked.connect(self.remove_before_button_2_function)
+        self.sort_by_cookies_button.clicked.connect(self.sort_by_cookies_function)
+        self.authy_desktop_button.clicked.connect(self.authy_desktop_functions)
+        self.remote_desktop_button.clicked.connect(self.remote_desktop_functions)
+        self.pgp_button.clicked.connect(self.pgp_gpg_key_functions)
+        self.values_list_widget = QListWidget()
+        self.reformat_button.clicked.connect(self.reformat_button_function)
+        
 
+    def reformat_button_function(self):
+        # Create the custom dialog
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Reformat Settings")
+    
+        # Create labels and line edits for current and desired formats
+        current_label = QLabel("Current Format:")
+        current_line_edit = QLineEdit()
+    
+        desired_label = QLabel("Desired Format:")
+        desired_line_edit = QLineEdit()
+    
+        separator_label = QLabel("Separator Value:")
+        separator_line_edit = QLineEdit()
+    
+        # Create a layout for the dialog
+        layout = QVBoxLayout()
+        layout.addWidget(current_label)
+        layout.addWidget(current_line_edit)
+        layout.addWidget(desired_label)
+        layout.addWidget(desired_line_edit)
+        layout.addWidget(separator_label)
+        layout.addWidget(separator_line_edit)
+    
+        # Create OK button
+        ok_button = QPushButton("OK")
+        ok_button.clicked.connect(lambda: dialog.accept())  # Close the dialog when OK is clicked
+        layout.addWidget(ok_button)
+    
+        # Set the layout for the dialog
+        dialog.setLayout(layout)
+    
+        # Show the dialog and wait for user input
+        if dialog.exec_() == QDialog.Accepted:
+            # Retrieve the values from the line edits
+            current_format = current_line_edit.text()
+            desired_format = desired_line_edit.text()
+            separator_value = separator_line_edit.text()
+    
+            # Get the input text
+            input_text = self.input_text.toPlainText()
+    
+            # Create the regular expression pattern with the current_format and separator_value
+            pattern = rf'{re.escape(current_format)}:\S+'
+    
+            # Create the replacement string with the desired_format and separator_value
+            replacement = rf'{desired_format}{separator_value}'
+    
+            # Use regular expressions to match the pattern in the input text and replace it with the replacement string
+            transformed_text = re.sub(pattern, replacement, input_text)
+    
+            # Update the output text with the transformed text
+            self.output_text.setPlainText(transformed_text)
+    
+            # Show a message box to indicate the transformation is complete
+            QMessageBox.information(self, "Transformation Complete", "Text has been transformed.")
+                    
+    def sort_by_cookies_function():
+        print("Pass")
+
+    def authy_desktop_functions():
+        print("Pass")
+        
+    def remote_desktop_functions():
+        print("Pass")
+        
+    def pgp_gpg_key_functions():
+        print("Pass")
+        
+    def new_text_document_functions():
+        print("Pass")
+
+        
+    def text_named_files_functions():
+        print("Pass")
+
+    def remove_before_button_2_function(self):
+        value, ok = QInputDialog.getText(self, "Remove Before", "Enter the value to remove before:")
+        if ok:
+            input_text = self.input_text.toPlainText()
+            output_text = ""
+            removed_data = ""
+    
+            # Find the index of the specified value
+            index = input_text.find(value)
+    
+            if index != -1:
+                # Extract the text after the specified value
+                output_text = input_text[index + len(value):].strip()
+                # Extract the text before the specified value
+                removed_data = input_text[:index].strip()
+            else:
+                # Value not found in the input text
+                output_text = input_text
+    
+            # Update the output_text and removed_data accordingly
+            self.output_text.setPlainText(output_text)
+            self.removed_data_text.setPlainText(removed_data)  
+    
+            
+    def file_tree_structure_button_function(text):
+        # Set the root directory path using the appropriate method or code
+        root_directory = text
+    
+        def display_file_tree_structure(directory, level=0):
+            files = []
+            folders = []
+    
+            for file in os.listdir(directory):
+                path = os.path.join(directory, file)
+                if os.path.isfile(path):
+                    files.append(file)
+                elif os.path.isdir(path):
+                    folders.append(file)
+    
+            for file in files:
+                print(f"{'  ' * level}|-- {file}")
+    
+            for folder in folders:
+                print(f"{'  ' * level}|-- {folder}")
+                new_path = os.path.join(directory, folder)
+                display_file_tree_structure(new_path, level + 1)
+    
+        try:
+            folder_names = []
+            for i in range(3):
+                folder_name = input(f"Enter folder {i+1} name: ")
+                folder_names.append(folder_name)
+    
+            directory_path = os.path.join(root_directory, *folder_names)
+            display_file_tree_structure(directory_path)
+    
+        except FileNotFoundError:
+            print("One or more folders do not exist.")
+        except NotADirectoryError:
+            print("One or more folder names are invalid.")
+
+
+    def remove_empty_lines_function(text):
+        if not isinstance(text, str) or not text.strip():
+            raise ValueError("Input must be a non-empty string")
+    
+        lines = text.split('\n')
+        non_empty_lines = [line.strip() for line in lines if line.strip()]
+        modified_text = '\n'.join(non_empty_lines)
+    
+        return modified_text
 
     def parse_and_arrange(self):
         # Get the format request from the format_request_textedit
@@ -1746,8 +1934,11 @@ class DiamondSorter(*top_classes):
         ip_port_addresses = re.findall(ip_port_pattern, input_text)
         
         extracted_ips = ip_addresses + ip_port_addresses
+        removed_data = re.sub(ip_pattern, "", input_text)
+        removed_data = re.sub(ip_port_pattern, "", removed_data)
         
         self.output_text.setPlainText('\n'.join(extracted_ips))
+        self.removed_data_text.setPlainText(removed_data)
 
     def show_remove_after_dialog(self):
         value, ok = QInputDialog.getText(self, "Remove After", "Enter the value to remove after:")
@@ -1926,21 +2117,25 @@ class DiamondSorter(*top_classes):
         menu.addAction(search_by_generated_action)
     
         # Show the menu at the button position
-        menu.exec_(self.sender().mapToGlobal(self.sender().rect().bottomLeft()))
+        action = menu.exec_(self.sender().mapToGlobal(self.sender().rect().bottomLeft()))
     
-        # Check which action was triggered
-        if menu.exec_() == search_by_value_action:
+        if action == search_by_value_action:
             # Prompt the user for a value request
-            value_request, ok = QInputDialog.getText(self, "Value Request", "Enter your value request:")
+            value_request, ok = QInputDialog.getInt(self, "Value Request", "Enter the number of hits (1-1000):", min=1, max=1000)
             if ok:
                 # Add the value request to the values list widget
-                self.values_list_widget.addItem(value_request)
-        elif menu.exec_() == search_by_domain_action:
+                self.values_list_widget.addItem(str(value_request))
+        elif action == search_by_domain_action:
             # Prompt the user for a domain request
-            domain_request, ok = QInputDialog.getText(self, "Domain Request", "Enter your domain request:")
+            domain_request, ok = QInputDialog.getText(self, "Domain Request", "Enter your domain request (URL-formatted):")
             if ok:
-                # Add the domain request to the domains list widget
-                self.domains_list_widget.addItem(domain_request)
+                # Validate the domain request using regular expression
+                url_pattern = re.compile(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+')
+                if url_pattern.match(domain_request):
+                    # Add the domain request to the domains list widget
+                    self.domains_list_widget.addItem(domain_request)
+                else:
+                    QMessageBox.warning(self, "Invalid Domain Request", "Please enter a valid URL-formatted domain request.")
     
         # Look for folders with browser names or folders named "Cookie"
         folders_to_sort = ["Chrome", "Firefox", "Edge", "Safari", "Opera", "Cookie"]
@@ -1950,8 +2145,15 @@ class DiamondSorter(*top_classes):
                     folder_path = os.path.join(root, folder_name)
                     # Perform sorting logic for each found folder
     
+        # Prompt the user to select a path to save to if save_directory is not defined
+        if not save_directory:
+            save_directory = QFileDialog.getExistingDirectory(self, "Select Save Directory")
+            if not save_directory:
+                QMessageBox.warning(self, "Save Directory Not Selected", "Please select a directory to save the results.")
+                return
+    
         # Crawl the loaded directory and search for the specified folder
-        self.crawlThread = CrawlerThread(selected_directory, "", save_directory)  # Use save_directory variable
+        self.crawlThread = CrawlerThread(selected_directory, folder_name, save_directory)
         self.crawlThread.copied.connect(self.console_widget_textedit.appendPlainText)
         self.crawlThread.not_copied.connect(self.dummy_message)
         self.crawlThread.finished.connect(self.finish_crawl)
@@ -2421,7 +2623,6 @@ class DiamondSorter(*top_classes):
                             count += 1
     
                 message = f"Found {count} occurrences of 'New Text Document.txt'"
-                self.console_widget_textedit.appendPlainText(message + '\n')
             else:
                 # Show an error message informing the user to enter a directory path
                 error_message = "Please enter a directory path."
@@ -2432,14 +2633,10 @@ class DiamondSorter(*top_classes):
         
     def handle_file_count_finished(self, count):
         message = f"Found {count} occurrences of 'New Text Document.txt'"
-        self.console_widget_textedit.appendPlainText(message + '\n')
         self.lcdNumber_4.display(count)
 
         # Start the timer to update the value of lcdNumber_4 every 5 seconds
         self.timer.start(5000)
-    
-    def button_clicked():
-        process_directory(set_directory_path_element)
 
     def handle_discord_files(self):
         # Functionality for handling Discord Files button
@@ -2543,8 +2740,8 @@ class DiamondSorter(*top_classes):
     
             output_text = "\n".join(filtered_lines)
             self.output_text.setPlainText(output_text)
-            removed_text = "\n".join(removed_lines)
-            self.removed_data_text.setPlainText(removed_text)
+            removed_data_text = "\n".join(removed_lines)
+            self.removed_data_text.setPlainText(removed_data_text)
     
             print("Lines with", num_consecutive_chars, "consecutive similar characters removed.")
 
@@ -2701,8 +2898,8 @@ class DiamondSorter(*top_classes):
                 text = input_text.toPlainText()
                 text_without_punctuation = re.sub(r'([^\w\s]|(?<=\w)[.,!?])\s*$', '', text)
                 
-                removed_text = re.sub(rf'(?<!\w){re.escape(text_without_punctuation)}(?!\w)', '', text)
-                removed_data_text.append(removed_text)
+                removed_data_text = re.sub(rf'(?<!\w){re.escape(text_without_punctuation)}(?!\w)', '', text)
+                removed_data_text.append(removed_data_text)
                 
                 output_text.clear()
                 output_text.setPlainText(text_without_punctuation)
@@ -2732,8 +2929,8 @@ class DiamondSorter(*top_classes):
                 output_text.clear()
                 output_text.setPlainText(text_without_domains)
     
-                removed_text = re.sub(r'(\bhttps?:\/\/\S+)|@(\S+\.)\S+', '', text)
-                removed_data_text.append(removed_text)
+                removed_data_text = re.sub(r'(\bhttps?:\/\/\S+)|@(\S+\.)\S+', '', text)
+                removed_data_text.append(removed_data_text)
     
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -2757,9 +2954,9 @@ class DiamondSorter(*top_classes):
         try:
             input_text = self.findChild(QTextEdit, "input_text")  # Replace "input_text" with the actual object name
             output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
-            removed_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+            removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
     
-            if input_text is not None and output_text is not None and removed_text is not None:
+            if input_text is not None and output_text is not None and removed_data_text is not None:
                 # Ask the user for the special character to remove after
                 special_character, ok = QInputDialog.getText(self, "Remove After Special Character", "Enter the special character:")
     
@@ -2787,8 +2984,8 @@ class DiamondSorter(*top_classes):
                         output_text.clear()
                         output_text.setPlainText("\n".join(processed_lines))
     
-                        removed_text.clear()  # Clear the previous removed_text
-                        removed_text.setPlainText("\n".join(removed_characters))
+                        removed_data_text.clear()  # Clear the previous removed_data_text
+                        removed_data_text.setPlainText("\n".join(removed_characters))
     
                         self.update_line_count()  # Assuming update_line_count is a method in your class
     
@@ -2886,7 +3083,7 @@ class DiamondSorter(*top_classes):
                     output_text.clear()
                     output_text.setPlainText("\n".join(cleaned_lines))
                     self.update_line_count()
-                    removed_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+                    removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
 
                     # Display the pop-up window with checkboxes
                     dialog = QDialog(self)
@@ -2954,10 +3151,10 @@ class DiamondSorter(*top_classes):
                         removed_data.append(removed_part)
     
                     output_text = "\n".join(processed_lines)
-                    removed_text = "\n".join(removed_data)
+                    removed_data_text = "\n".join(removed_data)
     
                     self.output_text.setPlainText(output_text)
-                    self.removed_data_text.setPlainText(removed_text)
+                    self.removed_data_text.setPlainText(removed_data_text)
     
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -3281,12 +3478,12 @@ class DiamondSorter(*top_classes):
                         output_text.setPlainText("\n".join(unique_lines))
                         update_line_count()
     
-                        # Store removed text in removed_text object
-                        removed_text = central_widget.findChild(QtWidgets.QTextEdit, "removed_text")  # Replace "removed_text" with the actual object name
-                        if removed_text is not None:
+                        # Store removed text in removed_data_text object
+                        removed_data_text = central_widget.findChild(QtWidgets.QTextEdit, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+                        if removed_data_text is not None:
                             removed_lines = list(set(lines) - set(unique_lines))
-                            removed_text.clear()
-                            removed_text.setPlainText("\n".join(removed_lines))
+                            removed_data_text.clear()
+                            removed_data_text.setPlainText("\n".join(removed_lines))
     
                         # Print result function in console_widget_textedit
                         console_widget_textedit = central_widget.findChild(QtWidgets.QTextEdit, "console_widget_textedit")  # Replace "console_widget_textedit" with the actual object name
@@ -3294,7 +3491,7 @@ class DiamondSorter(*top_classes):
                             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             console_widget_textedit.appendPlainText(f"[{timestamp}] extract_phone_numbers_button_clicked function called.")
                             console_widget_textedit.appendPlainText(f"[{timestamp}] Removed {len(lines) - len(phone_numbers)} duplicate lines.")
-                            console_widget_textedit.appendPlainText(f"[{timestamp}] Stored removed lines in removed_text object.")
+                            console_widget_textedit.appendPlainText(f"[{timestamp}] Stored removed lines in removed_data_text object.")
         except Exception as e:
             print(f"An error occurred: {e}")
 
@@ -3379,11 +3576,11 @@ class DiamondSorter(*top_classes):
     def removeAfterSpaceclicked(self):
         """Handle the button click event for the removeAfterSpace button."""
         try:
-            input_text = self.findChild(QTextEdit, "input_text")  # Replace "input_text" with the actual object name
-            output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
-            removed_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+            input_text = self.findChild(QTextBrowser, "input_text")  # Replace "input_text" with the actual object name
+            output_text = self.findChild(QTextBrowser, "output_text")  # Replace "output_text" with the actual object name
+            removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
             
-            if input_text is not None and output_text is not None and removed_text is not None:
+            if input_text is not None and output_text is not None and removed_data_text is not None:
                 text = input_text.toPlainText()
                 lines = text.split("\n")
                 processed_lines = []
@@ -3404,8 +3601,8 @@ class DiamondSorter(*top_classes):
                 output_text.clear()
                 output_text.setPlainText("\n".join(processed_lines))
                 
-                removed_text.clear()
-                removed_text.setPlainText("\n".join(removed_data))
+                removed_data_text.clear()
+                removed_data_text.setPlainText("\n".join(removed_data))
         
         except Exception as e:
             print(f"An error occurred: {e}")

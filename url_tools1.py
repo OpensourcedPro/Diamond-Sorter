@@ -22,7 +22,6 @@ import subprocess
 from urllib.parse import urljoin
 from googlesearch import search
 
-
 class Ui_UrlToolsWindow(object):
     def setupUi(self, UrlToolsWindow):
         UrlToolsWindow.setObjectName("UrlToolsWindow")
@@ -213,6 +212,27 @@ class Ui_UrlToolsWindow(object):
         self.http_request_button.setEnabled(True)
         self.http_request_button.setGeometry(QtCore.QRect(420, 10, 161, 24))
         self.http_request_button.setObjectName("http_request_button")
+        self.alternatives_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.alternatives_button.setEnabled(True)
+        self.alternatives_button.setGeometry(QtCore.QRect(30, 70, 81, 24))
+        self.alternatives_button.setObjectName("alternatives_button")
+        self.seo_data_details_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.seo_data_details_button.setEnabled(True)
+        self.seo_data_details_button.setGeometry(QtCore.QRect(30, 10, 161, 24))
+        self.seo_data_details_button.setObjectName("seo_data_details_button")
+        self.sub_domains_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.sub_domains_button.setEnabled(True)
+        self.sub_domains_button.setGeometry(QtCore.QRect(190, 40, 80, 24))
+        self.sub_domains_button.setWhatsThis("")
+        self.sub_domains_button.setObjectName("sub_domains_button")
+        self.simalar_web_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.simalar_web_button.setEnabled(True)
+        self.simalar_web_button.setGeometry(QtCore.QRect(30, 40, 80, 24))
+        self.simalar_web_button.setObjectName("simalar_web_button")
+        self.traffic_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.traffic_button.setEnabled(True)
+        self.traffic_button.setGeometry(QtCore.QRect(120, 40, 61, 24))
+        self.traffic_button.setObjectName("traffic_button")
         self.xpath_scraper_button = QtWidgets.QPushButton(self.Analytics_Tab)
         self.xpath_scraper_button.setEnabled(True)
         self.xpath_scraper_button.setGeometry(QtCore.QRect(530, 360, 81, 24))
@@ -221,52 +241,26 @@ class Ui_UrlToolsWindow(object):
         self.analyze_csp.setEnabled(True)
         self.analyze_csp.setGeometry(QtCore.QRect(330, 360, 191, 24))
         self.analyze_csp.setObjectName("analyze_csp")
+        self.check_url_login_directories = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.check_url_login_directories.setEnabled(True)
+        self.check_url_login_directories.setGeometry(QtCore.QRect(120, 70, 101, 24))
+        self.check_url_login_directories.setObjectName("check_url_login_directories")
+        self.check_api_login_directories = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.check_api_login_directories.setEnabled(True)
+        self.check_api_login_directories.setGeometry(QtCore.QRect(230, 70, 91, 24))
+        self.check_api_login_directories.setObjectName("check_api_login_directories")
+        self.website_bf_hidden_content_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.website_bf_hidden_content_button.setEnabled(True)
+        self.website_bf_hidden_content_button.setGeometry(QtCore.QRect(20, 100, 161, 24))
+        self.website_bf_hidden_content_button.setObjectName("website_bf_hidden_content_button")
+        self.javascript_links_button = QtWidgets.QPushButton(self.Analytics_Tab)
+        self.javascript_links_button.setEnabled(True)
+        self.javascript_links_button.setGeometry(QtCore.QRect(190, 100, 111, 24))
+        self.javascript_links_button.setObjectName("javascript_links_button")
         self.add_to_log_hunter_button = QtWidgets.QPushButton(self.Analytics_Tab)
         self.add_to_log_hunter_button.setEnabled(True)
         self.add_to_log_hunter_button.setGeometry(QtCore.QRect(549, 170, 121, 41))
         self.add_to_log_hunter_button.setObjectName("add_to_log_hunter_button")
-        self.frame = QtWidgets.QFrame(self.Analytics_Tab)
-        self.frame.setGeometry(QtCore.QRect(10, 10, 351, 211))
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.seo_data_details_button = QtWidgets.QPushButton(self.frame)
-        self.seo_data_details_button.setEnabled(True)
-        self.seo_data_details_button.setGeometry(QtCore.QRect(80, 20, 161, 24))
-        self.seo_data_details_button.setObjectName("seo_data_details_button")
-        self.javascript_links_button = QtWidgets.QPushButton(self.frame)
-        self.javascript_links_button.setEnabled(True)
-        self.javascript_links_button.setGeometry(QtCore.QRect(230, 170, 111, 24))
-        self.javascript_links_button.setObjectName("javascript_links_button")
-        self.alternatives_button = QtWidgets.QPushButton(self.frame)
-        self.alternatives_button.setEnabled(True)
-        self.alternatives_button.setGeometry(QtCore.QRect(10, 110, 81, 24))
-        self.alternatives_button.setObjectName("alternatives_button")
-        self.check_api_login_directories = QtWidgets.QPushButton(self.frame)
-        self.check_api_login_directories.setEnabled(True)
-        self.check_api_login_directories.setGeometry(QtCore.QRect(240, 110, 91, 24))
-        self.check_api_login_directories.setObjectName("check_api_login_directories")
-        self.sub_domains_button = QtWidgets.QPushButton(self.frame)
-        self.sub_domains_button.setEnabled(True)
-        self.sub_domains_button.setGeometry(QtCore.QRect(250, 50, 80, 24))
-        self.sub_domains_button.setWhatsThis("")
-        self.sub_domains_button.setObjectName("sub_domains_button")
-        self.website_bf_hidden_content_button = QtWidgets.QPushButton(self.frame)
-        self.website_bf_hidden_content_button.setEnabled(True)
-        self.website_bf_hidden_content_button.setGeometry(QtCore.QRect(10, 170, 161, 24))
-        self.website_bf_hidden_content_button.setObjectName("website_bf_hidden_content_button")
-        self.traffic_button = QtWidgets.QPushButton(self.frame)
-        self.traffic_button.setEnabled(True)
-        self.traffic_button.setGeometry(QtCore.QRect(130, 50, 61, 24))
-        self.traffic_button.setObjectName("traffic_button")
-        self.check_url_login_directories = QtWidgets.QPushButton(self.frame)
-        self.check_url_login_directories.setEnabled(True)
-        self.check_url_login_directories.setGeometry(QtCore.QRect(110, 110, 101, 24))
-        self.check_url_login_directories.setObjectName("check_url_login_directories")
-        self.simalar_web_button = QtWidgets.QPushButton(self.frame)
-        self.simalar_web_button.setEnabled(True)
-        self.simalar_web_button.setGeometry(QtCore.QRect(10, 60, 80, 24))
-        self.simalar_web_button.setObjectName("simalar_web_button")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("../../Downloads/icons8-analytics-48.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.analytics_and_config_tab_widget.addTab(self.Analytics_Tab, icon1, "")
@@ -335,7 +329,7 @@ class Ui_UrlToolsWindow(object):
         self.website_source_css_links_button.setObjectName("website_source_css_links_button")
         self.scrape_website_fonts_button = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.scrape_website_fonts_button.setEnabled(True)
-        self.scrape_website_fonts_button.setGeometry(QtCore.QRect(330, 70, 111, 24))
+        self.scrape_website_fonts_button.setGeometry(QtCore.QRect(250, 30, 111, 24))
         self.scrape_website_fonts_button.setObjectName("scrape_website_fonts_button")
         self.website_source_external_links = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_external_links.setEnabled(True)
@@ -355,7 +349,7 @@ class Ui_UrlToolsWindow(object):
         self.website_source_page_details.setObjectName("website_source_page_details")
         self.website_source_js_links_button = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_js_links_button.setEnabled(True)
-        self.website_source_js_links_button.setGeometry(QtCore.QRect(250, 30, 111, 24))
+        self.website_source_js_links_button.setGeometry(QtCore.QRect(10, 110, 111, 24))
         self.website_source_js_links_button.setObjectName("website_source_js_links_button")
         self.website_source_whois = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_whois.setEnabled(True)
@@ -367,12 +361,16 @@ class Ui_UrlToolsWindow(object):
         self.website_source_get_emails.setObjectName("website_source_get_emails")
         self.website_source_getlinks = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_getlinks.setEnabled(True)
-        self.website_source_getlinks.setGeometry(QtCore.QRect(10, 110, 111, 24))
+        self.website_source_getlinks.setGeometry(QtCore.QRect(520, 110, 111, 24))
         self.website_source_getlinks.setObjectName("website_source_getlinks")
         self.website_source_get_images_files_button = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.website_source_get_images_files_button.setEnabled(True)
         self.website_source_get_images_files_button.setGeometry(QtCore.QRect(450, 70, 91, 24))
         self.website_source_get_images_files_button.setObjectName("website_source_get_images_files_button")
+        self.website_source_get_css_files_button = QtWidgets.QPushButton(self.Website_Source_code_Tab)
+        self.website_source_get_css_files_button.setEnabled(True)
+        self.website_source_get_css_files_button.setGeometry(QtCore.QRect(330, 70, 111, 24))
+        self.website_source_get_css_files_button.setObjectName("website_source_get_css_files_button")
         self.javascript_links_button_10 = QtWidgets.QPushButton(self.Website_Source_code_Tab)
         self.javascript_links_button_10.setEnabled(False)
         self.javascript_links_button_10.setGeometry(QtCore.QRect(10, 360, 111, 24))
@@ -921,15 +919,16 @@ class Ui_UrlToolsWindow(object):
         self.pushButton.setGeometry(QtCore.QRect(450, 60, 80, 24))
         self.pushButton.setStyleSheet("")
         self.pushButton.setObjectName("pushButton")
+        self.token_textedit = QtWidgets.QTextEdit(UrlToolsWindow)
+        self.results_textedit = QtWidgets.QTextEdit(UrlToolsWindow)
 
         self.retranslateUi(UrlToolsWindow)
-        self.analytics_and_config_tab_widget.setCurrentIndex(0)
+        self.analytics_and_config_tab_widget.setCurrentIndex(4)
         self.Website_Source_Code.setCurrentIndex(0)
         self.MainResults_Widget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
         self.simalar_web_button.clicked['bool'].connect(self.results_textwindow_label.update) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(UrlToolsWindow)
-
     def retranslateUi(self, UrlToolsWindow):
         _translate = QtCore.QCoreApplication.translate
         UrlToolsWindow.setWindowTitle(_translate("UrlToolsWindow", "Diamond Sorter - URL Analysis"))
@@ -940,29 +939,29 @@ class Ui_UrlToolsWindow(object):
         self.akamai_button.setText(_translate("UrlToolsWindow", "Akamai"))
         self.http_request_button.setToolTip(_translate("UrlToolsWindow", "Display a HTTP Request Client to see live time stats and info."))
         self.http_request_button.setText(_translate("UrlToolsWindow", "HTTP Request Client"))
-        self.xpath_scraper_button.setText(_translate("UrlToolsWindow", "XPath Scraper"))
-        self.analyze_csp.setText(_translate("UrlToolsWindow", "Analyze Content-Security-Policy"))
-        self.add_to_log_hunter_button.setText(_translate("UrlToolsWindow", "Add To Log Hunter"))
-        self.seo_data_details_button.setToolTip(_translate("UrlToolsWindow", "Get the basic information and stats of your request by SEO"))
-        self.seo_data_details_button.setText(_translate("UrlToolsWindow", "SEO Data and Details"))
-        self.javascript_links_button.setText(_translate("UrlToolsWindow", "Javascript Links"))
         self.alternatives_button.setToolTip(_translate("UrlToolsWindow", "Discover simalar websites and alternatives"))
         self.alternatives_button.setText(_translate("UrlToolsWindow", "Alternatives"))
-        self.check_api_login_directories.setToolTip(_translate("UrlToolsWindow", "This will scan your requested URL for any API endpoints"))
-        self.check_api_login_directories.setText(_translate("UrlToolsWindow", "Check API Login"))
+        self.seo_data_details_button.setToolTip(_translate("UrlToolsWindow", "Get the basic information and stats of your request by SEO"))
+        self.seo_data_details_button.setText(_translate("UrlToolsWindow", "SEO Data and Details"))
         self.sub_domains_button.setToolTip(_translate("UrlToolsWindow", "Scan for any related subdomains of the requested website"))
         self.sub_domains_button.setText(_translate("UrlToolsWindow", "Sub Domains"))
+        self.simalar_web_button.setToolTip(_translate("UrlToolsWindow", "Find websites simalar to the one based on your request"))
+        self.simalar_web_button.setText(_translate("UrlToolsWindow", "Simalar Web"))
+        self.traffic_button.setToolTip(_translate("UrlToolsWindow", "Display any traffic stats based on your target"))
+        self.traffic_button.setText(_translate("UrlToolsWindow", "Traffic"))
+        self.xpath_scraper_button.setText(_translate("UrlToolsWindow", "XPath Scraper"))
+        self.analyze_csp.setText(_translate("UrlToolsWindow", "Analyze Content-Security-Policy"))
+        self.check_url_login_directories.setToolTip(_translate("UrlToolsWindow", "This will scan the requested website for any possible URL Login pages"))
+        self.check_url_login_directories.setText(_translate("UrlToolsWindow", "Check URL Logins"))
+        self.check_api_login_directories.setToolTip(_translate("UrlToolsWindow", "This will scan your requested URL for any API endpoints"))
+        self.check_api_login_directories.setText(_translate("UrlToolsWindow", "Check API Login"))
         self.website_bf_hidden_content_button.setToolTip(_translate("UrlToolsWindow", "Website bruteforcer to find hidden file and folder\n"
 "Requires a wordlist to be used"))
         self.website_bf_hidden_content_button.setWhatsThis(_translate("UrlToolsWindow", "Website bruteforcer to find hidden file and folder\n"
 "Requires a wordlist to be used"))
         self.website_bf_hidden_content_button.setText(_translate("UrlToolsWindow", "Website BF Hidden Content"))
-        self.traffic_button.setToolTip(_translate("UrlToolsWindow", "Display any traffic stats based on your target"))
-        self.traffic_button.setText(_translate("UrlToolsWindow", "Traffic"))
-        self.check_url_login_directories.setToolTip(_translate("UrlToolsWindow", "This will scan the requested website for any possible URL Login pages"))
-        self.check_url_login_directories.setText(_translate("UrlToolsWindow", "Check URL Logins"))
-        self.simalar_web_button.setToolTip(_translate("UrlToolsWindow", "Find websites simalar to the one based on your request"))
-        self.simalar_web_button.setText(_translate("UrlToolsWindow", "Simalar Web"))
+        self.javascript_links_button.setText(_translate("UrlToolsWindow", "Javascript Links"))
+        self.add_to_log_hunter_button.setText(_translate("UrlToolsWindow", "Add To Log Hunter"))
         self.analytics_and_config_tab_widget.setTabText(self.analytics_and_config_tab_widget.indexOf(self.Analytics_Tab), _translate("UrlToolsWindow", "Analytics"))
         self.config_function_get_button.setText(_translate("UrlToolsWindow", "GET"))
         self.config_function_post_button.setText(_translate("UrlToolsWindow", "POST"))
@@ -989,6 +988,7 @@ class Ui_UrlToolsWindow(object):
         self.website_source_get_emails.setText(_translate("UrlToolsWindow", "Get Emails"))
         self.website_source_getlinks.setText(_translate("UrlToolsWindow", "Get links"))
         self.website_source_get_images_files_button.setText(_translate("UrlToolsWindow", "Get Images Files"))
+        self.website_source_get_css_files_button.setText(_translate("UrlToolsWindow", "Get CSS Files"))
         self.javascript_links_button_10.setText(_translate("UrlToolsWindow", "Get Cookies"))
         self.website_source_getjs_button.setText(_translate("UrlToolsWindow", "Get js files"))
         self.website_source_headers_button.setText(_translate("UrlToolsWindow", "Get Headers"))
@@ -1142,100 +1142,15 @@ class Ui_UrlToolsWindow(object):
         self.gather_subdomain_hijack_button.clicked.connect(self.on_gather_subdomain_hijack_clicked)
         self.submit_web_button.clicked.connect(lambda: self.on_submit_web_button_clicked(self.url_target_textedit, self.webpage_view_tabwidget))
         self.alternatives_button.clicked.connect(self.alternatives_button_function)
+
         self.webpage_view_tabwidget = QtWidgets.QTabWidget(UrlToolsWindow)
         self.webpage_view_tabwidget.setObjectName("webpage_view_tabwidget")
         self.add_to_log_hunter_button.clicked.connect(self.add_to_log_hunter_button_clicked)
         self.website_source_js_links_button.clicked.connect(self.get_javascript_links)
         self.alternatives_button.clicked.connect(self.get_related_sites)
         self.getUpdates_Button.clicked.connect(self.get_updates)
-
-    def sub_domains_button_function(self):
-        url = self.url_target_textedit.toPlainText()
-    
-        try:
-            if not url or not url.startswith(('http://', 'https://')):
-                raise ValueError("Invalid URL")
-    
-            # Rest of your code for processing subdomains
-    
-        except (ValueError, NameError) as error:
-            # Display error in a QMessageBox dialog
-            error_dialog = QMessageBox()
-            error_dialog.setIcon(QMessageBox.Warning)
-            error_dialog.setWindowTitle("Invalid URL")
-            error_dialog.setText(str(error))
-            error_dialog.exec_()
-    
-    def css_links(self):
-        url = self.url_target_textedit.toPlainText()
-    
-        try:
-            if not url:
-                raise ValueError("URL is empty")
-    
-            # Send a GET request to the website
-            response = requests.get(url)
-    
-            # Parse the HTML content using BeautifulSoup
-            soup = BeautifulSoup(response.content, 'html.parser')
-    
-            # Find all <link> tags with rel="stylesheet"
-            css_links = soup.find_all('link', rel='stylesheet')
-    
-            # Extract the href attribute from each link
-            css_urls = [link['href'] for link in css_links]
-    
-            # Convert the list of CSS URLs to a string
-            results_text = '\n'.join(css_urls)
-    
-            # Set the results text in the QTextEdit widget
-            self.results_window_links_text.setText(results_text)
-    
-        except (requests.exceptions.MissingSchema, ValueError) as error:
-            # Display error in a QMessageBox dialog
-            error_dialog = QMessageBox()
-            error_dialog.setIcon(QMessageBox.Warning)
-            error_dialog.setWindowTitle("Invalid URL")
-            error_dialog.setText(str(error))
-            error_dialog.exec_()
-        
-    
-
-    def javascript_links(self):
-        url = self.url_target_textedit.toPlainText()
-    
-        try:
-            if not url:
-                raise ValueError("URL is empty")
-    
-            # Send a GET request to the website
-            response = requests.get(url)
-    
-            # Parse the HTML content using BeautifulSoup
-            soup = BeautifulSoup(response.content, 'html.parser')
-    
-            # Find all <script> tags
-            script_tags = soup.find_all('script')
-    
-            # Extract the src attribute from each script tag and apply the domain URL
-            javascript_urls = [urljoin(url, script.get('src')) for script in script_tags if script.get('src')]
-    
-            # Convert the list of JavaScript URLs to a string
-            results_text = '\n'.join(javascript_urls)
-    
-            # Set the results text in the QTextEdit widget
-            self.results_window_links_text.setText(results_text)
-    
-        except (requests.exceptions.MissingSchema, ValueError) as error:
-            # Display error in a QMessageBox dialog
-            error_dialog = QMessageBox()
-            error_dialog.setIcon(QMessageBox.Warning)
-            error_dialog.setWindowTitle("Invalid URL")
-            error_dialog.setText(str(error))
-            error_dialog.exec_()
-
-
-
+        self.token_textedit = QTextEdit(self)
+        self.results_textedit = QTextEdit(self)
 
 
     def get_related_sites(self):
@@ -2202,3 +2117,4 @@ if __name__ == "__main__":
     ui.setupUi(UrlToolsWindow)
     UrlToolsWindow.show()
     sys.exit(app.exec_())
+

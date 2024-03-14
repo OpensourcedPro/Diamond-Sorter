@@ -869,16 +869,11 @@ class Ui_UrlToolsWindow(object):
         self.perform_config_function_headers()
 
     def perform_config_function_headers(self):
-        # Add your code here to perform the desired actions for the config function headers
-
         # For example, you can set custom headers for requests
         headers = {"User-Agent": "Custom User Agent"}
-
         # You can then use the custom headers in your requests
         response = requests.get("https://api.example.com", headers=headers)
-
         # Handle the response or perform any other necessary operations
-
         # You can also update the UI elements based on the result
         if response.status_code == 200:
             self.results_window_textedit_3.setPlainText("Config function headers successful!")
@@ -942,6 +937,7 @@ class Ui_UrlToolsWindow(object):
         if response.status_code == 200:  # Check if the request was successful
             result_data = response.text  # Get the response data
             self.results_window_textedit_3.setPlainText(result_data)  # Display the data in
+
     def handle_get_request(self):
         url = self.url_target_textedit.toPlainText()  # Get the URL from the text edit
         api_url = f"https://api.urlparse.com/v1/query?url={url}"  # Construct the API URL
@@ -950,8 +946,6 @@ class Ui_UrlToolsWindow(object):
         if response.status_code == 200:  # Check if the request was successful
             data = response.text  # Get the response data
             self.results_window_textedit_3.setPlainText(data)  # Display the data in the text edit
-
-
     
     def handle_post_request(self):
         url = self.url_target_textedit.toPlainText()  # Get the URL from the text edit
@@ -1003,6 +997,7 @@ class Ui_UrlToolsWindow(object):
             self.results_window_textedit_3.setPlainText(result_data)
 
     def css_links(url):
+        url = self.url_target_textedit.toPlainText()
         # Send a GET request to the URL
         response = requests.get(url)
         
@@ -1017,12 +1012,13 @@ class Ui_UrlToolsWindow(object):
                 css_links.append(href)
         
         return css_links
+
     def handle_button_click():
         url = self.url_target_textedit.toPlainText()
         css_links = css_links(url)
         self.results_window_textedit_3.setPlainText('\n'.join(css_links))
 
-        
+
     def handle_font_button_click(self):
         url = self.url_target_textedit.toPlainText()
         font_links = self.get_font_links(url)
