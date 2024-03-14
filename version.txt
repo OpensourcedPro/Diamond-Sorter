@@ -1,0 +1,4 @@
+ProductName: Diamond Sorter
+ProductVersion: 1.9.2
+BuildNumber: 687453
+ReleaseDate: March 14, 2024
