@@ -69,7 +69,7 @@ conducted.
 **<h1> How to use it?</h1>**
 Install the requirements that is listed in Requirements.txt
 
-Download and run python diamondsorter.pyw
+Download and run python diamondsorter.py
 For more detailed Instructions, Use of the software, & How to purchase the software can be found @ https://diamond-sorter.gitbook.io/diamond-sorter/
 
 
