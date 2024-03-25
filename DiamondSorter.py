@@ -8,6 +8,7 @@ import webbrowser
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtCore import QUrl, Qt, QTimer, pyqtSignal, pyqtSlot, QThread, QThreadPool, QBasicTimer, QTimerEvent, QMessageLogContext, QtMsgType, QRect
 from PyQt5.QtWidgets import QApplication, QLineEdit, QHBoxLayout, QShortcut, QMainWindow, QListWidget, QDockWidget, QPlainTextEdit, QLCDNumber, QWidget, QVBoxLayout, QTextBrowser, QFileDialog, QTextEdit, QComboBox, QPushButton, QMessageBox, QFrame, QInputDialog, QLabel, QCheckBox, QScrollBar, QDialogButtonBox, QDialog, QGridLayout, QMenu, QAction, QTabBar
+from PyQt5.QtXml import QDomDocument
 import hashlib
 from multiprocessing import Process, Queue
 from PyQt5.QtGui import QDesktopServices, QTextCursor, QTextDocument, QColor, QCursor, QTextCharFormat, QIcon, QPainter, QTextOption
@@ -34,7 +35,6 @@ import curses
 from PIL import Image
 import pyperclip
 from flask import session
-from keyauth.keyauth import api
 import warnings
 from PyQt5.QtGui import QKeySequence
 from PyQt5 import QAxContainer
@@ -343,7 +343,7 @@ class DiamondSorter(*top_classes):
         self.display_function("MyFunction")
         self.button = QtWidgets.QPushButton("Process Directory")
         self.file_tree_view_button.clicked.connect(self.file_tree_structure_print)
-
+        
         #central_widget = QWidget(self)
         #layout = QVBoxLayout(central_widget)
 
@@ -388,8 +388,26 @@ class DiamondSorter(*top_classes):
 
         self.sorting_files_tab = QWidget()
         self.sorting_files_tab.setObjectName("Sorting Files")
+        self.telegram_bot_token_extractor_button.clicked.connect(self.telegram_bot_token_extractor)
 
-
+    def telegram_bot_token_extractor(input_text):
+        # Regular expression pattern to match Telegram bot tokens
+        token_pattern = r'\b\d{9}:[\w-]{35}\b'
+    
+        # Find all matches of the token pattern in the input text
+        tokens = re.findall(token_pattern, input_text)
+    
+        # Extracted tokens will be placed in the output_text window
+        output_text = '\n'.join(tokens)
+    
+        # Remove the extracted tokens from the input text
+        removed_data = re.sub(token_pattern, '', input_text)
+    
+        # Removed text will be displayed in the removed_data_text window
+        removed_data_text = removed_data.strip()
+    
+        return output_text, removed_data_text
+        
     def sort_cookies_by_domain(self):
         # Function to be executed when the button is clicked
         # Add your code for crawling the directory and searching for requests here
@@ -1349,8 +1367,24 @@ class DiamondSorter(*top_classes):
         self.pgp_button.clicked.connect(self.pgp_gpg_key_functions)
         self.values_list_widget = QListWidget()
         self.reformat_button.clicked.connect(self.reformat_button_function)
+        self.donation_text_edit = QTextEdit("donation_text_edit")
         
+        # Set the initial donation text
+        self.donation_text_edit.setPlainText("49yNe4Unj6CiUBiXEQD4UL7avZ3wvD8qKgWXTnFwTobTVjvVQ3EGK1y3sdq8WYAJh5RrhG4E5UNQv3XiedSP8s27MgqPJMh")
+        # Set up the timer
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.scroll_text)
+        self.timer.start(100)  # Adjust the interval for the desired scrolling speed
 
+    def scroll_text(self):
+        # Get the current text
+        text = self.donation_text_edit.toPlainText()
+        
+        # Scroll the text by moving the first character to the end
+        scrolled_text = text[1:] + text[0]
+        
+        # Set the scrolled text
+        self.donation_text_edit.setPlainText(scrolled_text)
     def reformat_button_function(self):
         # Create the custom dialog
         dialog = QDialog(self)

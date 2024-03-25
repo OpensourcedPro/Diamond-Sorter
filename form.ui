@@ -8,19 +8,19 @@
     <x>0</x>
     <y>0</y>
     <width>980</width>
-    <height>810</height>
+    <height>875</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>980</width>
-    <height>810</height>
+    <height>875</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>980</width>
-    <height>810</height>
+    <height>875</height>
    </size>
   </property>
   <property name="palette">
@@ -380,7 +380,7 @@ QTabBar::tab:selected {
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -666,8 +666,8 @@ and format them.</string>
      <widget class="QPushButton" name="extract_ip_addressButton">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>100</y>
+        <x>210</x>
+        <y>70</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -682,10 +682,10 @@ and format them.</string>
      <widget class="QPushButton" name="extract_phone_numberButton">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>100</y>
         <width>101</width>
-        <height>24</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -793,6 +793,19 @@ and format them.</string>
       </property>
       <property name="text">
        <string>Reformat</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="telegram_bot_token_extractor_button">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Extract Telegram Tokens</string>
       </property>
      </widget>
     </widget>
@@ -3962,6 +3975,31 @@ QRadioButton::indicator:checked:hover,
 QCheckBox::indicator:checked:hover {
   border-color: #1de9b6;
 }</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="donate_text_edit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>720</y>
+      <width>981</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
+    <property name="lineWrapMode">
+     <enum>QTextEdit::NoWrap</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>BTC -  bc1q78jk24l3uty88xgy26vatam45rqkah4e48fgyt   | |   ETH - 0x7db54642c6FB4Db5998f2ff9a160A4Ecf457364a   | |   LTC - Li58G7aCyg1pLqBLifftyk6bhJ3CwQeBmt   | |    XMR - 49yNe4Unj6CiUBiXEQD4UL7avZ3wvD8qKgWXTnFwTobTVjvVQ3EGK1y3sdq8WYAJh5RrhG4E5UNQv3XiedSP8s27MgqPJMh</string>
     </property>
    </widget>
   </widget>
