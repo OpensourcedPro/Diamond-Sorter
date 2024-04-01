@@ -7,7 +7,7 @@ I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART 
 
 
 **<h1>Join The Telegram Chat Here</h1>** 
-[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/OpenSourcedPro)
+[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/+Tdi5XNsUY8diMGE5)
 
 
 
@@ -17,7 +17,7 @@ I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART 
 Stealer Logs which is captured from various types of malware that is designed to steal sensitive information from infected systems. When executed, it typically searches for and collects data such as browser-saved login credentials, credit card information, browser history and cookies, cryptocurrency wallet access, desktop files, gaming credentials among other technical instance’s information and it even takes desktop screenshots.
 
 
-<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="OpenSourcedPro/427" data-width="100%"></script>
+<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="[OpenSourcedPro/427](https://t.me/+Tdi5XNsUY8diMGE5)" data-width="100%"></script>
 
 
 This information is then sent back to the attacker’s command and control server, where it can be used for malicious purposes such as identity theft, financial fraud, or espionage. 
