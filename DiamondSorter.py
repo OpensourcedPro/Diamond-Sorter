@@ -38,6 +38,7 @@ from flask import session
 import warnings
 from PyQt5.QtGui import QKeySequence
 from PyQt5 import QAxContainer
+import difflib
 
 warnings.filterwarnings("ignore", category=UserWarning, message="QLayout: Cannot add parent widget")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -734,8 +735,26 @@ class DiamondSorter(*top_classes):
             subprocess.Popen(["python", script_path])
 
     def get_log_stats_function(self):
-        directory_path = self.set_directory_path_element.toPlainText()
-
+        directory_path = self.set_directory_path_element.text()
+    
+        if os.path.exists(directory_path):
+            folder_names = set()
+            text_documents = 0
+    
+            for root, dirs, files in os.walk(directory_path):
+                for folder in dirs:
+                    folder_names.add(folder)
+                for file in files:
+                    if file.endswith('.txt'):
+                        text_documents += 1
+    
+            folder_names_count = len(folder_names)
+            text_documents_count = text_documents
+    
+            self.console_widget_textedit.setPlainText(f"Multiple folder names detected: {folder_names_count}\nText documents found: {text_documents_count}")
+        else:
+            self.console_widget_textedit.setPlainText("Invalid directory path.")
+    
     def removeAfter_Tab_Space_clicked(self):
         num_tabs, ok = QInputDialog.getInt(self, "Specify Number of Tab Spaces",
                                         "Enter the number of Tab Spaces to move after:")
@@ -843,27 +862,48 @@ class DiamondSorter(*top_classes):
         self.output_text.setPlainText(input_text)
         self.removed_data_text.setPlainText("\n".join(removed_lines))
 
+
+
     def remove_unknown(self, text):
         self.console_widget_textedit.appendPlainText("Removing lines with 'UNKNOWN'")
         lines = text.split("\n")
         removed_lines = [line for line in lines if "UNKNOWN" not in line]
         cleaned_text = "\n".join(removed_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in removed_lines]))
+    
         return cleaned_text, [line for line in lines if line not in removed_lines]
-
+    
+    
     def remove_consecutive_asterisks(self, text):
         self.console_widget_textedit.appendPlainText("Removing lines with four or more consecutive asterisks")
         lines = text.split("\n")
         removed_lines = [line for line in lines if "****" not in line]
         cleaned_text = "\n".join(removed_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in removed_lines]))
+    
         return cleaned_text, [line for line in lines if line not in removed_lines]
-
-    def remove_short_lines(self, text):
-        self.console_widget_textedit.appendPlainText("Removing lines with 3 or less characters")
-        lines = text.split("\n")
-        removed_lines = [line for line in lines if len(line.strip()) > 3]
-        cleaned_text = "\n".join(removed_lines)
-        return cleaned_text, [line for line in lines if line not in removed_lines]
-
+    
+    
     def remove_similar_lines(self, text, similarity_threshold):
         self.console_widget_textedit.appendPlainText("Removing lines that are similar to other lines")
         lines = text.split("\n")
@@ -879,8 +919,21 @@ class DiamondSorter(*top_classes):
             if not is_similar:
                 cleaned_lines.append(line)
         cleaned_text = "\n".join(cleaned_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join(removed_lines))
+    
         return cleaned_text, removed_lines
-
+    
+    
     def are_lines_similar(self, line1, line2):
         similarity_score = difflib.SequenceMatcher(None, line1, line2).ratio()
         similarity_threshold = 0.8
@@ -888,35 +941,109 @@ class DiamondSorter(*top_classes):
             return True
         else:
             return False
-
+    
+    
     def remove_lines_without_separator(self, text):
         self.console_widget_textedit.appendPlainText("Removing lines without ':' separator")
         lines = text.split("\n")
         removed_lines = [line for line in lines if ":" in line]
         cleaned_text = "\n".join(removed_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in removed_lines]))
+    
         return cleaned_text, [line for line in lines if line not in removed_lines]
-
+    
+    
     def remove_weak_passwords(self, text):
-        print("Removing lines with weak passwords")
+        self.console_widget_textedit.appendPlainText("Removing lines with weak passwords")
         lines = text.split("\n")
         cleaned_lines = [line for line in lines if len(line.split(":")[-1].strip()) > 3]
         cleaned_text = "\n".join(cleaned_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in cleaned_lines]))
+    
         return cleaned_text, [line for line in lines if line not in cleaned_lines]
-
+    
+    
     def remove_non_english_lines(self, text):
         self.console_widget_textedit.appendPlainText("Removing lines with non-English characters")
         lines = text.split("\n")
         cleaned_lines = [line for line in lines if self.is_english(line)]
         cleaned_text = "\n".join(cleaned_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in cleaned_lines]))
+    
         return cleaned_text, [line for line in lines if line not in cleaned_lines]
-
+    
+    
     def remove_illegal_usernames(self, text):
         self.console_widget_textedit.appendPlainText("Removing lines with illegal usernames")
         lines = text.split("\n")
         cleaned_lines = [line for line in lines if self.is_valid_username(line)]
         cleaned_text = "\n".join(cleaned_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in cleaned_lines]))
+    
         return cleaned_text, [line for line in lines if line not in cleaned_lines]
-
+    
+    
+    
+    def remove_short_lines(self, text):
+        self.console_widget_textedit.appendPlainText("Removing lines with 3 or fewer characters on either side of ':'")
+    
+        lines = text.split("\n")
+        removed_lines = [line for line in lines if len(line.split(":")[0].strip()) > 3 and len(line.split(":")[1].strip()) > 3]
+        cleaned_text = "\n".join(removed_lines)
+    
+        output_text = self.findChild(QTextEdit, "output_text")  # Replace "output_text" with the actual object name
+        removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+        if output_text is not None:
+            output_text.clear()
+            output_text.setPlainText(cleaned_text)
+    
+        if removed_data_text is not None:
+            removed_data_text.clear()
+            removed_data_text.setPlainText("\n".join([line for line in lines if line not in removed_lines]))
+    
+        return cleaned_text, [line for line in lines if line not in removed_lines]
+    
     def is_english(self, line):
         return all(ord(c) < 128 for c in line)
 
@@ -2071,7 +2198,7 @@ class DiamondSorter(*top_classes):
 
     def get_file_stats():
         pass
-        
+
     def get_cookie_stats():
         pass
 
@@ -2991,7 +3118,8 @@ class DiamondSorter(*top_classes):
                 output_text.setPlainText(text_without_punctuation)
         except Exception as e:
             print(f"An error occurred: {e}")
-    
+        
+        
     def remove_domains(self):
         """Remove domains from the input_text widget."""
         try:
@@ -3001,26 +3129,34 @@ class DiamondSorter(*top_classes):
             if input_text is not None and output_text is not None:
                 text = input_text.toPlainText()
     
-                # Remove domain detections
+                # Remove domains and store removed domains
                 lines = text.split('\n')
                 new_lines = []
+                removed_domains = []
     
                 for line in lines:
-                    # Remove domain detections from each line
-                    line_without_domains = re.sub(r'(\bhttps?:\/\/\S+)|@(\S+\.)\S+', '', line)
-                    new_lines.append(line_without_domains)
+                    # Find the @ symbol before the : separator
+                    separator_index = line.find(':')
+                    if separator_index != -1:
+                        at_index = line.find('@', 0, separator_index)
+                        if at_index != -1:
+                            domain = line[at_index:separator_index]
+                            line = line.replace(domain, '')
+                            removed_domains.append(domain)
+                    
+                    new_lines.append(line)
     
                 text_without_domains = '\n'.join(new_lines)
     
                 output_text.clear()
                 output_text.setPlainText(text_without_domains)
     
-                removed_data_text = re.sub(r'(\bhttps?:\/\/\S+)|@(\S+\.)\S+', '', text)
-                removed_data_text.append(removed_data_text)
+                removed_data_text.clear()
+                removed_data_text.setPlainText('\n'.join(removed_domains))
     
         except Exception as e:
             print(f"An error occurred: {e}")
-
+        
     def extract_md5(self):
         """Extract MD5 hashes from the input_text widget."""
         try:
