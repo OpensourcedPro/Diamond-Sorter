@@ -461,21 +461,21 @@ class Ui_UrlToolsWindow(object):
         self.telegram_groupID_bottools_3.setGeometry(QtCore.QRect(160, 120, 121, 31))
         self.telegram_groupID_bottools_3.setObjectName("telegram_groupID_bottools_3")
         self.results_window_textedit_4 = QtWidgets.QTextEdit(self.Bot_Tools_Tab)
-        self.results_window_textedit_4.setGeometry(QtCore.QRect(440, 40, 181, 181))
+        self.results_window_textedit_4.setGeometry(QtCore.QRect(440, 40, 231, 181))
         self.results_window_textedit_4.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.results_window_textedit_4.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.results_window_textedit_4.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self.results_window_textedit_4.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.results_window_textedit_4.setObjectName("results_window_textedit_4")
         self.label_2 = QtWidgets.QLabel(self.Bot_Tools_Tab)
-        self.label_2.setGeometry(QtCore.QRect(510, 10, 71, 21))
+        self.label_2.setGeometry(QtCore.QRect(480, 10, 71, 21))
         font = QtGui.QFont()
         font.setFamily("HACKED")
         font.setPointSize(11)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.check_bot_stats_button = QtWidgets.QPushButton(self.Bot_Tools_Tab)
-        self.check_bot_stats_button.setGeometry(QtCore.QRect(470, 10, 31, 21))
+        self.check_bot_stats_button.setGeometry(QtCore.QRect(440, 10, 31, 21))
         self.check_bot_stats_button.setObjectName("check_bot_stats_button")
         self.forward_messages_button = QtWidgets.QPushButton(self.Bot_Tools_Tab)
         self.forward_messages_button.setGeometry(QtCore.QRect(320, 180, 111, 31))
@@ -483,6 +483,9 @@ class Ui_UrlToolsWindow(object):
         self.getUpdates_Button = QtWidgets.QPushButton(self.Bot_Tools_Tab)
         self.getUpdates_Button.setGeometry(QtCore.QRect(320, 130, 111, 31))
         self.getUpdates_Button.setObjectName("getUpdates_Button")
+        self.checkBox_3 = QtWidgets.QCheckBox(self.Bot_Tools_Tab)
+        self.checkBox_3.setGeometry(QtCore.QRect(560, 10, 91, 22))
+        self.checkBox_3.setObjectName("checkBox_3")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("../../Downloads/icons8-bot-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.analytics_and_config_tab_widget.addTab(self.Bot_Tools_Tab, icon5, "")
@@ -923,11 +926,11 @@ class Ui_UrlToolsWindow(object):
         self.pushButton.setObjectName("pushButton")
 
         self.retranslateUi(UrlToolsWindow)
-        self.analytics_and_config_tab_widget.setCurrentIndex(0)
+        self.analytics_and_config_tab_widget.setCurrentIndex(4)
         self.Website_Source_Code.setCurrentIndex(0)
         self.MainResults_Widget.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
-        self.simalar_web_button.clicked['bool'].connect(self.results_textwindow_label.update) # type: ignore
+        self.simalar_web_button.clicked['bool'].connect(self.results_textwindow_label.update)
         QtCore.QMetaObject.connectSlotsByName(UrlToolsWindow)
 
     def retranslateUi(self, UrlToolsWindow):
@@ -1018,6 +1021,7 @@ class Ui_UrlToolsWindow(object):
         self.check_bot_stats_button.setText(_translate("UrlToolsWindow", "✅"))
         self.forward_messages_button.setText(_translate("UrlToolsWindow", "Forward Messages"))
         self.getUpdates_Button.setText(_translate("UrlToolsWindow", "/getUpdate"))
+        self.checkBox_3.setText(_translate("UrlToolsWindow", "WordWrap?"))
         self.analytics_and_config_tab_widget.setTabText(self.analytics_and_config_tab_widget.indexOf(self.Bot_Tools_Tab), _translate("UrlToolsWindow", "Bot Tools"))
         self.pushButton_2.setText(_translate("UrlToolsWindow", "Bruteforce URL:USER:PASS"))
         self.textEdit_3.setPlaceholderText(_translate("UrlToolsWindow", "Text File Directory Path of URL:USER:PASS"))
@@ -1148,6 +1152,8 @@ class Ui_UrlToolsWindow(object):
         self.website_source_js_links_button.clicked.connect(self.get_javascript_links)
         self.alternatives_button.clicked.connect(self.get_related_sites)
         self.getUpdates_Button.clicked.connect(self.get_updates)
+        parent_widget = QWidget()  # Replace with the actual parent widget instance
+        error_dialog = QMessageBox(parent_widget)
 
     def sub_domains_button_function(self):
         url = self.url_target_textedit.toPlainText()
@@ -2127,16 +2133,16 @@ class Ui_UrlToolsWindow(object):
 
     def get_updates(self):
         token = self.token_textedit.toPlainText()
-
+    
         if token:
             url = f"https://api.telegram.org/bot{token}/getUpdates"
             response = requests.get(url)
-
+    
             if response.status_code == 200:
                 updates = response.json()
-                self.results_textedit.setPlainText(str(updates))
+                self.results_window_textedit_4.setPlainText(f"{token}: {str(updates)}")
             else:
-                self.results_textedit.setPlainText("Error: Failed to get updates.")
+                self.results_window_textedit_4.setPlainText("Error: Failed to get updates.")
         else:
             error_dialog = QMessageBox(self)
             error_dialog.setIcon(QMessageBox.Critical)
@@ -2202,3 +2208,4 @@ if __name__ == "__main__":
     ui.setupUi(UrlToolsWindow)
     UrlToolsWindow.show()
     sys.exit(app.exec_())
+

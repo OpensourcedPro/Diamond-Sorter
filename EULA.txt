@@ -1,0 +1,77 @@
+END-USER LICENSE AGREEMENT (EULA) - DIAMOND SORTER BY OPENSOURCED PRO
+
+
+IMPORTANT: PLEASE READ THIS END-USER LICENSE AGREEMENT CAREFULLY BEFORE INSTALLING OR USING THE DIAMOND SORTER SOFTWARE.
+
+
+
+
+DEFINITIONS
+1.1. "Software" refers to the Diamond Sorter software application, including any updates or modifications, and any accompanying documentation.
+1.2. "Licensee" refers to the individual or entity that installs or uses the Software.
+
+
+
+
+LICENSE GRANT
+2.1. Subject to the terms and conditions of this EULA, Opensourced Pro grants the Licensee a non-exclusive, non-transferable license to install and use the Software for internal use and in accordance with the documentation.
+2.2. The Licensee may install and use the Software on multiple devices within their organization, provided that the usage is within the scope of the license.
+
+
+
+
+INTELLECTUAL PROPERTY RIGHTS
+3.1. The Software is protected by intellectual property laws and international treaties. Opensourced Pro retains all rights, title, and interest in and to the Software, including any copies, modifications, or derivative works thereof.
+3.2. The Licensee shall not, directly or indirectly, reverse engineer, decompile, disassemble, or otherwise attempt to discover the source code or underlying algorithms of the Software.
+
+
+
+
+RESTRICTIONS
+4.1. The Licensee shall not sublicense, distribute, rent, lease, or lend the Software to any third party without the prior written consent of Opensourced Pro.
+4.2. The Licensee shall not use the Software in any manner that violates applicable laws or regulations.
+4.3. The Licensee shall not remove, alter, or obscure any copyright, trademark, or other proprietary notices incorporated in or accompanying the Software.
+
+
+
+
+SUPPORT AND UPDATES
+5.1. Opensourced Pro shall provide technical support and software updates to the Licensee during the term of this license, subject to the payment of any applicable fees.
+
+
+
+
+LIMITATION OF LIABILITY
+6.1. To the maximum extent permitted by applicable law, in no event shall Opensourced Pro be liable for any direct, indirect, incidental, special, consequential, or exemplary damages arising out of the use or inability to use the Software, even if Opensourced Pro has been advised of the possibility of such damages.
+6.2. The Licensee assumes all responsibility for the selection, installation, use, and results obtained from the Software.
+
+
+
+
+TERMINATION
+7.1. This EULA is effective until terminated. The Licensee may terminate this EULA at any time by uninstalling the Software and destroying all copies.
+7.2. Opensourced Pro may terminate this EULA immediately without notice if the Licensee fails to comply with any of the terms and conditions of this EULA.
+7.3. Upon termination, the Licensee shall immediately cease all use of the Software and destroy all copies.
+
+
+
+
+GOVERNING LAW
+8.1. This EULA shall be governed by and construed in accordance with the laws of [Jurisdiction]. Any disputes arising under or in connection with this EULA shall be subject to the exclusive jurisdiction of the courts of United States.
+
+
+
+
+ENTIRE AGREEMENT
+9.1. This EULA constitutes the entire agreement between Opensourced Pro and the Licensee with respect to the subject matter hereof and supersedes all prior or contemporaneous agreements, understandings, or representations, whether oral or written.
+
+
+
+
+BY INSTALLING OR USING THE DIAMOND SORTER SOFTWARE, THE LICENSEE ACKNOWLEDGES THAT THEY HAVE READ THIS EULA, UNDERSTAND IT, AND AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+
+Please consult with a legal professional to review and customize this EULA to comply with your specific requirements and applicable laws.
+
+
+© 2024 Opensourced Pro. All rights reserved.

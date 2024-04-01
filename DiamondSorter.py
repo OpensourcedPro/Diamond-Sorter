@@ -7,7 +7,7 @@ import sys
 import webbrowser
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtCore import QUrl, Qt, QTimer, pyqtSignal, pyqtSlot, QThread, QThreadPool, QBasicTimer, QTimerEvent, QMessageLogContext, QtMsgType, QRect
-from PyQt5.QtWidgets import QApplication, QLineEdit, QHBoxLayout, QShortcut, QMainWindow, QListWidget, QDockWidget, QPlainTextEdit, QLCDNumber, QWidget, QVBoxLayout, QTextBrowser, QFileDialog, QTextEdit, QComboBox, QPushButton, QMessageBox, QFrame, QInputDialog, QLabel, QCheckBox, QScrollBar, QDialogButtonBox, QDialog, QGridLayout, QMenu, QAction, QTabBar
+from PyQt5.QtWidgets import QApplication, QLineEdit, QHBoxLayout, QShortcut, QMainWindow, QListWidget, QDockWidget, QPlainTextEdit, QLCDNumber, QWidget, QVBoxLayout, QTextBrowser, QFileDialog, QTextEdit, QComboBox, QPushButton, QMessageBox, QFrame, QInputDialog, QLabel, QCheckBox, QScrollBar, QDialogButtonBox, QDialog, QGridLayout, QMenu, QAction, QTabBar, QSystemTrayIcon
 from PyQt5.QtXml import QDomDocument
 import hashlib
 from multiprocessing import Process, Queue
@@ -304,7 +304,39 @@ class DiamondSorter(*top_classes):
             self.setupUi(self)
         else:
             uic.loadUi(r'form.ui', self)
+        # Create the system tray icon
+        self.tray_icon = QSystemTrayIcon(self)
+        # Set the icon for the system tray
+        icon = QIcon("./icons/diamond.png")
+        self.tray_icon.setIcon(icon)
+        # Create a context menu for the system tray icon
+        menu = QMenu()
+        # Create a "Launch Homepage" action for the context menu
+        homepage_action = QAction("Launch Homepage", self)
+        homepage_action.triggered.connect(self.launch_homepage)
+        menu.addAction(homepage_action)
 
+        # Create a "Launch Chat" action for the context menu
+        chat_action = QAction("Launch Chat", self)
+        chat_action.triggered.connect(self.launch_chat)
+        menu.addAction(chat_action)
+
+        # Create a "Launch Chat" action for the context menu
+        github_action = QAction("Github Repo", self)
+        github_action.triggered.connect(self.launch_github)
+        menu.addAction(github_action)
+        
+        # Create an "Exit" action for the context menu
+        exit_action = QAction("Exit", self)
+        exit_action.triggered.connect(self.exit_application)
+        menu.addAction(exit_action)
+
+        # Set the context menu for the system tray icon
+        self.tray_icon.setContextMenu(menu)
+
+        # Show the system tray icon
+        self.tray_icon.show()
+        
         self.setWindowTitle(self.windowTitle() + ('' if INSTALLER_MODE else ' ~ WIP'))
         script_dir = os.path.dirname(sys.argv[0])
         icon_path = os.path.join(script_dir, "icons", "diamond.ico")
@@ -389,21 +421,41 @@ class DiamondSorter(*top_classes):
         self.sorting_files_tab = QWidget()
         self.sorting_files_tab.setObjectName("Sorting Files")
         self.telegram_bot_token_extractor_button.clicked.connect(self.telegram_bot_token_extractor)
+        self.input_text = QTextEdit()
 
+    def exit_application(self):
+        # Perform any necessary cleanup before exiting
+        self.tray_icon.hide()
+        sys.exit()
+
+    def launch_homepage(self):
+        # Open the homepage URL in the default browser
+        url = QUrl("https://opensourced.pro")
+        QDesktopServices.openUrl(url)
+
+    def launch_chat(self):
+        # Open the chat URL in the default browser
+        url = QUrl("https://t.me/+B6IXL7boGTYxYzNh")
+        QDesktopServices.openUrl(url)
+
+    def launch_github(self):
+        # Open the chat URL in the default browser
+        url = QUrl("https://github.com/OpenSourcedPro")
+        QDesktopServices.openUrl(url)
+        
     def telegram_bot_token_extractor(input_text):
-        # Regular expression pattern to match Telegram bot tokens
+        # Check if input_text is a string or bytes-like object
+        if not isinstance(input_text, (str, bytes)):
+            try:
+                input_text = str(input_text)
+            except Exception as e:
+                raise TypeError("Input text must be a string or bytes-like object") from e
+    
+        # Rest of your code...
         token_pattern = r'\b\d{9}:[\w-]{35}\b'
-    
-        # Find all matches of the token pattern in the input text
         tokens = re.findall(token_pattern, input_text)
-    
-        # Extracted tokens will be placed in the output_text window
         output_text = '\n'.join(tokens)
-    
-        # Remove the extracted tokens from the input text
         removed_data = re.sub(token_pattern, '', input_text)
-    
-        # Removed text will be displayed in the removed_data_text window
         removed_data_text = removed_data.strip()
     
         return output_text, removed_data_text

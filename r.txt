@@ -1,0 +1,7 @@
+google
+requests
+pywin32
+pyqt5
+bs4
+google
+win32gui
