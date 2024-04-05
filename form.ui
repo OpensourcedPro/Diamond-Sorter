@@ -325,7 +325,7 @@ QCheckBox::indicator:checked:hover {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>430</y>
+      <y>440</y>
       <width>971</width>
       <height>241</height>
      </rect>
@@ -798,14 +798,30 @@ and format them.</string>
      <widget class="QPushButton" name="telegram_bot_token_extractor_button">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>100</y>
-        <width>161</width>
+        <x>20</x>
+        <y>130</y>
+        <width>141</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Extract Telegram Tokens</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="extract_emails_button">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>100</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Extract any phone numbers from your input_text window or file captures.</string>
+      </property>
+      <property name="text">
+       <string>Extract Emails</string>
       </property>
      </widget>
     </widget>
@@ -1683,7 +1699,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="remove_duplicatesButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -1795,7 +1811,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="sort_by_business_capturesButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -1811,7 +1827,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="create_a_file_tree_sortinglogsButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -1827,7 +1843,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="sort_email_domainsButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -1956,7 +1972,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
      <widget class="QPushButton" name="sort_by_ads_logsButton_2">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -3497,9 +3513,9 @@ QTabBar::tab:selected {
     </property>
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>550</x>
       <y>390</y>
-      <width>321</width>
+      <width>421</width>
       <height>23</height>
      </rect>
     </property>
@@ -3986,17 +4002,32 @@ QCheckBox::indicator:checked:hover {
       <height>61</height>
      </rect>
     </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::CustomContextMenu</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="toolTipDuration">
+     <number>0</number>
+    </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
     </property>
     <property name="horizontalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOn</enum>
     </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+    </property>
     <property name="lineWrapMode">
      <enum>QTextEdit::NoWrap</enum>
     </property>
     <property name="readOnly">
      <bool>true</bool>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
     </property>
     <property name="placeholderText">
      <string>BTC -  bc1q78jk24l3uty88xgy26vatam45rqkah4e48fgyt   | |   ETH - 0x7db54642c6FB4Db5998f2ff9a160A4Ecf457364a   | |   LTC - Li58G7aCyg1pLqBLifftyk6bhJ3CwQeBmt   | |    XMR - 49yNe4Unj6CiUBiXEQD4UL7avZ3wvD8qKgWXTnFwTobTVjvVQ3EGK1y3sdq8WYAJh5RrhG4E5UNQv3XiedSP8s27MgqPJMh</string>
@@ -4049,10 +4080,46 @@ QCheckBox::indicator:checked:hover {
     <addaction name="separator"/>
     <addaction name="actionInsomnia_HTTP_Client"/>
    </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="geometry">
+     <rect>
+      <x>661</x>
+      <y>101</y>
+      <width>135</width>
+      <height>148</height>
+     </rect>
+    </property>
+    <property name="accessibleName">
+     <string/>
+    </property>
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>About</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/malware-64.png</normaloff>icons/malware-64.png</iconset>
+    </property>
+    <property name="separatorsCollapsible">
+     <bool>false</bool>
+    </property>
+    <property name="toolTipsVisible">
+     <bool>false</bool>
+    </property>
+    <addaction name="actionHomepage"/>
+    <addaction name="separator"/>
+    <addaction name="actionMembership"/>
+    <addaction name="actionMentorship"/>
+    <addaction name="separator"/>
+    <addaction name="actionTelegram_Group"/>
+   </widget>
    <addaction name="menuDiamond_Sorter"/>
    <addaction name="menuConsole_Screen"/>
    <addaction name="menuBrowser"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QDockWidget" name="ExtensionsBarQDockWidget">
    <property name="enabled">
@@ -4492,6 +4559,26 @@ Silverbullet, Openbullet, Python and more.</string>
    </property>
    <property name="menuRole">
     <enum>QAction::ApplicationSpecificRole</enum>
+   </property>
+  </action>
+  <action name="actionMembership">
+   <property name="text">
+    <string>Membership</string>
+   </property>
+  </action>
+  <action name="actionTelegram_Group">
+   <property name="text">
+    <string>Telegram Group</string>
+   </property>
+  </action>
+  <action name="actionMentorship">
+   <property name="text">
+    <string>Mentorship</string>
+   </property>
+  </action>
+  <action name="actionHomepage">
+   <property name="text">
+    <string>Homepage</string>
    </property>
   </action>
  </widget>
