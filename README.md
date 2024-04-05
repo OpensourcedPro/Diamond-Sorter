@@ -3,7 +3,6 @@ Diamond Sorter is a utility to sort out Stealer Logs and help create, manage and
 
 
 **<h1>Join The Telegram Chat Here</h1>** 
-[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/+Tdi5XNsUY8diMGE5)
 
 
 
@@ -35,32 +34,12 @@ Stealer malware can be distributed through various means, including phishing ema
 As a cyber security researcher I work with stealer malware logs on a daily basis, that's why I decided to facilitate my life and automate some of the processes.
 
 
-File Tree Structure that is Currently supported:
-- Racoon,
-- RedLine,
-- Aurora,
-- Titan,
-- Prynt/Worldwind stealer/botnet/clipper/miner,
-- other modified RedLine or Racoon family stealer malware. 
-
-<img width="262" alt="Screenshot 2023-05-15 at 20 11 36" src="https://github.com/milxss/racoon_log_parser/assets/42537931/0552234b-ca21-42d4-bb24-c137e1b69d10"> 
-<img width="338" alt="Screenshot 2023-05-18 at 00 01 21" src="https://github.com/milxss/racoon_log_parser/assets/42537931/be40d4ec-eba6-42ed-8b59-afe1f578bbd5">
-
 
 **<h1> How to use it?</h1>**
 Install the requirements that is listed in Requirements.txt
 
 Download and run python diamondsorter.py
 
-
-For more detailed Instructions, Use of the software, & How to set it up if you dont know python - - Then yeah...... Of course im going to charge you.
-
-
-![image](https://github.com/OpensourcedPro/Diamond-Sorter/assets/139492588/b427118d-9e88-455e-83fd-a12b463e1176)
-
-Dont be a skid like this clown
-
-
 **<h1>Join The Telegram Channel Here</h1>** 
-[![Telegram](https://betclever.com/img/telegram-join.png)](https://t.me/+Tdi5XNsUY8diMGE5)
+[![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/+Tdi5XNsUY8diMGE5)
 
