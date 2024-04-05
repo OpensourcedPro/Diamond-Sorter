@@ -7,7 +7,7 @@ import sys
 import webbrowser
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtCore import QUrl, Qt, QTimer, pyqtSignal, pyqtSlot, QThread, QThreadPool, QBasicTimer, QTimerEvent, QMessageLogContext, QtMsgType, QRect
-from PyQt5.QtWidgets import QApplication, QLineEdit, QHBoxLayout, QShortcut, QMainWindow, QListWidget, QDockWidget, QPlainTextEdit, QLCDNumber, QWidget, QVBoxLayout, QTextBrowser, QFileDialog, QTextEdit, QComboBox, QPushButton, QMessageBox, QFrame, QInputDialog, QLabel, QCheckBox, QScrollBar, QDialogButtonBox, QDialog, QGridLayout, QMenu, QAction, QTabBar, QSystemTrayIcon
+from PyQt5.QtWidgets import QApplication, QLineEdit, QHBoxLayout, QShortcut, QMainWindow, QListWidget, QDockWidget, QPlainTextEdit, QLCDNumber, QWidget, QVBoxLayout, QTextBrowser, QFileDialog, QTextEdit, QComboBox, QPushButton, QMessageBox, QFrame, QInputDialog, QLabel, QCheckBox, QScrollBar, QDialogButtonBox, QDialog, QGridLayout, QMenu, QAction, QTabBar, QSystemTrayIcon, QScrollArea
 from PyQt5.QtXml import QDomDocument
 import hashlib
 from multiprocessing import Process, Queue
@@ -306,6 +306,7 @@ class DiamondSorter(*top_classes):
     finished = pyqtSignal(int)
     def __init__(self, directory_path=None, input_textedit=None):
         super(DiamondSorter, self).__init__()
+
         if INSTALLER_MODE:
             self.setupUi(self)
         else:
@@ -317,7 +318,7 @@ class DiamondSorter(*top_classes):
         self.tray_icon.setIcon(icon)
         # Create a context menu for the system tray icon
         menu = QMenu()
-        
+
         
         # Create a "Show App" action for the context menu
         show_app_action = QAction("Show Application", self)
@@ -1614,14 +1615,7 @@ class DiamondSorter(*top_classes):
         removed_data = re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', '', input_text)
         return extracted_emails, removed_data
     
-    # Example usage
-    input_text = "Hello, my email is test@example.com. Please contact me at test2@example.com."
-    extracted_emails, removed_data = extract_emails(input_text)
-    print("Extracted Emails:")
-    for email in extracted_emails:
-        print(email)
-    print("Removed Data:")
-    print(removed_data)
+
         
     def handle_sort_by_cookies(self):
         pass
