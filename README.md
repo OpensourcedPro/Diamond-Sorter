@@ -70,11 +70,14 @@ conducted.
 Install the requirements that is listed in Requirements.txt
 
 Download and run python diamondsorter.py
-For more detailed Instructions, Use of the software, & How to purchase the software can be found @ https://diamond-sorter.gitbook.io/diamond-sorter/
 
 
+For more detailed Instructions, Use of the software, & How to set it up if you dont know python - - Then yeah...... Of course im going to charge you.
+![image](https://github.com/OpensourcedPro/Diamond-Sorter/assets/139492588/b427118d-9e88-455e-83fd-a12b463e1176)
+
+Dont be a skid like this clown
 
 
 **<h1>Join The Telegram Channel Here</h1>** 
-[![Telegram](https://betclever.com/img/telegram-join.png)](https://t.me/OpenSourcedPros)
+[![Telegram](https://betclever.com/img/telegram-join.png)](https://t.me/+Tdi5XNsUY8diMGE5)
 
