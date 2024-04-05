@@ -11,6 +11,14 @@ I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART 
 
 
 
+https://github.com/OpensourcedPro/Diamond-Sorter/assets/139492588/8aa285ac-b0c2-44d1-aa12-fc36f0e94fb4
+
+
+
+https://github.com/OpensourcedPro/Diamond-Sorter/assets/139492588/a27aa09e-af80-47f0-8c98-c727737d18f7
+
+
+
 
 
 **<h1> What are Stealer Logs and how does it operate?</h1>** 
