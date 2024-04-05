@@ -159,7 +159,7 @@ class CrawlerThread(QThread):
     copied = pyqtSignal(str)
     not_copied = pyqtSignal(str)
     
-    def __init__(self, loaded_directory, folder_name, saved_directory, directory_path, input_textedit):
+    def __init__(self, loaded_directory, folder_name, saved_directory, directory_path=None, input_textedit=None):
         super().__init__()
         self.loaded_directory = loaded_directory
         self.folder_name = folder_name
@@ -169,19 +169,24 @@ class CrawlerThread(QThread):
 
     def run(self):
         try:
-            # Perform crawling logic and find WordPress instances in the directory
-            results = self.set_directory_path_element(self.directory_path)
-            self.results_obtained.emit(results)
-            
-            # Access clipboard and set text to input_textedit
-            clipboard = QtWidgets.QApplication.clipboard()
-            text = clipboard.text()
-            self.input_textedit.setPlainText(text)
-            
-        except NameError:
-            # Display an error dialog if the function is not defined
-            error_message = "crawl_directory_for_wordpress function is not defined."
-            QMessageBox.critical(self, "Error", error_message)
+            if self.input_textedit is not None:
+                directory_path = self.set_directory_path_element.toPlainText()
+                results = self.crawl_directory(output_text)
+                self.copied.emit(results)
+            else:
+                error_message = "Missing input_textedit for directory path."
+                self.not_copied.emit(error_message)
+        except Exception as e:
+            error_message = f"An error occurred: {str(e)}"
+            self.not_copied.emit(error_message)
+
+    def crawl_directory(self, directory_path):
+        # Implement the logic to crawl the directory here using the provided directory path
+        results = f"Crawling directory: {directory_path}"
+        return results
+
+
+
 
 class MyProcess(Process):
     def __init__(self, queue):
@@ -312,20 +317,26 @@ class DiamondSorter(*top_classes):
         self.tray_icon.setIcon(icon)
         # Create a context menu for the system tray icon
         menu = QMenu()
-        # Create a "Launch Homepage" action for the context menu
-        homepage_action = QAction("Launch Homepage", self)
-        homepage_action.triggered.connect(self.launch_homepage)
-        menu.addAction(homepage_action)
+        
+        
+        # Create a "Show App" action for the context menu
+        show_app_action = QAction("Show Application", self)
+        show_app_action.triggered.connect(self.launch_show_app)
+        menu.addAction(show_app_action)
 
-        # Create a "Launch Chat" action for the context menu
-        chat_action = QAction("Launch Chat", self)
-        chat_action.triggered.connect(self.launch_chat)
-        menu.addAction(chat_action)
+        # Create a "Minimize App" action for the context menu
+        minimize_app_action = QAction("Minimize", self)
+        minimize_app_action.triggered.connect(self.launch_minimize)
+        menu.addAction(minimize_app_action)
 
-        # Create a "Launch Chat" action for the context menu
-        github_action = QAction("Github Repo", self)
-        github_action.triggered.connect(self.launch_github)
-        menu.addAction(github_action)
+        # Create a submenu for Community actions
+        community_menu = menu.addMenu("Community")
+
+        # Add actions for Launch Homepage, Chat, and Github to the Community submenu
+        self.create_action("Launch Homepage", self.launch_homepage, community_menu)
+        self.create_action("Launch Chat", self.launch_chat, community_menu)
+        self.create_action("Github Repo", self.launch_github, community_menu)
+
         
         # Create an "Exit" action for the context menu
         exit_action = QAction("Exit", self)
@@ -419,10 +430,32 @@ class DiamondSorter(*top_classes):
         self.import_requests_button = QPushButton("Import Requests")
         self.sorting_cookies_sort_by_domain.clicked.connect(self.sort_cookies_by_domain)
 
-        self.sorting_files_tab = QWidget()
-        self.sorting_files_tab.setObjectName("Sorting Files")
-        self.telegram_bot_token_extractor_button.clicked.connect(self.telegram_bot_token_extractor)
-        self.input_text = QTextEdit()
+
+
+    def launch_minimize(self):
+        # Minimize the application window
+        self.showMinimized()
+
+    def create_menus(self):
+        # Create a submenu for Community actions
+        community_menu = QMenu("Community")
+        self.menuBar().addMenu(community_menu)
+
+        # Add actions for Launch Homepage, Chat, and Github to the Community submenu
+        self.create_action("Launch Homepage", self.launch_homepage, community_menu)
+        self.create_action("Launch Chat", self.launch_chat, community_menu)
+        self.create_action("Launch GitHub", self.launch_github, community_menu)
+
+    def create_action(self, title, handler, menu):
+        action = QAction(title, self)
+        action.triggered.connect(handler)
+        menu.addAction(action)
+
+    def launch_show_app(self):
+        # Check if the application is not at the top level
+        if self.windowState() == QtCore.Qt.WindowMinimized or self.isHidden():
+            self.setWindowState(QtCore.Qt.WindowActive)
+            self.showNormal()
 
     def exit_application(self):
         # Perform any necessary cleanup before exiting
@@ -440,10 +473,10 @@ class DiamondSorter(*top_classes):
         QDesktopServices.openUrl(url)
 
     def launch_github(self):
-        # Open the chat URL in the default browser
+        # Open the GitHub URL in the default browser
         url = QUrl("https://github.com/OpenSourcedPro")
         QDesktopServices.openUrl(url)
-        
+
     def telegram_bot_token_extractor(input_text):
         # Check if input_text is a string or bytes-like object
         if not isinstance(input_text, (str, bytes)):
@@ -509,8 +542,6 @@ class DiamondSorter(*top_classes):
         # Append to the console widget
         self.console_widget_textedit.append("Sorting cookies by domain completed!")
     
-    
-
 
     def show_text_dialog(self):
         # Display the multi-line text dialog
@@ -560,8 +591,8 @@ class DiamondSorter(*top_classes):
                         break
                     self.input_text.insertPlainText(chunk)
                     QApplication.processEvents()  # Allow the application to process other events
+            
         
-    
         
     def show_search_dialog_input(self):
         text, ok = QInputDialog.getText(self, 'Search', 'Enter search query:')
@@ -1507,7 +1538,6 @@ class DiamondSorter(*top_classes):
         self.clear_tabs_button = QPushButton("Clear Tabs")
         self.file_tree_view_button = QPushButton("Display Your Selected File Structure")
         self.remove_empty_lines_button = QPushButton("Remove Empty Lines")
-
         self.recent_directories = []
         self.stats_values = []  # Define stats_values as an attribute
         self.stats_values_input = []  # Define stats_values_input as an attribute
@@ -1547,13 +1577,55 @@ class DiamondSorter(*top_classes):
         self.values_list_widget = QListWidget()
         self.reformat_button.clicked.connect(self.reformat_button_function)
         self.donation_text_edit = QTextEdit("donation_text_edit")
-        
         # Set the initial donation text
         self.donation_text_edit.setPlainText("49yNe4Unj6CiUBiXEQD4UL7avZ3wvD8qKgWXTnFwTobTVjvVQ3EGK1y3sdq8WYAJh5RrhG4E5UNQv3XiedSP8s27MgqPJMh")
         # Set up the timer
         self.timer = QTimer()
         self.timer.timeout.connect(self.scroll_text)
         self.timer.start(100)  # Adjust the interval for the desired scrolling speed
+        self.extract_emails_button = QPushButton("Extract Emails")
+        self.extract_emails_button.clicked.connect(self.extract_emails)
+
+
+    
+    def handle_button_click(self, button_name):
+        # List of specific buttons that trigger the error dialog
+        specific_buttons = [
+            "Sort by Cookies", "Authy Desktop", "New Text Documents", "Chrome Extensions",
+            "Desktop Wallets", "Auth Files", "PGP GPG Keys", "Text Named Files",
+            "Browser 2FA Exten", "Browser Wallets", "Remote Desktop", "Encryption keys",
+            "Control Panels", "Telegram Folders", "Scrape Keys", "Scrape Banking Data",
+            "Scrape Backup Codes", "Scrape Security Data", "Discord Folders"
+        ]
+        
+        if button_name in specific_buttons and not self.set_directory_path_element:
+            # Display an error dialog as the path is not set
+            self.display_error_dialog("Error", "Path not set for the selected option.")
+
+    def display_error_dialog(self, title, message):
+        error_dialog = QMessageBox()
+        error_dialog.setIcon(QMessageBox.Critical)
+        error_dialog.setWindowTitle(title)
+        error_dialog.setText(message)
+        error_dialog.exec_()
+
+    def extract_emails(input_text):
+        extracted_emails = re.findall(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', input_text)
+        removed_data = re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', '', input_text)
+        return extracted_emails, removed_data
+    
+    # Example usage
+    input_text = "Hello, my email is test@example.com. Please contact me at test2@example.com."
+    extracted_emails, removed_data = extract_emails(input_text)
+    print("Extracted Emails:")
+    for email in extracted_emails:
+        print(email)
+    print("Removed Data:")
+    print(removed_data)
+        
+    def handle_sort_by_cookies(self):
+        pass
+
 
     def scroll_text(self):
         # Get the current text
@@ -1564,6 +1636,8 @@ class DiamondSorter(*top_classes):
         
         # Set the scrolled text
         self.donation_text_edit.setPlainText(scrolled_text)
+
+
     def reformat_button_function(self):
         # Create the custom dialog
         dialog = QDialog(self)
@@ -1620,24 +1694,179 @@ class DiamondSorter(*top_classes):
     
             # Show a message box to indicate the transformation is complete
             QMessageBox.information(self, "Transformation Complete", "Text has been transformed.")
-                    
+
+
     def sort_by_cookies_function():
-        print("Pass")
+        # Display text input window to enter the domains
+        domains = input("Enter the domains to sort cookies by (one per line): ").splitlines()
+        
+        # Get the directory path
+        directory_path = self.directory_path_text_element.toPlainText()
+        
+        # Iterate over each domain and search for matching cookie text files
+        for domain in domains:
+            # Search for cookie text files containing the specific domain
+            cookie_files = search_cookie_files(directory_path, domain)
+            
+            # Save the results under Diamond Sorter/Sorter Cookies/REQUEST/Cookies.txt
+            save_results(cookie_files, "Diamond Sorter/Sorter Cookies/REQUEST", "Cookies.txt")
+            
+            # Display each hit in the console
+            if cookie_files:
+                print(f"Found matching cookies for domain: {domain}")
+                for file in cookie_files:
+                    print(f" - {file}")
+            else:
+                print(f"No matching cookies found for domain: {domain}")
 
-    def authy_desktop_functions():
-        print("Pass")
-        
-    def remote_desktop_functions():
-        print("Pass")
-        
-    def pgp_gpg_key_functions():
-        print("Pass")
-        
-    def new_text_document_functions():
-        print("Pass")
 
+    def authy_desktop_functions(self):
+        # Get the directory path
+        directory_path = self.directory_path_text_element.toPlainText()
+
+        # Define the search_folders function within the same class
+        def search_folders(root_dir, folder_names):
+            found_folders = []
+            for root, dirs, _ in os.walk(root_dir):
+                for folder in folder_names:
+                    if folder.upper() in map(str.upper, dirs):
+                        found_folders.append(os.path.join(root, folder))
+            return found_folders
+
+        # Define the process_folder function to simulate processing and return results
+        def process_folder(folder):
+            # Simulate processing and return some results
+            return [f"Processed file in folder: {folder}/file1.txt", "Processed folder: subfolder"]
+
+        # Define the save_results function to save results under a specified directory
+        def save_results(folders, save_directory):
+            for folder in folders:
+                result_folder = os.path.join(save_directory, os.path.basename(folder))
+                os.makedirs(result_folder, exist_ok=True)
+                for root, _, files in os.walk(folder):
+                    for file in files:
+                        shutil.copy2(os.path.join(root, file), result_folder)
+
+        # Search for folders with the names AUTHY or AUTHDESKTOP
+        authy_folders = search_folders(directory_path, ["AUTHY", "AUTHDESKTOP"])
+
+        # Iterate over each folder, process it, and display results
+        for folder in authy_folders:
+            print(f"Crawled path: {folder}")
+            results = process_folder(folder)
+            if results:
+                print("Results:")
+                for result in results:
+                    print(result)
+            else:
+                print("No results found.")
+
+        # Save the results under Diamond Sorter/Sorter Authy/AuthyDesktop_Result
+        save_results(authy_folders, "Diamond Sorter/Sorter Authy/AuthyDesktop_Result")
+    
+    def remote_desktop_functions(self):
+        # Get the directory path
+        directory_path = self.directory_path_text_element.toPlainText()
+
+        # Define the search_files function within the same class
+        def search_files(root_dir, extensions):
+            found_files = []
+            for root, _, files in os.walk(root_dir):
+                for file in files:
+                    if any(file.endswith(ext) for ext in extensions):
+                        found_files.append(os.path.join(root, file))
+            return found_files
+
+        # Search for text files in the specified directory
+        text_files = search_files(directory_path, [".txt"])
+
+        # Move the text files to a remote desktop folder
+        remote_folder = "RemoteDesktop"
+        for file_path in text_files:
+            destination_path = os.path.join(remote_folder, os.path.basename(file_path))
+            shutil.move(file_path, destination_path)
+
+        # Display updates and notices in the console
+        console_text = []
+        console_text.append("Updates and Notices:")
+        console_text.append(f" - Moved {len(text_files)} text files to the '{remote_folder}' folder.")
+
+        # Set the console text with the updates
+        self.console_widget_textedit.setPlainText('\n'.join(console_text))
+
+    def pgp_gpg_key_functions(self):
+        # Get the directory path
+        directory_path = self.directory_path_text_element.toPlainText()
+
+        # Define the search_folders function within the same class
+        def search_folders(root_dir, folders):
+            found_folders = []
+            for root, dirs, files in os.walk(root_dir):
+                for folder in folders:
+                    if folder in dirs:
+                        found_folders.append(os.path.join(root, folder))
+            return found_folders
+
+        # Define the search_files function to filter files with specified extensions
+        def search_files(folders, extensions):
+            found_files = []
+            for folder in folders:
+                for root, _, files in os.walk(folder):
+                    for file in files:
+                        if any(file.endswith(ext) for ext in extensions):
+                            found_files.append(os.path.join(root, file))
+            return found_files
+
+        # Define the move_files function to move files to a specified results folder
+        def move_files(files, results_folder):
+            for file in files:
+                destination_path = os.path.join(results_folder, os.path.basename(file))
+                shutil.move(file, destination_path)
+
+        # Search inside all folders named FileGrabber for files with pgp or gpg extensions
+        filegrabber_folders = search_folders(directory_path, ["FileGrabber"])
+        pgp_gpg_files = search_files(filegrabber_folders, [".pgp", ".gpg"])
+
+        # Move the files to a results folder named PGP Sorted
+        results_folder = "PGP Sorted"
+        move_files(pgp_gpg_files, results_folder)
+
+        # Display updates and notices in the console
+        console_text = []
+        console_text.append("Updates and Notices:")
+        console_text.append(f" - Found {len(pgp_gpg_files)} PGP/GPG key files.")
+        console_text.append(f" - Moved files to the '{results_folder}' folder.")
+
+        # Set the console text with the updates
+        self.console_widget_textedit.setPlainText('\n'.join(console_text))
+
+
+    def new_text_document_functions(self):
+        # Get the directory path
+        directory_path = self.directory_path_text_element.toPlainText()
         
-    def text_named_files_functions():
+        # Search for New Text Document.txt files
+        new_text_document_files = search_files(directory_path, ["New Text Document.txt"])
+        
+        # Ask the user if they want to move or copy the files
+        user_choice = input("Do you want to move or copy the New Text Document.txt files? (M for move, C for copy): ")
+        
+        # Process the files based on user choice
+        if user_choice.lower() == "m":
+            # Move the files to the results folder
+            results_folder = "Results"
+            move_files(new_text_document_files, results_folder)
+            print(f"Moved {len(new_text_document_files)} files to {results_folder} folder.")
+        elif user_choice.lower() == "c":
+            # Copy the files to the results folder
+            results_folder = "Results"
+            copy_files(new_text_document_files, results_folder)
+            print(f"Copied {len(new_text_document_files)} files to {results_folder} folder.")
+        else:
+            print("Invalid choice. Please choose either M for move or C for copy.")
+    
+    def text_named_files_functions(self):
+        directory_path = self.directory_path_text_element.toPlainText()
         print("Pass")
 
     def remove_before_button_2_function(self):
@@ -1765,28 +1994,7 @@ class DiamondSorter(*top_classes):
 
 
 
-    def handle_recovery_key_button_click():
-        selected_directory = set_directory_path_element.get_selected_directory()
-        regex_pattern = input("Enter the regular expression pattern: ")
-        regex = re.compile(regex_pattern)
-        result_texts = []
-    
-        for root, dirs, files in os.walk(selected_directory):
-            for file in files:
-                if file.endswith(".txt"):
-                    file_path = os.path.join(root, file)
-                    with open(file_path, "r") as f:
-                        contents = f.read()
-                        matches = regex.findall(contents)
-                        if matches:
-                            result_texts.extend(matches)
-    
-        for result in result_texts:
-            console_widget_textedit.append(result)
-        
-        
-        
-    def handle_recovery_key_button_click():
+    def handle_recovery_key_button_click(self):
         selected_directory = set_directory_path_element.get_selected_directory()
         regex_pattern = input("Enter the regular expression pattern: ")
         regex = re.compile(regex_pattern)
@@ -1808,48 +2016,6 @@ class DiamondSorter(*top_classes):
         
         
         
-        
-    def handle_recovery_key_button_click():
-        selected_directory = set_directory_path_element.get_selected_directory()
-        regex_pattern = input("Enter the regular expression pattern: ")
-        regex = re.compile(regex_pattern)
-        result_texts = []
-    
-        for root, dirs, files in os.walk(selected_directory):
-            for file in files:
-                if file.endswith(".txt"):
-                    file_path = os.path.join(root, file)
-                    with open(file_path, "r") as f:
-                        contents = f.read()
-                        matches = regex.findall(contents)
-                        if matches:
-                            result_texts.extend(matches)
-    
-        for result in result_texts:
-            console_widget_textedit.append(result)
-        
-        
-        
-    def handle_recovery_key_button_click():
-        selected_directory = set_directory_path_element.get_selected_directory()
-        regex_pattern = input("Enter the regular expression pattern: ")
-        regex = re.compile(regex_pattern)
-        result_texts = []
-    
-        for root, dirs, files in os.walk(selected_directory):
-            for file in files:
-                if file.endswith(".txt"):
-                    file_path = os.path.join(root, file)
-                    with open(file_path, "r") as f:
-                        contents = f.read()
-                        matches = regex.findall(contents)
-                        if matches:
-                            result_texts.extend(matches)
-    
-        for result in result_texts:
-            console_widget_textedit.append(result)
-
-
     def handle_password_working_function_change(self, index):
         selected_option = self.password_working_function_combo.itemText(index)
         console_widget = self.findChild(QPlainTextEdit, "console_widget_textedit")
@@ -1921,39 +2087,46 @@ class DiamondSorter(*top_classes):
     def encryption_keys_button_clicked(self):
         directory_path = self.set_directory_path_element.toPlainText()  # Get the directory path from the GUI element
         saved_results_path = self.savedResultsTextBox.toPlainText()
-    
-        # Check if a save path is set
-        if not saved_results_path:
-            messagebox.showerror("Error", "Please set your save path")
-            return
 
-        # List to store the found encrypted key files
-        encrypted_key_files = []
-    
-        # Regular expression pattern to match PGP or GPG encrypted keys
-        regex_pattern = r"-----BEGIN PGP (PUBLIC|PRIVATE) KEY BLOCK-----.*?-----END PGP (PUBLIC|PRIVATE) KEY BLOCK-----"
-    
-        # Crawl the directory and search for text files containing encrypted keys
-        for root, dirs, files in os.walk(directory_path):
-            for file in files:
-                if file.endswith(".txt"):
-                    file_path = os.path.join(root, file)
-                    with open(file_path, "r") as f:
-                        file_content = f.read().decode('utf-16')
+        try:
+            # Check if a save path is set
+            if not saved_results_path:
+                error_message = "Please set a save path before processing encrypted key files."
+                self.console_widget_textedit.setPlainText(error_message)
+                return
 
-                        if re.search(regex_pattern, file_content, re.DOTALL):
-                            encrypted_key_files.append(file_path)
-    
-        # Save the found encrypted key files to the specified path
-        for file_path in encrypted_key_files:
-            destination_path = os.path.join(saved_results_path, os.path.basename(file_path))
-            shutil.copy(file_path, destination_path)
-    
-        # Display the functions in the console_text widget
-        console_text.clear()
-        for file_path in encrypted_key_files:
-            console_text.append(file_path)
+            # List to store the found encrypted key files
+            encrypted_key_files = []
 
+            # Regular expression pattern to match PGP or GPG encrypted keys
+            regex_pattern = r"-----BEGIN PGP (PUBLIC|PRIVATE) KEY BLOCK-----.*?-----END PGP (PUBLIC|PRIVATE) KEY BLOCK-----"
+
+            # Crawl the directory and search for text files containing encrypted keys
+            for root, dirs, files in os.walk(directory_path):
+                for file in files:
+                    if file.endswith(".txt"):
+                        file_path = os.path.join(root, file)
+                        with open(file_path, "r", encoding='utf-8') as f:
+                            file_content = f.read()
+
+                            if re.search(regex_pattern, file_content, re.DOTALL):
+                                encrypted_key_files.append(file_path)
+
+            # Save the found encrypted key files to the specified path
+            for file_path in encrypted_key_files:
+                destination_path = os.path.join(saved_results_path, os.path.basename(file_path))
+                shutil.copy(file_path, destination_path)
+
+            # Display the paths of encrypted key files in the console_text widget
+            console_text = []
+            for file_path in encrypted_key_files:
+                console_text.append(file_path)
+
+            self.console_widget_textedit.setPlainText('\n'.join(console_text))
+
+        except Exception as e:
+            error_message = f"An error occurred while processing the files: {e}"
+            self.console_widget_textedit.setPlainText(error_message)
 
 
 
@@ -2065,7 +2238,7 @@ class DiamondSorter(*top_classes):
     def sort_passwords(self, order):
         # Sorting logic based on the order (asc or desc)
         pass
-    
+
     def group_passwords_by_weight(self):
         lightest_weight, ok = QInputDialog.getInt(self, "Group Passwords by Weight", "Enter the lightest weight:")
         if ok:
@@ -2309,68 +2482,7 @@ class DiamondSorter(*top_classes):
                                 results += result + "\n"
         return results
 
-    def handle_sort_by_cookies(self):
-        directory_path = self.set_directory_path_element.toPlainText()
-        selected_directory = self.set_directory_path_element.toPlainText()
-        save_directory = self.savedResultsTextBox.toPlainText()  # Retrieve the save directory from savedResultsTextBox
-        # Functionality for handling Sort by Cookies Button
-        self.console_widget_textedit.appendPlainText(f"Sort by Cookies button clicked. Directory path: {directory_path}")
-    
-        # Create a menu for the settings options
-        menu = QMenu(self)
-    
-        # Create QAction objects for each setting option
-        search_by_value_action = QAction("Search by Value", self)
-        search_by_domain_action = QAction("Search by Domain", self)
-        search_by_generated_action = QAction("Search by Generated", self)
-    
-        # Add the QAction objects to the menu
-        menu.addAction(search_by_value_action)
-        menu.addAction(search_by_domain_action)
-        menu.addAction(search_by_generated_action)
-    
-        # Show the menu at the button position
-        action = menu.exec_(self.sender().mapToGlobal(self.sender().rect().bottomLeft()))
-    
-        if action == search_by_value_action:
-            # Prompt the user for a value request
-            value_request, ok = QInputDialog.getInt(self, "Value Request", "Enter the number of hits (1-1000):", min=1, max=1000)
-            if ok:
-                # Add the value request to the values list widget
-                self.values_list_widget.addItem(str(value_request))
-        elif action == search_by_domain_action:
-            # Prompt the user for a domain request
-            domain_request, ok = QInputDialog.getText(self, "Domain Request", "Enter your domain request (URL-formatted):")
-            if ok:
-                # Validate the domain request using regular expression
-                url_pattern = re.compile(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+')
-                if url_pattern.match(domain_request):
-                    # Add the domain request to the domains list widget
-                    self.domains_list_widget.addItem(domain_request)
-                else:
-                    QMessageBox.warning(self, "Invalid Domain Request", "Please enter a valid URL-formatted domain request.")
-    
-        # Look for folders with browser names or folders named "Cookie"
-        folders_to_sort = ["Chrome", "Firefox", "Edge", "Safari", "Opera", "Cookie"]
-        for root, dirs, files in os.walk(directory_path):
-            for folder_name in dirs:
-                if folder_name in folders_to_sort:
-                    folder_path = os.path.join(root, folder_name)
-                    # Perform sorting logic for each found folder
-    
-        # Prompt the user to select a path to save to if save_directory is not defined
-        if not save_directory:
-            save_directory = QFileDialog.getExistingDirectory(self, "Select Save Directory")
-            if not save_directory:
-                QMessageBox.warning(self, "Save Directory Not Selected", "Please select a directory to save the results.")
-                return
-    
-        # Crawl the loaded directory and search for the specified folder
-        self.crawlThread = CrawlerThread(selected_directory, folder_name, save_directory)
-        self.crawlThread.copied.connect(self.console_widget_textedit.appendPlainText)
-        self.crawlThread.not_copied.connect(self.dummy_message)
-        self.crawlThread.finished.connect(self.finish_crawl)
-        self.crawlThread.start()
+
 
     def emails(self):
         directory_path = self.set_directory_path_element.toPlainText()
