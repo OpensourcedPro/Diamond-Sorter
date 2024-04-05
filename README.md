@@ -2,16 +2,16 @@
 Diamond Sorter is a utility to sort out Stealer Logs and help create, manage and edit HQ Targetted Combolists, Leads, Account Data and Emails.
 
 
-**<h1>NEED HELP? QUESTIONS? SUPPORT? </h1>** 
-I will ONLY GIVE SUPPORT, UPDATES & HELP TO MY COMMUNITY MEMBERS THAT ARE APART OF THE COMMUNITY - https://Opensourced.Pro
-
-
 **<h1>Join The Telegram Chat Here</h1>** 
 [![Telegram](https://cdn.icon-icons.com/icons2/2530/PNG/512/telegram_button_icon_151837.png)](https://t.me/+Tdi5XNsUY8diMGE5)
 
 
 
 https://github.com/OpensourcedPro/Diamond-Sorter/assets/139492588/8aa285ac-b0c2-44d1-aa12-fc36f0e94fb4
+
+
+**<h1>NEED HELP? QUESTIONS? SUPPORT? </h1>** 
+Google It.... I only provide direct support for my private community members - https://opensourced.pro/info
 
 
 
@@ -34,11 +34,6 @@ Stealer malware can be distributed through various means, including phishing ema
 
 As a cyber security researcher I work with stealer malware logs on a daily basis, that's why I decided to facilitate my life and automate some of the processes.
 
-
-# Diamond Sorter - A Universal Data Managment Utility
-
-**This tool is designed to retrieve, orginize and sort all data retrived from malware logs and any data inserted into it.
-Made for cyber security educational purposes only.**
 
 File Tree Structure that is Currently supported:
 - Racoon,
