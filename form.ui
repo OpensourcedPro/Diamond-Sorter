@@ -3891,7 +3891,7 @@ QProgressBar {
      </rect>
     </property>
     <property name="text">
-     <string>       V 1.9.0</string>
+     <string>       V 1.9.6</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="input_text">
@@ -3997,9 +3997,9 @@ QCheckBox::indicator:checked:hover {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>720</y>
+      <y>740</y>
       <width>981</width>
-      <height>61</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="contextMenuPolicy">
@@ -4026,8 +4026,18 @@ QCheckBox::indicator:checked:hover {
     <property name="readOnly">
      <bool>true</bool>
     </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;BTC -  bc1q78jk24l3uty88xgy26vatam45rqkah4e48fgyt   | |   ETH - 0x7db54642c6FB4Db5998f2ff9a160A4Ecf457364a   | |   LTC - Li58G7aCyg1pLqBLifftyk6bhJ3CwQeBmt   | |    XMR - 49yNe4Unj6CiUBiXEQD4UL7avZ3wvD8qKgWXTnFwTobTVjvVQ3EGK1y3sdq8WYAJh5RrhG4E5UNQv3XiedSP8s27MgqPJMh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="textInteractionFlags">
-     <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+     <set>Qt::TextSelectableByMouse</set>
     </property>
     <property name="placeholderText">
      <string>BTC -  bc1q78jk24l3uty88xgy26vatam45rqkah4e48fgyt   | |   ETH - 0x7db54642c6FB4Db5998f2ff9a160A4Ecf457364a   | |   LTC - Li58G7aCyg1pLqBLifftyk6bhJ3CwQeBmt   | |    XMR - 49yNe4Unj6CiUBiXEQD4UL7avZ3wvD8qKgWXTnFwTobTVjvVQ3EGK1y3sdq8WYAJh5RrhG4E5UNQv3XiedSP8s27MgqPJMh</string>

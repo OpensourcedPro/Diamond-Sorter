@@ -39,13 +39,24 @@ import warnings
 from PyQt5.QtGui import QKeySequence
 from PyQt5 import QAxContainer
 import difflib
+import tkinter as tk
+import tk
+import tkinter as tk
+from tkinter import ttk
+
 
 warnings.filterwarnings("ignore", category=UserWarning, message="QLayout: Cannot add parent widget")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning, message="Unknown property transform")
 warnings.filterwarnings("ignore", category=UserWarning, message="Unknown property transform-origin")
 
-
+country_phone_codes = {
+"United States": "+1",
+"United Kingdom": "+44",
+"Canada": "+1",
+"Australia": "+61",
+# Add more countries and phone codes as needed
+}
 
 INSTALLER_MODE = False # CHANGE THIS LINE WHEN COMPILE
 if INSTALLER_MODE:
@@ -141,16 +152,6 @@ class OverlayWidget(QWidget):
 
         button = QPushButton("Continue")
         layout.addWidget(button)
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -470,7 +471,7 @@ class DiamondSorter(*top_classes):
 
     def launch_chat(self):
         # Open the chat URL in the default browser
-        url = QUrl("https://t.me/+B6IXL7boGTYxYzNh")
+        url = QUrl("https://t.me/+qHUEVtnXj3U2OGNh")
         QDesktopServices.openUrl(url)
 
     def launch_github(self):
@@ -643,13 +644,6 @@ class DiamondSorter(*top_classes):
                 else:
                     QMessageBox.information(self, 'Search', 'The word was not found in the removed data text.')
     
-
-
-
-
-
-
-
 
     def display_file_stats(self):
         directory_path = self.set_directory_path_element.toPlainText()
@@ -1257,6 +1251,7 @@ class DiamondSorter(*top_classes):
         except Exception as e:
            console_widget_textedit.appendPlainText("An error occurred: {e}")
 
+# Function to add option dialog to select a specific country phone code for all countries
     def number_password(self):
         """Create a list of number values that could be phone numbers."""
         try:
@@ -1265,25 +1260,32 @@ class DiamondSorter(*top_classes):
             removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
             
             if input_text is not None and output_text is not None and removed_data_text is not None:
-                text = input_text.toPlainText()
-                lines = text.split("\n")
-                number_list = []
-                removed_list = []
+                # Add an option dialog to select a specific country phone code for all countries
+                country_codes = ["+1 (USA)", "+44 (UK)", "+86 (China)", "+81 (Japan)", "+33 (France)", "+49 (Germany)", "+91 (India)", "+61 (Australia)"]  # Add more country codes as needed
+                selected_code = QInputDialog.getItem(self, "Select Country Phone Code", "Choose a country code:", country_codes)
                 
-                for line in lines:
-                    numbers = re.findall(r"\d{3}-\d{3}-\d{4}", line)  # Assuming phone numbers are in the format XXX-XXX-XXXX
+                if selected_code[1]:
+                    text = input_text.toPlainText()
+                    lines = text.split("\n")
+                    number_list = []
+                    removed_list = []
                     
-                    if numbers:
-                        number_list.extend(numbers)
-                        removed_list.append(line)
-                
-                output_text.clear()
-                output_text.setPlainText("\n".join(number_list))
-                
-                removed_data_text.clear()
-                removed_data_text.setLineWrapMode(QTextEdit.WidgetWidth)
-                removed_data_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-                removed_data_text.setPlainText("\n".join(removed_list))
+                    selected_country_code = selected_code[0].split()[0]  # Extract the selected country code
+                    
+                    for line in lines:
+                        numbers = re.findall(rf"(?:\+)?1?\d{{10}} {selected_country_code}", line)  # Match phone numbers with selected country code (with or without +1)
+                        
+                        if numbers:
+                            number_list.extend(numbers)
+                            removed_list.append(line)
+                    
+                    output_text.clear()
+                    output_text.setPlainText("\n".join(number_list))
+                    
+                    removed_data_text.clear()
+                    removed_data_text.setLineWrapMode(QTextEdit.WidgetWidth)
+                    removed_data_text.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+                    removed_data_text.setPlainText("\n".join(removed_list))
         
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -2348,21 +2350,6 @@ class DiamondSorter(*top_classes):
         self.output_text.clear()
         self.removed_data_text.clear()
 
-    def extract_phone_numbers_button_clicked(self):
-        try:
-            input_text = self.findChild(QtWidgets.QTextEdit, "input_text")  # Replace "input_text" with the actual object name
-            output_text = self.findChild(QtWidgets.QTextEdit, "output_text")  # Replace "output_text" with the actual object name
-    
-            if input_text is not None and output_text is not None:
-                text = input_text.toPlainText()
-                phone_numbers = re.findall(r"\b\d{3}[-.]?\d{3}[-.]?\d{4}\b", text)
-                extracted_phone_numbers = "\n".join(phone_numbers)
-    
-                output_text.clear()
-                output_text.setPlainText(extracted_phone_numbers)
-        except Exception as e:
-            print(f"An error occurred: {e}")
-
     def get_file_stats():
         pass
 
@@ -2936,20 +2923,28 @@ class DiamondSorter(*top_classes):
             directory_path = self.set_directory_path_element.toPlainText()
             if directory_path:
                 count = 0
+                move_or_copy = input("Do you want to move or copy the files? Enter 'move' or 'copy': ")
                 for root, dirs, files in os.walk(directory_path):
                     for file in files:
                         if file == "New Text Document.txt":
                             count += 1
+                            file_path = os.path.join(root, file)
+                            self.console_widget_textedit.appendPlainText(f"Searching: {file_path}")
+                            if move_or_copy == 'move':
+                                shutil.move(file_path, self.savedResultsTextBox)
+                            elif move_or_copy == 'copy':
+                                shutil.copy(file_path, self.savedResultsTextBox)
     
                 message = f"Found {count} occurrences of 'New Text Document.txt'"
             else:
-                # Show an error message informing the user to enter a directory path
                 error_message = "Please enter a directory path."
                 self.console_widget_textedit.appendPlainText(error_message + '\n')
         except Exception as e:
             error_message = "An error occurred: " + str(e)
             self.console_widget_textedit.appendPlainText(error_message + '\n')
-        
+
+
+
     def handle_file_count_finished(self, count):
         message = f"Found {count} occurrences of 'New Text Document.txt'"
         self.lcdNumber_4.display(count)
@@ -2986,7 +2981,9 @@ class DiamondSorter(*top_classes):
         self.console_widget_textedit.appendPlainText(f"Telegram Folder Sorting Button clicked. Directory path: {directory_path}")
 
     def launch_domain_manager(self):
-        subprocess.Popen(["python", "domain_sorter.py"])
+        sub_directory_path = "ui_files"  # Define the sub-directory path
+        script_path = os.path.join(sub_directory_path, "Ui_domain_sorter.py")  # Construct the full path to the script
+        subprocess.Popen(["python", script_path])
         
     def launch_url_manager(self):
         subprocess.Popen(["python", "url_tools.py"])
@@ -3780,17 +3777,58 @@ class DiamondSorter(*top_classes):
         root.clipboard_clear()
         root.clipboard_append(output_content)
 
-    def extract_phone_numbers_button_clicked(self):
-        input_text = self.input_text.toPlainText()
-        phone_number_pattern = r'\b(?:\+\d{1,3}\s?)?(?:\(\d{1,3}\)\s?)?(?:\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,9})\b'
-        
-        phone_numbers = re.findall(phone_number_pattern, input_text)
-        self.output_text.setPlainText('\n'.join(phone_numbers))
-        
-        lines = input_text.split('\n')
-        removed_lines = [line for line in lines if not any(re.findall(phone_number_pattern, line))]
-        self.removed_data_text.setPlainText('\n'.join(removed_lines))
 
+    country_phone_codes = {
+    "United States": "+1",
+    "United Kingdom": "+44",
+    "Canada": "+1",
+    "Australia": "+61",
+    # Add more countries and phone codes as needed
+    }
+
+    def extract_phone_numbers_button_clicked(self):
+        def get_selected_country():
+            selected_country = country_combobox.currentText()
+            phone_code = country_phone_codes.get(selected_country, "Country not found")
+            print(f"Selected Country: {selected_country} - Phone Code: {phone_code}")
+            
+            input_text = self.findChild(QTextBrowser, "input_text")  # Replace "input_text" with the actual object name
+            output_text = self.findChild(QTextBrowser, "output_text")  # Replace "output_text" with the actual object name
+            removed_data_text = self.findChild(QTextBrowser, "removed_data_text")  # Replace "removed_data_text" with the actual object name
+    
+            if input_text is not None and output_text is not None and removed_data_text is not None:
+                text = input_text.toPlainText()
+                phone_number_pattern = r'\b(?:\+\d{1,3}\s?)?(?:\(\d{1,3}\)\s?)?(?:\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,9})\b'
+                
+                phone_numbers = re.findall(phone_number_pattern, text)
+                output_text.clear()
+                output_text.setPlainText('\n'.join(phone_numbers))
+                
+                lines = text.split('\n')
+                removed_lines = [line for line in lines if not any(re.findall(phone_number_pattern, line))]
+                removed_data_text.clear()
+                removed_data_text.setPlainText('\n'.join(removed_lines))
+    
+        dialog = QDialog(self)
+        dialog.setWindowTitle("Select Country for Phone Numbers")
+        
+        layout = QGridLayout(dialog)
+        
+        country_label = QLabel("Select a Country:")
+        layout.addWidget(country_label, 0, 0)
+        
+        country_combobox = QComboBox()
+        country_combobox.addItems(country_phone_codes.keys())
+        layout.addWidget(country_combobox, 0, 1)
+        
+        get_button = QPushButton("Get Country")
+        get_button.clicked.connect(get_selected_country)
+        layout.addWidget(get_button, 1, 0, 1, 2)
+        
+        dialog.setLayout(layout)
+        dialog.exec_()
+
+    
     def remove_duplicates(self):
         """Remove duplicate lines from input and display in output."""
         try:
@@ -4075,11 +4113,8 @@ class ExtensionsBarQDockWidget(QDockWidget):
     def launch_configs_ui(self):
         self.launch_ui_from_subdirectory("configs.ui")
 
-    def launch_domain_manager(self):
-        script_path = os.path.join("ui_files", "url_tools.py")
-        
     def open_domain_sorter(self):
-        script_path = os.path.join("ui_files", "domain_sorter.py")
+        script_path = os.path.join("ui_files", "Ui_domain_sorter.py")
         if os.path.isfile(script_path):
             subprocess.Popen(["python", script_path])
 
