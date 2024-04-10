@@ -189,6 +189,23 @@ class CrawlerThread(QThread):
 
 
 
+
+
+
+
+
+class FileSaver:
+    def __init__(self, savedResultsTextBox):
+        self.savedResultsTextBox = savedResultsTextBox
+
+    def save_output_text(self, always_save_checkBox, output_text):
+        if always_save_checkBox == True:
+            file_path = self.savedResultsTextBox.getText()  # Get the directory path from the text box
+
+            with open(file_path + "/output.txt", "w") as file:
+                file.write(output_text)  # Write the output text to a file named output.txt in the specified directory
+
+
 class MyProcess(Process):
     def __init__(self, queue):
         super(MyProcess, self).__init__()
@@ -1588,8 +1605,11 @@ class DiamondSorter(*top_classes):
         self.timer.start(100)  # Adjust the interval for the desired scrolling speed
         self.extract_emails_button = QPushButton("Extract Emails")
         self.extract_emails_button.clicked.connect(self.extract_emails)
+        self.copy_results_button.clicked.connect(self.copy_results_function)
 
-
+    def copy_results_function(self):
+        clipboard = QApplication.clipboard()
+        clipboard.setText(self.output_text.toPlainText())
     
     def handle_button_click(self, button_name):
         # List of specific buttons that trigger the error dialog
